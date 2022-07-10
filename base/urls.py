@@ -1,0 +1,15 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.mainPage, name='main_page'),
+    path('register_page/', views.registerPage, name='register_page'),
+    path('logout_user/', views.logoutUser, name='logout_user'),
+    path('delete_post/<int:pk>/', views.deletePost, name='delete_post'),
+
+    path('<str:user>/', views.userProfile, name='user_profile'),
+    path('<str:user>/saved/', views.userProfileSaved, name='user_profile_saved'),
+    path('<str:user>/tagged/', views.userProfileTagged, name='user_profile_tagged'),
+    path('like/<int:pk>/', views.likePost, name='like_post'),
+
+]

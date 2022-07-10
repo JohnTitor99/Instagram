@@ -1,0 +1,483 @@
+a {
+    text-decoration: none;
+}
+
+/* --- NAVBAR --- */
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-top: 3px solid black;
+    border-bottom: 1px solid black;
+    z-index: 9999;
+}
+
+.header p {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: 300px;
+}
+
+.header p .search {
+    margin-left: 300px;
+}
+
+.header .navbar-user-logo .user-menu-dropbtn {
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+    border-radius: 50%;
+    object-position: center;
+}
+
+
+/* --- USER LOGIN / LOGOUT / REGISTER ---*/
+
+.start-login-page {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 500px;
+}
+
+
+.register-page {
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 500px;
+}
+
+
+
+
+                                    /* ----------------------- MAIN PAGE ------------------------ */
+
+
+
+
+/* --- POSTS TAPE --- */
+
+.main-container {
+    display: grid;
+    grid-template-columns: 340px 470px 360px 100px;
+}
+
+.posts-tape {
+    margin-top: 80px;
+}
+
+.posts-tape .post {
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 2%;
+}
+
+.posts-tape .post .post-header {
+    display: flex;
+    object-position: center;
+    padding: 8px;
+}
+
+.posts-tape .post .post-header a {
+    display: flex;
+    object-position: center;
+}
+
+.posts-tape .post .post-header a p {
+    display: flex;
+    object-position: center;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.posts-tape .post .post-header img {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    border-radius: 50%;
+    object-position: center;
+}
+
+.posts-tape .post-body p {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.posts-tape .post-body img {
+    width: 100%;
+}
+
+.posts-tape .post-body .icon {
+    height: 24px;
+    width: 24px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.posts-tape .post-body .save {
+    margin-left: 320px;
+}
+
+.posts-tape .post-body .like-btn {
+    height: 30px;
+    width: 50px;
+}
+
+/* --- SIDE PANEL ---*/
+
+.side-panel {
+    margin-left: 30px;
+    margin-top: 80px;
+}
+
+.avatar {
+    position: fixed;
+}
+
+.avatar a {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.avatar img {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: block;
+    border-radius: 50%;
+    object-position: center;
+}
+
+
+.suggestions {
+    margin-top: 50px;
+    position: fixed;
+    display: inline-block;
+}
+
+
+/* --- POST CREATE DROPDOWN WINDOW --- */
+
+/* Dropdown Content (Hidden by Default) */
+.post-create-dropdown-content {
+    display: none;
+    height: 540px;
+    width: 500px;
+    text-align: center;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.post-create-dropdown-content a {
+    color: black;
+    text-align: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* --- NAVBAR USER MENU ---*/
+
+/* Dropdown Content (Hidden by Default) */
+.user-menu-dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #f1f1f1;
+    margin-top: 50px;
+    margin-left: 1000px;
+    width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.user-menu-dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* --- POST DROPDOWN OPTIONS --- */
+
+
+/* Dropdown Button for Owner */
+.post-options-dropbtn {
+    position: absolute;
+    margin-top: 10px;
+    height: 20px;
+    width: 30px;
+    margin-left: 420px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.post-options-dropdown-content {
+    display: none;
+    width: 400px;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.post-options-dropdown-content a {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* --- POST DELETE DROPDOWN ---*/
+
+/* Dropdown Content (Hidden by Default) */
+.post-delete-dropdown-content {
+    display: none;
+    width: 400px;
+    text-align: center;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.post-delete-dropdown-content a {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.post-delete-dropdown-content p {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.post-delete-dropdown-content h2 {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+/* --- POST EDIT DROPDOWN --- */
+.post-edit-dropdown-content {
+    display: none;
+    width: 800px;
+    height: 500px;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+
+.post-edit-dropdown-content .edit-post-header-left {
+    display: flex;
+    float: left;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.post-edit-dropdown-content .edit-post-header-right {
+    display: flex;
+    float: right;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.post-edit-dropdown-content .edit-post-header-center {
+    display: flex;
+    margin: 0 auto;
+    width: 100px;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.post-edit-dropdown-content img {
+    position: absolute;
+    height: 100%;
+}
+
+.post-edit-dropdown-content .edit-post-body {
+    display: flex;
+    /* grid-template-columns: 60% 40%; */
+    height: 88%;
+}
+
+.post-edit-dropdown-content .edit-post-image {
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.post-edit-dropdown-content .edit-post-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.post-edit-dropdown-content .edit-post-logo-username-text {
+    display: flex;
+    object-position: center;
+    padding: 20px;
+    width: 40%;
+}
+
+.post-edit-dropdown-content .edit-post-logo-username-text p {
+    display: flex;
+    object-position: center;
+    margin-top: 8px;
+    margin-left: 45px;
+}
+
+.post-edit-dropdown-content .edit-post-logo-username-text img {
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+    border-radius: 50%;
+    object-position: center;
+}
+
+.post-edit-dropdown-content .edit-post-logo-username-text .edit-text-form {
+    margin-top: 50px;
+    margin-left: -70px;
+}
+
+
+.post-edit-dropdown-content .edit-post-logo-username-text .edit-text-form form textarea {
+    height: 150px;
+    width: 300px;
+}
+
+
+
+
+                                    /* -----------------------  USER PROFILE ------------------------ */
+
+
+.user-profile-header {
+    display: flex;
+    align-items: center;
+    margin-left: 350px;
+}
+
+
+.user-profile-header .user-profile-image {
+    display: block;
+    margin-top: 90px;
+    width: 9.5rem;
+    height: 9.5rem;
+    border-radius: 50%;
+    object-position: center;
+}
+
+.user-profile-header .user-profile-username {
+    font-size: 30px;
+    margin-left: 100px;
+}
+
+.user-profile-header a {
+    margin-left: 20px;
+}
+
+
+.user-profile-header .user-profile-serttings-dropbtn {
+    margin-left: 20px;
+}
+
+.user-profile-header .user-profile-posts-followers-following {
+    margin-top: 100px;
+    margin-left: -235px;
+}
+
+.user-profile-hr {
+    margin-top: 40px;
+    width: 63%;
+}
+
+.user-profile-posts-saved-tagged {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 15px;
+    margin-left: 610px;
+}
+
+.user-profile-posts .user-profile-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(auto-fill, 300px);
+    gap: 1.5rem;
+    margin-top: 15px;
+    margin-left: 275px;
+} 
+  
+.user-profile-posts .user-profile-posts-grid > * {
+    height: 300px;
+    width: 300px;
+}
+
+
+
+                                    /* ----------------------- COMMON ------------------------ */
+
+
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: absolute;
+    display: inline-block;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
+
+/* --- MESAGES --- */
+.messages {
+    margin-top: 100px;
+}

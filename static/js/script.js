@@ -1,0 +1,68 @@
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+
+// Owner's posts options
+function postOptionsFunc(postId) {
+  hidePopupFunc();
+  document.getElementById("postOptionsDropdown" + postId).classList.toggle("show");
+}
+
+ //Other posts options
+function postOptionsFunc2(postId) {
+  hidePopupFunc();
+  document.getElementById("postOptionsDropdown2" + postId).classList.toggle("show");
+}
+
+// User menu
+function userMenuFunc() {
+  hidePopupFunc();
+  document.getElementById("userMenuDropdown").classList.toggle("show");
+}
+
+// Creating a post
+function postCreateFunc() {
+  hidePopupFunc();
+  document.getElementById("postCreateDropdown").classList.toggle("show");
+}
+
+// Deleting a post
+function postDeleteFunc(postId) {
+  hidePopupFunc();
+  document.getElementById("postDeleteDropdown" + postId).classList.toggle("show");
+}
+
+// Editing a post
+function postEditFunc(postId) {
+  hidePopupFunc();
+  document.getElementById("postEditDropdown" + postId).classList.toggle("show");
+}
+
+
+function hidePopupFunc() {
+  var dropdowns = document.getElementsByClassName('dropdown-content');
+  var i;
+  for (i = 0; i < dropdowns.length; i++) {
+    var openDropdown = dropdowns[i];
+    if (openDropdown.classList.contains('show')) {
+      openDropdown.classList.remove('show');
+    }
+  }
+}
+
+
+
+
+/* Close the dropdown menu if the user clicks outside of it */
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    const isInside = event.target.closest('.dropdown-content')
+
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show') && !isInside) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
