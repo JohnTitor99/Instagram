@@ -52,7 +52,7 @@
                     {% if post.user == request.user %}
 
                         <div class="post-header">
-                            <a href=""><img src="{{ post.logo.url }}"/><p>{{ post.user }}</p></a> <button onclick="postOptionsFunc('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
+                            <a href=""><img src="{{ post.logo.url }}"/><p>{{ post.user }}</p></a> <button onclick="hidePopupFunc(); postOptionsFunc('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
                         </div>
 
                         <!-- DROPDOWN OWNER'S POSTS OPTIONS -->
@@ -133,7 +133,7 @@
                     {% else %}
                     
                         <div class="post-header">
-                            <a href=""><img src="{{ post.logo.url }}"/><p>{{ post.user }}</p></a> <button onclick="postOptionsFunc2('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
+                            <a href=""><img src="{{ post.logo.url }}"/><p>{{ post.user }}</p></a> <button onclick="hidePopupFunc(); postOptionsFunc2('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
                         </div>
 
                         <!-- DROPDOWN OTHER POST OPTIONS -->
@@ -158,15 +158,49 @@
                     
                     <!-- POST BODY -->
                     <div class="post-body">
-                        <img src="{{ post.image.url }}"/>
-                        <form action="{% url 'like_post' post.id %}" method="POST">
+                        <img src="{{ post.image.url }}" class="post-image"/>
+  
+                        <!-- likes comments share save buttons -->
+                        <form action="{% url 'post_action' post.id %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="like-btn">Like</button>
+                            <button type="submit" name="actionbtn" value="like" class="post-action post-like-dropbtn">
+                                <img src="{% static 'media/icons/like_icon.png' %}" class="post-action-icon"/>
+                            </button>
+                            <button type="submit" name="actionbtn" value="save" class="post-action post-save-dropbtn">
+                                <img src="{% static 'media/icons/save_icon.png' %}" class="post-action-icon"/>
+                            </button>
                         </form>
-                        <input type="image" src="{% static 'media/icons/like_icon.png' %}" class="icon like"/>
-                        <input type="image" src="{% static 'media/icons/comment_icon.png' %}" class="icon comment"/>
-                        <input type="image" src="{% static 'media/icons/share_icon.png' %}" class="icon share"/>
-                        <input type="image" src="{% static 'media/icons/save_icon.png' %}" class="icon save"/>
+
+                        <!-- post comments -->
+                        <input type="image" onclick="hidePopupFunc(); postCommentsFunc('{{ post.id }}')" class="dropbtn post-action post-comments-dropbtn" src="{% static 'media/icons/comment_icon.png' %}" />
+
+                        <!-- post comments dropdown -->
+                        <div class="dropdown">
+                            <div id="postCommentsDropdown{{ post.id }}" class="dropdown-content post-comments-dropdown-content">
+                                <div class="post-comments-body">
+                                    <div class="post-comments-image">
+                                        <img src="{{ post.image.url }}"/>
+                                    </div>
+
+                                    <div class="post-comments-logo-username">
+                                        <a href=""><img src="{{ post.logo.url }}"/><b>{{ post.user }}</b></a>
+                                        {% if post.user == request.user %}
+                                            <button onclick="postOptionsFunc('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
+                                        {% else %}
+                                            <button onclick="postOptionsFunc2('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
+                                        {% endif %}
+                                        <hr>
+                                        <a href=""><img src="{{ post.logo.url }}"/><b>{{ post.user }}</b></a><p>{{ post.post_text }}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- post share -->
+                        <input type="image" onclick="" class="dropbtn post-action post-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
+                        
+                        
                         <p><b>{{ post.total_likes }} likes</b></p>
                         <p><b>{{ post.user }}</b> {{ post.post_text }}</p>
                         <p>{{ post.created | timesince }} ago </p>

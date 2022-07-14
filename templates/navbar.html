@@ -3,12 +3,12 @@
         <a href="{% url 'main_page' %}">INSTAGRAM</a> <input type="text" name="search" class="search" />
         <a href="{% url 'main_page' %}">Home</a>
         <a href="">Chats</a>
-        <button onclick="postCreateFunc()" class="dropbtn post-create-dropbtn">Create New Post</button>
+        <button onclick="hidePopupFunc(); postCreateFunc()" class="dropbtn post-create-dropbtn">Create New Post</button>
         <span class="navbar-user-logo">
             {% if request.user.is_authenticated %}
-                <input type="image" onclick="userMenuFunc()" class="dropbtn user-menu-dropbtn" src="{{ user_profile.logo.url }}" />
+                <input type="image" onclick="hidePopupFunc(); userMenuFunc()" class="dropbtn user-menu-dropbtn" src="{{ user_profile.logo.url }}" />
             {% else %}
-                <input type="image" onclick="userMenuFunc()" class="dropbtn user-menu-dropbtn" src="" />
+                <input type="image" onclick="hidePopupFunc(); userMenuFunc()" class="dropbtn user-menu-dropbtn" src="" />
             {% endif %}
         </span>
     </p>

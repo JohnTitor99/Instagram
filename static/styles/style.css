@@ -12,7 +12,7 @@ a {
     margin-left: -10px;
     border-top: 3px solid black;
     border-bottom: 1px solid black;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .header p {
@@ -106,25 +106,111 @@ a {
     margin-right: 8px;
 }
 
-.posts-tape .post-body img {
+.posts-tape .post-body .post-image {
     width: 100%;
 }
 
-.posts-tape .post-body .icon {
+
+/* --- POST ACTION BUTTONS --- */
+
+.posts-tape .post-body form {
+    margin-bottom: -20px;
+}
+
+.posts-tape .post-body .post-action {
     height: 24px;
     width: 24px;
     margin-top: 5px;
     margin-left: 10px;
 }
 
-.posts-tape .post-body .save {
-    margin-left: 320px;
+.posts-tape .post-body .post-action .post-action-icon {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    margin-top: -3px;
+    margin-left: -8px;
 }
 
-.posts-tape .post-body .like-btn {
-    height: 30px;
-    width: 50px;
+.posts-tape .post-body .post-comments-dropbtn {
+    margin-top: -80px;
+    margin-left: 50px;
 }
+
+.posts-tape .post-body .post-share-dropbtn {
+    margin-top: -80px;
+    margin-left: 10px;
+}
+
+.posts-tape .post-body .post-save-dropbtn {
+    margin-left: 400px;
+}
+
+
+/* --- POST COMMENTS DROPDOWN --- */
+
+.post-comments-dropdown-content {
+    display: none;
+    width: 1000px;
+    height: 600px;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+
+.post-comments-body {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-image {
+    display: block;
+    height: 100%;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-image img {
+    height: 600px;
+    width: 500px;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-logo-username {
+    display: block;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-logo-username img {
+    margin: 15px;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+    border-radius: 50%;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-logo-username b {
+    position: absolute;
+    margin-top: -42px;
+    margin-left: 60px;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-logo-username p {
+    position: absolute;
+    margin-top: -42px;
+    margin-left: 110px;
+}
+
+.post-comments-dropdown-content .post-comments-body .post-comments-logo-username .post-comments-options-dropbtn {
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 450px;
+}
+
+
 
 /* --- SIDE PANEL ---*/
 

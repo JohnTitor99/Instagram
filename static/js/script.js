@@ -3,40 +3,38 @@ toggle between hiding and showing the dropdown content */
 
 // Owner's posts options
 function postOptionsFunc(postId) {
-  hidePopupFunc();
   document.getElementById("postOptionsDropdown" + postId).classList.toggle("show");
 }
 
  //Other posts options
 function postOptionsFunc2(postId) {
-  hidePopupFunc();
   document.getElementById("postOptionsDropdown2" + postId).classList.toggle("show");
 }
 
 // User menu
 function userMenuFunc() {
-  hidePopupFunc();
   document.getElementById("userMenuDropdown").classList.toggle("show");
 }
 
 // Creating a post
 function postCreateFunc() {
-  hidePopupFunc();
   document.getElementById("postCreateDropdown").classList.toggle("show");
 }
 
 // Deleting a post
 function postDeleteFunc(postId) {
-  hidePopupFunc();
   document.getElementById("postDeleteDropdown" + postId).classList.toggle("show");
 }
 
 // Editing a post
 function postEditFunc(postId) {
-  hidePopupFunc();
   document.getElementById("postEditDropdown" + postId).classList.toggle("show");
 }
 
+// Post comments
+function postCommentsFunc(postId) {
+  document.getElementById("postCommentsDropdown" + postId).classList.toggle("show");
+}
 
 function hidePopupFunc() {
   var dropdowns = document.getElementsByClassName('dropdown-content');

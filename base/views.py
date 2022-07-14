@@ -93,11 +93,15 @@ def deletePost(request, pk):
     return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
-def likePost(request, pk):
+def postAction(request, pk):
     post = get_object_or_404(Post, id=pk)
-    post.likes.add(request.user)
+    action = request.POST.get('actionbtn')
+
+    if action == "like":
+        post.likes.add(request.user)
 
     return HttpResponseRedirect(reverse('main_page'))
+
 
 def userProfile(request, user):
     posts = Post.objects.all()
