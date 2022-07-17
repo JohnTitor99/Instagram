@@ -147,6 +147,37 @@ a {
 }
 
 
+/* ---  USERS WHO LIKED POST DROPDOWN --- */
+
+.users-who-liked-post-dropdown-content {
+    display: none;
+    height: 400px;
+    width: 400px;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.users-who-liked-post-dropdown-content span {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.users-who-liked-post-dropdown-content .users-who-liked-post-body {
+    overflow: auto;
+}
+
+
 /* --- POST COMMENTS DROPDOWN --- */
 
 .post-comments-dropdown-content {
@@ -167,24 +198,29 @@ a {
 
 .post-comments-body {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 500px 500px;;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-image {
+.post-comments-body .post-comments-image {
     display: block;
     height: 100%;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-image img {
+.post-comments-body .post-comments-image img {
     height: 600px;
     width: 500px;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-logo-username {
-    display: block;
+/* header */
+.post-comments-body .post-comments .post-comments-header {
+    position: absolute;
+    background-color: #f1f1f1;
+    height: 50px;
+    width: 500px;
+    z-index: 99999;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-logo-username img {
+.post-comments-body .post-comments .post-comments-header img {
     margin: 15px;
     width: 2.2rem;
     height: 2.2rem;
@@ -192,22 +228,101 @@ a {
     border-radius: 50%;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-logo-username b {
+.post-comments-body .post-comments .post-comments-header .post-comments-options-dropbtn {
+    position: absolute;
+    margin-top: -45px;
+    margin-left: 450px;
+}
+
+.post-comments-body .post-comments .post-comments-header b {
     position: absolute;
     margin-top: -42px;
     margin-left: 60px;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-logo-username p {
+/* post comments display */
+.post-comments-body .post-comments .post-comments-display {
+    position: absolute;
+    overflow: auto;
+    margin-top: 50px;
+    height: 400px;
+    width: 500px;
+}
+
+.post-comments-body .post-comments .post-comments-display img {
+    margin: 15px;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+    border-radius: 50%;
+}
+
+.post-comments-body .post-comments .post-comments-display p {
     position: absolute;
     margin-top: -42px;
     margin-left: 110px;
 }
 
-.post-comments-dropdown-content .post-comments-body .post-comments-logo-username .post-comments-options-dropbtn {
+.post-comments-body .post-comments .post-comments-display b {
     position: absolute;
-    margin-top: -45px;
-    margin-left: 450px;
+    margin-top: -42px;
+    margin-left: 60px;
+}
+
+.post-comments-body .post-comments .post-comments-display .comments-created-likes-replies {
+    margin-left: 20px;
+}
+
+/* post comments actins and forms */
+.post-comments-body .post-comments .post-comments-actions-and-form {
+    position: absolute;
+    background-color: #f1f1f1;
+    margin-top: 450px;
+    height: 150px;
+    width: 500px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form .post-comments-action{
+    height: 24px;
+    width: 24px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form .post-comments-save-dropbtn {
+    margin-left: 420px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form .post-comments-action-icon {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    margin-top: -3px;
+    margin-left: -8px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form .post-comments-comments-dropbtn {
+    margin-top: -38px;
+    margin-left: 50px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form .post-comments-share-dropbtn {
+    margin-top: -38px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form p {
+    margin-top: -5px;
+}
+
+/* add comments form */
+.post-comments-body .post-comments .post-comments-actions-and-form .add-comments-form {
+    position: absolute;
+    bottom: 20px;
+}
+
+.post-comments-body .post-comments .post-comments-actions-and-form .add-comments-input {
+    height: 50px;
+    width: 430px;
 }
 
 

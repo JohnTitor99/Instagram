@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.urls import reverse
 
-from .models import Post, UserProfile
+from .models import Post, UserProfile, Comment
 from .forms import PostForm
 
 
@@ -16,7 +16,6 @@ def mainPage(request):
     form = PostForm()
     user_profiles = UserProfile.objects.all()
     user_profile = None         # user profile (logo) of a current user
-
 
     if len(user_profiles) > 0:  # it needs this codition, because if user is logout it will be error "matching query does not exist"
         for i in user_profiles:
@@ -55,11 +54,25 @@ def mainPage(request):
             obj.post_text = post_text
             obj.save()
 
+        # post request for adding a comments
+        elif 'add-comment-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            comment_text = request.POST.get('comment-text')
+            post_obj = Post.objects.get(id=post_id)
+            comment = Comment()
+
+            comment.post = post_obj
+            comment.user = request.user
+            comment.logo = user_profile.logo
+            comment.body = comment_text
+            comment.save()
+
+
     context = {
         'page': page,
         'posts': posts,
         'form': form,
-        'user_profile': user_profile
+        'user_profile': user_profile,
     }
     return render(request, 'base/main_page.html', context)
 
@@ -126,7 +139,7 @@ def userProfile(request, user):
         'my_posts_amount': my_posts_amount,
         'user_profile': user_profile,
     }
-    return render(request, 'base/user_profile.html', context)
+    return render(request, 'account/user_profile.html', context)
 
 
 def userProfileSaved(request, user):
@@ -151,7 +164,7 @@ def userProfileSaved(request, user):
         'my_posts_amount': my_posts_amount,
         'user_profile': user_profile,
     }
-    return render(request, 'base/user_profile_saved.html', context)
+    return render(request, 'account/user_profile_saved.html', context)
 
 
 def userProfileTagged(request, user):
@@ -176,4 +189,4 @@ def userProfileTagged(request, user):
         'my_posts_amount': my_posts_amount,
         'user_profile': user_profile,
     }
-    return render(request, 'base/user_profile_tagged.html', context)
+    return render(request, 'account/user_profile_tagged.html', context)

@@ -36,6 +36,11 @@ function postCommentsFunc(postId) {
   document.getElementById("postCommentsDropdown" + postId).classList.toggle("show");
 }
 
+// Users who liked a post
+function usersWhoLikedPostFunc() {
+  document.getElementById("usersWhoLikedPostDropdown").classList.toggle("show");
+}
+
 function hidePopupFunc() {
   var dropdowns = document.getElementsByClassName('dropdown-content');
   var i;
@@ -46,8 +51,6 @@ function hidePopupFunc() {
     }
   }
 }
-
-
 
 
 /* Close the dropdown menu if the user clicks outside of it */
