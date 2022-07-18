@@ -70,7 +70,6 @@ a {
 }
 
 .posts-tape .post {
-    position: absolute;
     width: 470px;
     margin-top: 15px;
     border: 1px solid black;
@@ -131,11 +130,13 @@ a {
 }
 
 .posts-tape .post-body .post-comments-dropbtn {
+    position: relative;
     margin-top: -80px;
     margin-left: 50px;
 }
 
 .posts-tape .post-body .post-share-dropbtn {
+    position: relative;
     margin-top: -80px;
     margin-left: 10px;
 }
@@ -144,18 +145,21 @@ a {
     margin-left: 400px;
 }
 
-/* add comments form */
-.post-add-comments-form {
-    position: relative;
+.likes-save-buttons-form {
+    margin-bottom: -20px;
 }
 
+
 .post-add-comments-input {
-    position: relative;
     height: 50px;
     width: 400px;
-    margin-bottom: 1px;
+    margin-bottom: -1px;
     margin-left: 10px;
 }
+
+/* .likes-save-buttons-form {
+    margin-top: -15px;
+} */
 
 
 /* ---  USERS WHO LIKED POST DROPDOWN --- */

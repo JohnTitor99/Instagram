@@ -112,8 +112,10 @@
 <div class="post-body">
     <img src="{{ post.image.url }}" class="post-image"/>
 
+    <br>
+
     <!-- likes comments share save buttons -->
-    <form action="{% url 'post_action' post.id %}" method="POST">
+    <form action="{% url 'post_action' post.id %}" method="POST" class="likes-save-buttons-form">
         {% csrf_token %}
         <button type="submit" name="actionbtn" value="like" class="post-action post-like-dropbtn">
             <!-- show liked and unliked like button -->
@@ -168,7 +170,7 @@
                     <div class="post-comments-actions-and-form">
                         <hr>
                         <!-- likes comments share save buttons -->
-                        <form action="{% url 'post_action' post.id %}" method="POST">
+                        <form action="{% url 'post_action' post.id %}" method="POST" class="likes-save-buttons-form">
                             {% csrf_token %}
                             <button type="submit" name="actionbtn" value="like" class="post-comments-action post-comments-like-dropbtn">
                                 <!-- show liked and unliked like button -->
@@ -232,7 +234,12 @@
     <p><b>{{ post.user }}</b> {{ post.post_text }}</p>
     <p>{{ post.created | timesince }} ago </p>
 
-
-
+    <!-- form for adding comments -->
+    <form method="POST" class="post-add-comments-form" name="add-comment-form">
+        {% csrf_token %}
+        <input type="text" class="post-add-comments-input" placeholder="Add a comment..." name="comment-text"/>
+        <input type="hidden" name="post-id" value="{{ post.id }}">
+        <input type="submit" value="Post" name="add-comment-form"/>
+    </form>
 
 </div>
