@@ -12,7 +12,6 @@ class UserProfile(models.Model):
 
 # post model
 class Post(models.Model):
-    logo = models.ImageField(upload_to='media/logo', null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     image = models.ImageField(upload_to='media/images', null=True, blank=True)
     post_text = models.TextField(null=True, blank=True)

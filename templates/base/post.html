@@ -4,13 +4,13 @@
 {% if post.user == request.user %}
 
 <div class="post-header">
-    <a href=""><img src="{{ post.logo.url }}"/><p>{{ post.user }}</p></a> <button onclick="hidePopupFunc(); postOptionsFunc('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
+    <a href=""><img src="{{ post.user.users.logo.url }}"/><p><b>{{ post.user }}</b></p></a> <button onclick="hidePopupFunc(); postOptionsFunc('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
 </div>
 
 <!-- DROPDOWN OWNER'S POSTS OPTIONS -->
 <div class="dropdown">
     <div id="postOptionsDropdown{{ post.id }}" class="dropdown-content post-options-dropdown-content">
-        <a href="javascript:postDeleteFunc('{{ post.id }}')" class="dropbtn">Delete</a>
+        <a href="javascript:hidePopupFunc(); postDeleteFunc('{{ post.id }}')" class="dropbtn">Delete</a>
         <hr>
         <a href="javascript:postEditFunc('{{ post.id }}')" class="dropbtn">Edit</a>
         <hr>
@@ -85,7 +85,7 @@
 {% else %}
 
 <div class="post-header">
-    <a href=""><img src="{{ post.logo.url }}"/><p>{{ post.user }}</p></a> <button onclick="hidePopupFunc(); postOptionsFunc2('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
+    <a href=""><img src="{{ post.user.users.logo.url }}"/><p><b>{{ post.user }}</b></p></a> <button onclick="hidePopupFunc(); postOptionsFunc2('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
 </div>
 
 <!-- DROPDOWN OTHER POST OPTIONS -->
@@ -110,122 +110,129 @@
 
 <!-- POST BODY -->
 <div class="post-body">
-<img src="{{ post.image.url }}" class="post-image"/>
+    <img src="{{ post.image.url }}" class="post-image"/>
 
-<!-- likes comments share save buttons -->
-<form action="{% url 'post_action' post.id %}" method="POST">
-    {% csrf_token %}
-    <button type="submit" name="actionbtn" value="like" class="post-action post-like-dropbtn">
-        <!-- show liked and unliked like button -->
-        {% if request.user in post.users_likes %}
-            <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-action-icon"/>
-        {% else %}
-            <img src="{% static 'media/icons/like_icon.png' %}" class="post-action-icon"/>
-        {% endif %}
-    <button type="submit" name="actionbtn" value="save" class="post-action post-save-dropbtn">
-        <img src="{% static 'media/icons/save_icon.png' %}" class="post-action-icon"/>
-    </button>
-</form>
+    <!-- likes comments share save buttons -->
+    <form action="{% url 'post_action' post.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="actionbtn" value="like" class="post-action post-like-dropbtn">
+            <!-- show liked and unliked like button -->
+            {% if request.user in post.users_likes %}
+                <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-action-icon"/>
+            {% else %}
+                <img src="{% static 'media/icons/like_icon.png' %}" class="post-action-icon"/>
+            {% endif %}
+        <button type="submit" name="actionbtn" value="save" class="post-action post-save-dropbtn">
+            <img src="{% static 'media/icons/save_icon.png' %}" class="post-action-icon"/>
+        </button>
+    </form>
 
-<!-- post comments -->
-<input type="image" onclick="hidePopupFunc(); postCommentsFunc('{{ post.id }}')" class="dropbtn post-action post-comments-dropbtn" src="{% static 'media/icons/comment_icon.png' %}" />
-<!-- post comments dropdown -->
-<div class="dropdown">
-    <div id="postCommentsDropdown{{ post.id }}" class="dropdown-content post-comments-dropdown-content">
+    <!-- POST COMMENTS -->
+    <input type="image" onclick="hidePopupFunc(); postCommentsFunc('{{ post.id }}')" class="dropbtn post-action post-comments-dropbtn" src="{% static 'media/icons/comment_icon.png' %}" />
+    <!-- post comments dropdown -->
+    <div class="dropdown">
+        <div id="postCommentsDropdown{{ post.id }}" class="dropdown-content post-comments-dropdown-content">
 
-        <!-- grid columns 50% / 50% -->
-        <div class="post-comments-body">
-            <div class="post-comments-image">
-                <img src="{{ post.image.url }}"/>
-            </div>
-
-            <!-- post comments -->
-            <!-- grid rows -->
-            <div class="post-comments">
-                <div class="post-comments-header">
-                    <a href=""><img src="{{ post.logo.url }}"/><b>{{ post.user }}</b></a>
-                    {% if post.user == request.user %}
-                        <button onclick="postOptionsFunc('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
-                    {% else %}
-                        <button onclick="postOptionsFunc2('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
-                    {% endif %}
-                    <hr>                                    
+            <!-- grid columns 50% / 50% -->
+            <div class="post-comments-body">
+                <div class="post-comments-image">
+                    <img src="{{ post.image.url }}"/>
                 </div>
 
-                <div class="post-comments-display">
-                    <a href=""><img src="{{ post.logo.url }}"/><b>{{ post.user }}</b></a><p>{{ post.post_text }}</p>
-                    <div class="comments-created-likes-replies">
-                        {{ post.created | timesince }} ago
+                <!-- post comments -->
+                <!-- grid rows -->
+                <div class="post-comments">
+                    <div class="post-comments-header">
+                        <a href=""><img src="{{ post.user.users.logo.url }}"/><b>{{ post.user }}</b></a>
+                        {% if post.user == request.user %}
+                            <button onclick="postOptionsFunc('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
+                        {% else %}
+                            <button onclick="postOptionsFunc2('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
+                        {% endif %}
+                        <hr>                                    
                     </div>
-                    {% for comment in post.comments.all %}
-                        <a href=""><img src="{{ comment.logo.url }}"/><b>{{ comment.user }}</b></a><p>{{ comment.body }}</p>
+
+                    <div class="post-comments-display">
+                        <a href=""><img src="{{ post.user.users.logo.url }}"/></a><p><b>{{ post.user }}</b> {{ post.post_text }}</p>
                         <div class="comments-created-likes-replies">
-                            {{ comment.created | timesince}} 0 likes Reply <input type="button" oncklick="" value="···"/>
+                            {{ post.created | timesince }} ago
                         </div>
-                    {% endfor %}
+                        {% for comment in post.comments.all %}
+                            <a href=""><img src="{{ comment.logo.url }}"/></a><p><b>{{ comment.user }}</b> {{ comment.body }}</p>
+                            <div class="comments-created-likes-replies">
+                                {{ comment.created | timesince}} 0 likes Reply <input type="button" oncklick="" value="···"/>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="post-comments-actions-and-form">
+                        <hr>
+                        <!-- likes comments share save buttons -->
+                        <form action="{% url 'post_action' post.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="actionbtn" value="like" class="post-comments-action post-comments-like-dropbtn">
+                                <!-- show liked and unliked like button -->
+                                {% if request.user in post.users_likes %}
+                                    <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-comments-action-icon"/>
+                                {% else %}
+                                    <img src="{% static 'media/icons/like_icon.png' %}" class="post-comments-action-icon"/>
+                                {% endif %}
+                                
+                            </button>
+                            <button type="submit" name="actionbtn" value="save" class="post-comments-action post-comments-save-dropbtn">
+                                <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
+                            </button>
+                        </form>
+                        
+                        <!-- post comments -->
+                        <input type="image" onclick="" class="dropbtn post-comments-action post-comments-comments-dropbtn" src="{% static 'media/icons/comment_icon.png' %}" />
+                        
+                        <!-- post share -->
+                        <input type="image" onclick="" class="dropbtn post-comments-action post-comments-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
+                        
+                        <p><b>{{ post.total_likes }} likes</b></p>
+
+                        <p>{{ post.created | timesince }} ago </p>
+
+                        <!-- form for adding comments -->
+                        <form method="POST" class="add-comments-form" name="add-comment-form">
+                            {% csrf_token %}
+                            <input type="text" class="add-comments-input" placeholder="Add a comment..." name="comment-text"/>
+                            <input type="hidden" name="post-id" value="{{ post.id }}">
+                            <input type="submit" value="Post" name="add-comment-form"/>
+                        </form>
+                    </div>
+
+
                 </div>
-
-                <div class="post-comments-actions-and-form">
-                    <hr>
-                    <!-- likes comments share save buttons -->
-                    <form action="{% url 'post_action' post.id %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" name="actionbtn" value="like" class="post-comments-action post-comments-like-dropbtn">
-                            <!-- show liked and unliked like button -->
-                            {% if request.user in post.users_likes %}
-                                <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-comments-action-icon"/>
-                            {% else %}
-                                <img src="{% static 'media/icons/like_icon.png' %}" class="post-comments-action-icon"/>
-                            {% endif %}
-                            
-                        </button>
-                        <button type="submit" name="actionbtn" value="save" class="post-comments-action post-comments-save-dropbtn">
-                            <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
-                        </button>
-                    </form>
-                    
-                    <!-- post comments -->
-                     <input type="image" onclick="" class="dropbtn post-comments-action post-comments-comments-dropbtn" src="{% static 'media/icons/comment_icon.png' %}" />
-                    
-                     <!-- post share -->
-                    <input type="image" onclick="" class="dropbtn post-comments-action post-comments-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
-                    
-                    <p><b>{{ post.total_likes }} likes</b></p>
-
-                    <p>{{ post.created | timesince }} ago </p>
-
-                    <!-- form for adding comments -->
-                    <form method="POST" class="add-comments-form" name="add-comment-form">
-                        {% csrf_token %}
-                        <input type="text" class="add-comments-input" placeholder="Add a comment..." name="comment-text"/>
-                        <input type="hidden" name="post-id" value="{{ post.id }}">
-                        <input type="submit" value="Post" name="add-comment-form"/>
-                    </form>
-                </div>
-
-
             </div>
         </div>
     </div>
-</div>
 
-<!-- post share -->
-<input type="image" onclick="" class="dropbtn post-action post-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
+    <!-- post share -->
+    <input type="image" onclick="" class="dropbtn post-action post-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
 
-<p><a href="javascript:usersWhoLikedPostFunc()" class="dropbtn users-who-liked-post-dropbtn"><b>{{ post.total_likes }} likes</b></a></p>
+    <!-- total likes -->
+    {% if post.total_likes is not 0 %}
+        <p><a href="javascript:usersWhoLikedPostFunc('{{ post.id }}')" class="dropbtn users-who-liked-post-dropbtn"><b>{{ post.total_likes }} likes</b></a></p>
+    {% endif %}
 
-<div class="dropdown">
-    <div id="usersWhoLikedPostDropdown" class="dropdown-content users-who-liked-post-dropdown-content">
-        <span>Likes</span>
-        <hr>
-        <div class="users-who-liked-post-body">
+    <div class="dropdown">
+        <div id="usersWhoLikedPostDropdown{{ post.id }}" class="dropdown-content users-who-liked-post-dropdown-content">
+            <span>Likes</span>
+            <hr>
             {% for u in post.users_likes %}
-                <a href=""><img src="{{ u.users.logo.url }}"/><p>{{ u.username }}</p></a> <button onclick="" class="dropbtn post-options-dropbtn">···</button>
+                <div class="users-who-liked-post-body">
+                    <a href=""><img src="{{ u.users.logo.url }}"/><p>{{ u.username }}</p></a> <button onclick="" class="follow-btn">Follow</button>
+                </div>
             {% endfor %}
         </div>
     </div>
-</div>
 
-<p><b>{{ post.user }}</b> {{ post.post_text }}</p>
-<p>{{ post.created | timesince }} ago </p>
+    <p><b>{{ post.user }}</b> {{ post.post_text }}</p>
+    <p>{{ post.created | timesince }} ago </p>
+
+
+
+
 </div>

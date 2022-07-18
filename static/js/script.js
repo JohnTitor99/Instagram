@@ -37,8 +37,8 @@ function postCommentsFunc(postId) {
 }
 
 // Users who liked a post
-function usersWhoLikedPostFunc() {
-  document.getElementById("usersWhoLikedPostDropdown").classList.toggle("show");
+function usersWhoLikedPostFunc(postId) {
+  document.getElementById("usersWhoLikedPostDropdown" + postId).classList.toggle("show");
 }
 
 function hidePopupFunc() {

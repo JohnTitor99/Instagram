@@ -70,7 +70,9 @@ a {
 }
 
 .posts-tape .post {
-    margin-bottom: 15px;
+    position: absolute;
+    width: 470px;
+    margin-top: 15px;
     border: 1px solid black;
     border-radius: 2%;
 }
@@ -113,10 +115,6 @@ a {
 
 /* --- POST ACTION BUTTONS --- */
 
-.posts-tape .post-body form {
-    margin-bottom: -20px;
-}
-
 .posts-tape .post-body .post-action {
     height: 24px;
     width: 24px;
@@ -144,6 +142,19 @@ a {
 
 .posts-tape .post-body .post-save-dropbtn {
     margin-left: 400px;
+}
+
+/* add comments form */
+.post-add-comments-form {
+    position: relative;
+}
+
+.post-add-comments-input {
+    position: relative;
+    height: 50px;
+    width: 400px;
+    margin-bottom: 1px;
+    margin-left: 10px;
 }
 
 
@@ -174,7 +185,30 @@ a {
 }
 
 .users-who-liked-post-dropdown-content .users-who-liked-post-body {
+    height: 50px;
     overflow: auto;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.users-who-liked-post-dropdown-content .users-who-liked-post-body img {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    border-radius: 50%;
+    margin-left: 15px;
+    object-position: center;
+}
+
+.users-who-liked-post-dropdown-content .users-who-liked-post-body p {
+    margin-top: -35px;
+    margin-left: 70px;
+}
+
+.users-who-liked-post-dropdown-content .users-who-liked-post-body .follow-btn {
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 320px;
 }
 
 
@@ -215,7 +249,7 @@ a {
 .post-comments-body .post-comments .post-comments-header {
     position: absolute;
     background-color: #f1f1f1;
-    height: 50px;
+    height: 65px;
     width: 500px;
     z-index: 99999;
 }
@@ -257,14 +291,15 @@ a {
     border-radius: 50%;
 }
 
-.post-comments-body .post-comments .post-comments-display p {
+/* .post-comments-body .post-comments .post-comments-display b {
     position: absolute;
     margin-top: -42px;
-    margin-left: 110px;
-}
+    margin-left: 60px;
+} */
 
-.post-comments-body .post-comments .post-comments-display b {
+.post-comments-body .post-comments .post-comments-display p {
     position: absolute;
+    object-position: center;
     margin-top: -42px;
     margin-left: 60px;
 }
@@ -613,9 +648,14 @@ a {
     object-position: center;
 }
 
+.user-profile-header p {
+    position: absolute;
+    object-position: center;
+    margin-left: 250px;
+}
+
 .user-profile-header .user-profile-username {
     font-size: 30px;
-    margin-left: 100px;
 }
 
 .user-profile-header a {
@@ -629,7 +669,6 @@ a {
 
 .user-profile-header .user-profile-posts-followers-following {
     margin-top: 100px;
-    margin-left: -235px;
 }
 
 .user-profile-hr {

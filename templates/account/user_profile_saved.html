@@ -4,9 +4,11 @@
 
 <div class="user-profile-header">
     <input type="image"  class="user-profile-image" src="{{ user_profile.logo.url }}" />
-    <p class="user-profile-username">{{ request.user }}</p>
-    <a href=""><button>Edit profile</button></a>
-    <button onclick="" class="dropbtn user-profile-serttings-dropbtn">Settings</button>
+    <p>
+        <b class="user-profile-username">{{ request.user }}</b>
+        <a href=""><button>Edit profile</button></a>
+        <button onclick="" class="dropbtn user-profile-settings-dropbtn">Settings</button>
+    </p>
 
     <p class="user-profile-posts-followers-following">{{ my_posts_amount }} posts 0 followers 0 following</p>
 </div>
