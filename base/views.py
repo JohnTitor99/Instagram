@@ -111,15 +111,16 @@ def postAction(request, pk):
     action = request.POST.get('actionbtn')
 
     if action == "like":
-        objects = post.likes.all()
-        print(type(post.likes))
-        # print(objects)
-        # if request.user in objects:
-        #     obj = post.likes.filter(username=request.user)
-        #     print(obj)
-        #     # obj.clear()    #! delete obj from intermidiate table many to many relationship
-        # else:
-        #     post.likes.add(request.user)
+        print("hello")
+        # objects = post.likes.all()
+        # print(type(post.likes))
+        # # print(objects)
+        # # if request.user in objects:
+        # #     obj = post.likes.filter(username=request.user)
+        # #     print(obj)
+        # #     # obj.clear()    #! delete obj from intermidiate table many to many relationship
+        # # else:
+        # #     post.likes.add(request.user)
             
     elif action == "save":
         saved = Saved()

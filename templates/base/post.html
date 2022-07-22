@@ -206,7 +206,7 @@
                             {% csrf_token %}
                             <button type="submit" name="actionbtn" value="like" class="post-comments-action post-comments-like-dropbtn">
                                 <!-- show liked and unliked like button -->
-                                {% if request.user in post.users_likes %}
+                                {% if post.likes.is_like == request.user %}
                                     <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-comments-action-icon"/>
                                 {% else %}
                                     <img src="{% static 'media/icons/like_icon.png' %}" class="post-comments-action-icon"/>
@@ -224,7 +224,7 @@
                         <!-- post share -->
                         <input type="image" onclick="" class="dropbtn post-comments-action post-comments-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
                         
-                        <p><b>{{ post.total_likes }} likes</b></p>
+                        <p><b>{{ post.total_likes }} likes {{ post.likes }}</b></p>
 
                         <p>{{ post.created | timesince }} ago </p>
 
