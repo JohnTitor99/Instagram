@@ -9,6 +9,9 @@ class UserProfile(models.Model):
     django_user_model = models.OneToOneField(User, related_name="users", on_delete=models.CASCADE, null=False)
     logo = models.ImageField(upload_to='media/logo', null=True, blank=True)
 
+    def __str__(self):
+        return self.django_user_model.username
+
 
 # post model
 class Post(models.Model):
@@ -40,3 +43,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.post.post_text, self.user)
+
+
+class Saved(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="saved", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.post.post_text

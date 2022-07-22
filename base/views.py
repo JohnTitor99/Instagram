@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.urls import reverse
 
-from .models import Post, UserProfile, Comment
+from .models import Post, UserProfile, Comment, Saved
 from .forms import PostForm
 
 
@@ -111,13 +111,44 @@ def postAction(request, pk):
     action = request.POST.get('actionbtn')
 
     if action == "like":
-        post.likes.add(request.user)
+        objects = post.likes.all()
+        print(type(post.likes))
+        # print(objects)
+        # if request.user in objects:
+        #     obj = post.likes.filter(username=request.user)
+        #     print(obj)
+        #     # obj.clear()    #! delete obj from intermidiate table many to many relationship
+        # else:
+        #     post.likes.add(request.user)
+            
+    elif action == "save":
+        saved = Saved()
+        obj = None
+        try:
+            obj = Saved.objects.get(post_id=pk)
+        except:
+            pass
 
-    return HttpResponseRedirect(reverse('main_page'))
+        if obj == None:
+            saved.post = post
+            saved.user = request.user
+            saved.save()
+
+    # return HttpResponseRedirect(reverse('main_page'))
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+
+def deleteComment(request, pk):
+    comment = Comment.objects.get(id=pk)
+    comment.delete()
+
+    return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
 
 def userProfile(request, user):
     posts = Post.objects.all()
+    form = PostForm()
+
     my_posts = []   # number of user's posts
     user_profiles = UserProfile.objects.all()
     user_profile = None         # user profile (logo) of a current user; its equal to None when user is logout
@@ -134,8 +165,41 @@ def userProfile(request, user):
             my_posts.append(post)
     my_posts_amount = len(my_posts) # amount of user's posts
 
+    if request.method == 'POST':
+        # post request for creating post
+        if 'posts-tape-form' in request.POST:
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.logo = user_profile.logo
+                obj.user = request.user
+                obj.save()
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+        # post request for editing post
+        elif 'post-edit-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            post_text = request.POST.get('post-text')
+            obj = Post.objects.get(id=post_id)
+            obj.post_text = post_text
+            obj.save()
+
+        # post request for adding a comments
+        elif 'add-comment-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            comment_text = request.POST.get('comment-text')
+            post_obj = Post.objects.get(id=post_id)
+            comment = Comment()
+
+            comment.post = post_obj
+            comment.user = request.user
+            comment.logo = user_profile.logo
+            comment.body = comment_text
+            comment.save()
+
     context = {
         'posts': posts,
+        'form': form,
         'my_posts_amount': my_posts_amount,
         'user_profile': user_profile,
     }
@@ -144,7 +208,10 @@ def userProfile(request, user):
 
 def userProfileSaved(request, user):
     posts = Post.objects.all()
-    my_posts = []   # number of user's posts
+    saved = Saved.objects.all()
+    form = PostForm()
+
+    saved_posts = [] # an amount of saved posts
     user_profiles = UserProfile.objects.all()
     user_profile = None         # user profile (logo) of a current user
 
@@ -153,22 +220,57 @@ def userProfileSaved(request, user):
             if i.django_user_model_id == request.user.id:
                 user_profile = i
 
-            # a cycle for counting a number of user's posts
-    for post in posts:
-        if post.user == request.user:
-            my_posts.append(post)
-    my_posts_amount = len(my_posts) # amount of user's posts
+    # a cycle for counting a number of user's posts
+    for save in saved:
+        if save.user == request.user:
+            saved_posts.append(save)
+    saved_posts_amount = len(saved_posts) # amount of user's posts
+
+    if request.method == 'POST':
+        # post request for creating post
+        if 'posts-tape-form' in request.POST:
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.logo = user_profile.logo
+                obj.user = request.user
+                obj.save()
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+        # post request for editing post
+        elif 'post-edit-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            post_text = request.POST.get('post-text')
+            obj = Post.objects.get(id=post_id)
+            obj.post_text = post_text
+            obj.save()
+
+        # post request for adding a comments
+        elif 'add-comment-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            comment_text = request.POST.get('comment-text')
+            post_obj = Post.objects.get(id=post_id)
+            comment = Comment()
+
+            comment.post = post_obj
+            comment.user = request.user
+            comment.logo = user_profile.logo
+            comment.body = comment_text
+            comment.save()
 
     context = {
         'posts': posts,
-        'my_posts_amount': my_posts_amount,
+        'form': form,
         'user_profile': user_profile,
+        'saved_posts_amount': saved_posts_amount,
     }
     return render(request, 'account/user_profile_saved.html', context)
 
 
 def userProfileTagged(request, user):
     posts = Post.objects.all()
+    form = PostForm()
+
     my_posts = []   # number of user's posts
     user_profiles = UserProfile.objects.all()
     user_profile = None         # user profile (logo) of a current user
@@ -184,8 +286,41 @@ def userProfileTagged(request, user):
             my_posts.append(post)
     my_posts_amount = len(my_posts) # amount of user's posts
 
+    if request.method == 'POST':
+        # post request for creating post
+        if 'posts-tape-form' in request.POST:
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.logo = user_profile.logo
+                obj.user = request.user
+                obj.save()
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+        # post request for editing post
+        elif 'post-edit-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            post_text = request.POST.get('post-text')
+            obj = Post.objects.get(id=post_id)
+            obj.post_text = post_text
+            obj.save()
+
+        # post request for adding a comments
+        elif 'add-comment-form' in request.POST:
+            post_id = request.POST.get('post-id')
+            comment_text = request.POST.get('comment-text')
+            post_obj = Post.objects.get(id=post_id)
+            comment = Comment()
+
+            comment.post = post_obj
+            comment.user = request.user
+            comment.logo = user_profile.logo
+            comment.body = comment_text
+            comment.save()
+
     context = {
         'posts': posts,
+        'form': form,
         'my_posts_amount': my_posts_amount,
         'user_profile': user_profile,
     }

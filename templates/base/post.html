@@ -106,6 +106,7 @@
         <a href="javascript:hidePopupFunc()">Cancel</a>
     </div>
 </div>
+
 {% endif %}
 
 <!-- POST BODY -->
@@ -124,6 +125,7 @@
             {% else %}
                 <img src="{% static 'media/icons/like_icon.png' %}" class="post-action-icon"/>
             {% endif %}
+        </button>
         <button type="submit" name="actionbtn" value="save" class="post-action post-save-dropbtn">
             <img src="{% static 'media/icons/save_icon.png' %}" class="post-action-icon"/>
         </button>
@@ -141,8 +143,7 @@
                     <img src="{{ post.image.url }}"/>
                 </div>
 
-                <!-- post comments -->
-                <!-- grid rows -->
+                <!-- comments grid rows -->
                 <div class="post-comments">
                     <div class="post-comments-header">
                         <a href=""><img src="{{ post.user.users.logo.url }}"/><b>{{ post.user }}</b></a>
@@ -156,14 +157,45 @@
 
                     <div class="post-comments-display">
                         <a href=""><img src="{{ post.user.users.logo.url }}"/></a><p><b>{{ post.user }}</b> {{ post.post_text }}</p>
+
+                        <!-- post text -->
                         <div class="comments-created-likes-replies">
-                            {{ post.created | timesince }} ago
+                            {{ post.created | timesince }}
                         </div>
+
+                        <!-- post comments -->
                         {% for comment in post.comments.all %}
-                            <a href=""><img src="{{ comment.logo.url }}"/></a><p><b>{{ comment.user }}</b> {{ comment.body }}</p>
-                            <div class="comments-created-likes-replies">
-                                {{ comment.created | timesince}} 0 likes Reply <input type="button" oncklick="" value="···"/>
-                            </div>
+                            <a href=""><img src="{{ comment.logo.url }}"/></a><p><b>{{ comment.user }}</b> {{ comment.id }} {{ comment.body }}</p>
+                            
+                            {% if comment.user == request.user %}
+                                <div class="comments-created-likes-replies">
+                                    {{ comment.created | timesince}} 0 likes Reply <input type="button" onclick="commentOptionsFunc('{{ comment.id }}')" value="···"/>
+                                    
+                                    <!-- COMMENTS OPTIONS DROPDOWN-->
+                                    <div class="dropdown">
+                                        <div id="commentOptionsDropdown{{ comment.id }}" class="dropdown-content comment-options-dropdown-content">
+                                            <a href="">Report</a>
+                                            <hr>
+                                            <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+                                            <hr>
+                                            <a href="javascript:hidePopupFunc()">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="comments-created-likes-replies">
+                                    {{ comment.created | timesince}} 0 likes Reply <input type="button" onclick="commentOptionsFunc2('{{ comment.id }}')" value="···"/>
+                                    
+                                    <!-- COMMENTS OPTIONS DROPDOWN -->
+                                    <div class="dropdown">
+                                        <div id="commentOptionsDropdown2{{ comment.id }}" class="dropdown-content comment-options-dropdown-content">
+                                            <a href="">Report</a>
+                                            <hr>
+                                            <a href="javascript:hidePopupFunc()">Cancel</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
 
@@ -179,8 +211,8 @@
                                 {% else %}
                                     <img src="{% static 'media/icons/like_icon.png' %}" class="post-comments-action-icon"/>
                                 {% endif %}
-                                
                             </button>
+                            
                             <button type="submit" name="actionbtn" value="save" class="post-comments-action post-comments-save-dropbtn">
                                 <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
                             </button>
@@ -204,8 +236,6 @@
                             <input type="submit" value="Post" name="add-comment-form"/>
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>

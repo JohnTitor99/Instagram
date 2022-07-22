@@ -12,4 +12,6 @@ urlpatterns = [
     path('<str:user>/tagged/', views.userProfileTagged, name='user_profile_tagged'),
     path('post_action/<int:pk>/', views.postAction, name='post_action'),
 
+    path('delete_comment/<int:pk>/', views.deleteComment, name='delete_comment'),
+
 ]

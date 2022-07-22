@@ -70,6 +70,7 @@ a {
 }
 
 .posts-tape .post {
+    position: relative;
     width: 470px;
     margin-top: 15px;
     border: 1px solid black;
@@ -114,14 +115,14 @@ a {
 
 /* --- POST ACTION BUTTONS --- */
 
-.posts-tape .post-body .post-action {
+.post-action {
     height: 24px;
     width: 24px;
     margin-top: 5px;
     margin-left: 10px;
 }
 
-.posts-tape .post-body .post-action .post-action-icon {
+.post-action .post-action-icon {
     position: relative;
     height: 24px;
     width: 24px;
@@ -129,19 +130,19 @@ a {
     margin-left: -8px;
 }
 
-.posts-tape .post-body .post-comments-dropbtn {
+.post-comments-dropbtn {
     position: relative;
     margin-top: -80px;
     margin-left: 50px;
 }
 
-.posts-tape .post-body .post-share-dropbtn {
+.post-share-dropbtn {
     position: relative;
     margin-top: -80px;
     margin-left: 10px;
 }
 
-.posts-tape .post-body .post-save-dropbtn {
+.post-save-dropbtn {
     margin-left: 400px;
 }
 
@@ -253,7 +254,7 @@ a {
 .post-comments-body .post-comments .post-comments-header {
     position: absolute;
     background-color: #f1f1f1;
-    height: 65px;
+    height: 68px;
     width: 500px;
     z-index: 99999;
 }
@@ -282,8 +283,8 @@ a {
 .post-comments-body .post-comments .post-comments-display {
     position: absolute;
     overflow: auto;
-    margin-top: 50px;
-    height: 400px;
+    margin-top: 60px;
+    height: 370px;
     width: 500px;
 }
 
@@ -294,12 +295,6 @@ a {
     display: block;
     border-radius: 50%;
 }
-
-/* .post-comments-body .post-comments .post-comments-display b {
-    position: absolute;
-    margin-top: -42px;
-    margin-left: 60px;
-} */
 
 .post-comments-body .post-comments .post-comments-display p {
     position: absolute;
@@ -317,7 +312,7 @@ a {
     position: absolute;
     background-color: #f1f1f1;
     margin-top: 450px;
-    height: 150px;
+    height: 180px;
     width: 500px;
 }
 
@@ -363,7 +358,6 @@ a {
     height: 50px;
     width: 430px;
 }
-
 
 
 /* --- SIDE PANEL ---*/
@@ -631,6 +625,32 @@ a {
 }
 
 
+/* --- COMMENTS OPTIONS DROPDOWN --- */
+
+/* Dropdown Content (Hidden by Default) */
+.comment-options-dropdown-content {
+    display: none;
+    width: 400px;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.comment-options-dropdown-content a {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
 
 
                                     /* -----------------------  USER PROFILE ------------------------ */
@@ -688,7 +708,8 @@ a {
     margin-left: 610px;
 }
 
-.user-profile-posts .user-profile-posts-grid {
+.user-profile-posts-grid {
+    position: realtive;
     display: grid;
     grid-template-columns: repeat(3, 300px);
     grid-template-rows: repeat(auto-fill, 300px);
@@ -697,7 +718,7 @@ a {
     margin-left: 275px;
 } 
   
-.user-profile-posts .user-profile-posts-grid > * {
+.user-profile-posts-grid .user-profile-post-comments-dropbtn {
     height: 300px;
     width: 300px;
 }
@@ -723,5 +744,6 @@ a {
 
 /* --- MESAGES --- */
 .messages {
+    position: absolute;
     margin-top: 100px;
 }

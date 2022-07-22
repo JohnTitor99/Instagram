@@ -41,6 +41,15 @@ function usersWhoLikedPostFunc(postId) {
   document.getElementById("usersWhoLikedPostDropdown" + postId).classList.toggle("show");
 }
 
+function commentOptionsFunc(commentId) {
+  document.getElementById("commentOptionsDropdown" + commentId).classList.toggle("show");
+}
+
+function commentOptionsFunc2(commentId) {
+  document.getElementById("commentOptionsDropdown2" + commentId).classList.toggle("show");
+}
+
+
 function hidePopupFunc() {
   var dropdowns = document.getElementsByClassName('dropdown-content');
   var i;
