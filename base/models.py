@@ -6,11 +6,11 @@ from django.contrib.auth.models import User
 
 # a model to add a logos to users
 class UserProfile(models.Model):
-    django_user_model = models.OneToOneField(User, related_name="users", on_delete=models.CASCADE, null=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     logo = models.ImageField(upload_to='media/logo', null=True, blank=True)
 
     def __str__(self):
-        return self.django_user_model.username
+        return self.user.username
 
 
 # post model

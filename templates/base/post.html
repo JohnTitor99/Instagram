@@ -4,7 +4,7 @@
 {% if post.user == request.user %}
 
 <div class="post-header">
-    <a href=""><img src="{{ post.user.users.logo.url }}"/><p><b>{{ post.user }}</b></p></a> <button onclick="hidePopupFunc(); postOptionsFunc('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
+    <a href=""><img src="{{ post.user.userprofile.logo.url }}"/><p><b>{{ post.user }}</b></p></a> <button onclick="hidePopupFunc(); postOptionsFunc('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
 </div>
 
 <!-- DROPDOWN OWNER'S POSTS OPTIONS -->
@@ -67,7 +67,7 @@
             </div>
 
             <div class="edit-post-logo-username-text">
-                <img src="{{ post.user.users.logo.url }}"/><p>{{ post.user }}</p>
+                <img src="{{ post.user.userprofile.logo.url }}"/><p>{{ post.user }}</p>
                 <div class="edit-text-form">
                     <form method="POST" name="post-edit-form">
                         {% csrf_token %}
@@ -85,7 +85,7 @@
 {% else %}
 
 <div class="post-header">
-    <a href=""><img src="{{ post.user.users.logo.url }}"/><p><b>{{ post.user }}</b></p></a> <button onclick="hidePopupFunc(); postOptionsFunc2('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
+    <a href=""><img src="{{ post.user.userprofile.logo.url }}"/><p><b>{{ post.user }}</b></p></a> <button onclick="hidePopupFunc(); postOptionsFunc2('{{ post.id }}')" class="dropbtn post-options-dropbtn">···</button>
 </div>
 
 <!-- DROPDOWN OTHER POST OPTIONS -->
@@ -150,7 +150,7 @@
                 <!-- comments grid rows -->
                 <div class="post-comments">
                     <div class="post-comments-header">
-                        <a href=""><img src="{{ post.user.users.logo.url }}"/><b>{{ post.user }}</b></a>
+                        <a href=""><img src="{{ post.user.userprofile.logo.url }}"/><b>{{ post.user }}</b></a>
                         {% if post.user == request.user %}
                             <button onclick="postOptionsFunc('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
                         {% else %}
@@ -160,7 +160,7 @@
                     </div>
 
                     <div class="post-comments-display">
-                        <a href=""><img src="{{ post.user.users.logo.url }}"/></a><p><b>{{ post.user }}</b> {{ post.post_text }}</p>
+                        <a href=""><img src="{{ post.user.userprofile.logo.url }}"/></a><p><b>{{ post.user }}</b> {{ post.post_text }}</p>
 
                         <!-- post text -->
                         <div class="comments-created-likes-replies">
@@ -169,7 +169,7 @@
 
                         <!-- post comments -->
                         {% for comment in post.comments.all %}
-                            <a href=""><img src="{{ comment.logo.url }}"/></a><p><b>{{ comment.user }}</b> {{ comment.id }} {{ comment.body }}</p>
+                            <a href=""><img src="{{ comment.logo.url }}"/></a><p><b>{{ comment.user }}</b> {{ comment.body }}</p>
                             
                             {% if comment.user == request.user %}
                                 <div class="comments-created-likes-replies">

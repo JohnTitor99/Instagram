@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="edit-post-logo-username-text">
-                                <img src="{{ post.user.users.logo.url }}"/><p>{{ post.post.user }}</p>
+                                <img src="{{ post.user.userprofile.logo.url }}"/><p>{{ post.post.user }}</p>
                                 <div class="edit-text-form">
                                     <form method="POST" name="post-edit-form">
                                         {% csrf_token %}
@@ -132,7 +132,7 @@
                             <!-- comments grid rows -->
                             <div class="post-comments">
                                 <div class="post-comments-header">
-                                    <a href=""><img src="{{ post.post.user.users.logo.url }}"/><b>{{ post.post.user }}</b></a>
+                                    <a href=""><img src="{{ post.user.userprofile.logo.url }}"/><b>{{ post.post.user }}</b></a>
                                     {% if request.user == post.post.user %}
                                         <button onclick="postOptionsFunc('{{ post.post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
                                     {% else %}
@@ -142,7 +142,7 @@
                                 </div>
 
                                 <div class="post-comments-display">
-                                    <a href=""><img src="{{ post.post.user.users.logo.url }}"/></a><p><b>{{ post.post.user }}</b> {{ post.post.post_text }}</p>
+                                    <a href=""><img src="{{ post.user.userprofile.logo.url }}"/></a><p><b>{{ post.post.user }}</b> {{ post.post.post_text }}</p>
 
                                     <!-- post text -->
                                     <div class="comments-created-likes-replies">

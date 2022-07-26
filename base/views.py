@@ -19,14 +19,17 @@ def mainPage(request):
 
     if len(user_profiles) > 0:  # it needs this codition, because if user is logout it will be error "matching query does not exist"
         for i in user_profiles:
-            if i.django_user_model_id == request.user.id:
+            if i.user_id == request.user.id:
                 user_profile = i
 
     # saved posts
     saved_posts = []
-    saved = Saved.objects.filter(user=request.user)
-    for save in saved:
-        saved_posts.append(save.post_id)
+    try:
+        saved = Saved.objects.filter(user=request.user)
+        for save in saved:
+            saved_posts.append(save.post_id)
+    except:
+        pass
 
     if request.method == 'POST':
         # post request for login
@@ -157,7 +160,7 @@ def userProfile(request, user):
     # it needs this codition, because if user is logout it will be error "matching query does not exist"
     if len(user_profiles) > 0:
         for i in user_profiles:
-            if i.django_user_model_id == request.user.id:
+            if i.user.id == request.user.id:
                 user_profile = i
 
     # a cycle for counting a number of user's posts
@@ -226,7 +229,7 @@ def userProfileSaved(request, user):
 
     if len(user_profiles) > 0:  # it needs this codition, because if user is logout it will be error "matching query does not exist"
         for i in user_profiles:
-            if i.django_user_model_id == request.user.id:
+            if i.user.id == request.user.id:
                 user_profile = i
 
     # a cycle for counting a number of user's posts
