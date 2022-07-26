@@ -41,12 +41,19 @@ function usersWhoLikedPostFunc(postId) {
   document.getElementById("usersWhoLikedPostDropdown" + postId).classList.toggle("show");
 }
 
+// Owner's comments options
 function commentOptionsFunc(commentId) {
   document.getElementById("commentOptionsDropdown" + commentId).classList.toggle("show");
 }
 
+// Other commnets options
 function commentOptionsFunc2(commentId) {
   document.getElementById("commentOptionsDropdown2" + commentId).classList.toggle("show");
+}
+
+// Profile settings
+function profileSettings() {
+  document.getElementById("profileSettingsDropdown").classList.toggle("show");
 }
 
 

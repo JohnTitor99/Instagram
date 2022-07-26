@@ -14,4 +14,6 @@ urlpatterns = [
 
     path('delete_comment/<int:pk>/', views.deleteComment, name='delete_comment'),
 
+    path('accounts/edit/', views.accountsEdit, name="accounts_edit"),
+    path('accounts/password/change/', views.accountsPasswordChange, name='accounts_password_change'),
 ]

@@ -7,8 +7,34 @@
     <input type="image"  class="user-profile-image" src="{{ user_profile.logo.url }}" />
     <p>
         <b class="user-profile-username">{{ request.user }}</b>
-        <a href=""><button>Edit profile</button></a>
-        <button onclick="" class="dropbtn user-profile-settings-dropbtn">Settings</button>
+        <a href="{% url 'accounts_edit' %}"><button>Edit profile</button></a>
+        <button onclick="profileSettings()" class="dropbtn user-profile-settings-dropbtn">Settings</button>
+
+        <div class="dropdown">
+            <div id="profileSettingsDropdown" class="dropdown-content profile-settings-dropdown-content">
+                <a href="{% url 'accounts_password_change' %}">Change password</a>
+                <hr>
+                <a href="">QR Code</a>
+                <hr>
+                <a href="">Apps and Websites</a>
+                <hr>
+                <a href="">Notifications</a>
+                <hr>
+                <a href="">Privacy and security</a>
+                <hr>
+                <a href="">Login activity</a>
+                <hr>
+                <a href="">Emails from Instagram</a>
+                <hr>
+                <a href="">Report a problem</a>
+                <hr>
+                <a href="">Embed</a>
+                <hr>
+                <a href="{% url 'logout_user' %}">Logout</a>
+                <hr>
+                <a href="javascript:hidePopupFunc()">Cancel</a>
+            </div>
+        </div>
     </p>
 
     <p class="user-profile-posts-followers-following">{{ my_posts_amount }} posts 0 followers 0 following</p>
@@ -48,6 +74,55 @@
                         <a href="">Embed</a>
                         <hr>
                         <a href="javascript:hidePopupFunc()">Cancel</a>
+                    </div>
+                </div>
+
+                <!-- post delete -->
+                <div class="dropdown">
+                    <div id="postDeleteDropdown{{ post.id }}" class="dropdown-content post-delete-dropdown-content">
+                        <h2>Delete post?</h2>
+                        <p>Are you sure you want to delete this post?</p>
+                        <hr>
+                        <a href="{% url 'delete_post' post.id %}">Delete</a>
+                        <hr>
+                        <a href="javascript:hidePopupFunc()">Cancel</a>
+                    </div>
+                </div>
+
+                <!-- post edit -->
+                <div class="dropdown">
+                    <div id="postEditDropdown{{ post.id }}" class="dropdown-content post-edit-dropdown-content">
+                        <div class="edit-post-header-left">
+                            <a href="">Cancel</a>
+                        </div>
+
+                        <div class="edit-post-header-right">
+                            
+                        </div>
+
+                        <div class="edit-post-header-center">
+                            Edit Info
+                        </div>
+
+                        <hr>
+                        
+                        <div class="edit-post-body">
+                            <div class="edit-post-image">
+                                <img src="{{ post.image.url }}"/>
+                            </div>
+
+                            <div class="edit-post-logo-username-text">
+                                <img src="{{ post.user.users.logo.url }}"/><p>{{ post.user }}</p>
+                                <div class="edit-text-form">
+                                    <form method="POST" name="post-edit-form">
+                                        {% csrf_token %}
+                                        <textarea name="post-text">{{ post.post_text }}</textarea>
+                                        <input type="hidden" name="post-id" value="{{ post.id }}">
+                                        <button type="submit" name="post-edit-form">Done</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -130,7 +205,11 @@
                                             
                                         </button>
                                         <button type="submit" name="actionbtn" value="save" class="post-comments-action post-comments-save-dropbtn">
-                                            <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
+                                            {% if post.id in saved_posts %}
+                                                <img src="{% static 'media/icons/save_icon_pressed.png' %}" class="post-comments-action-icon"/>
+                                            {% else %}
+                                                <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
+                                            {% endif %}
                                         </button>
                                     </form>
                                     

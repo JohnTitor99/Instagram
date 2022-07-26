@@ -2,6 +2,10 @@ a {
     text-decoration: none;
 }
 
+body {
+    font: 14px Arial;
+}
+
 /* --- NAVBAR --- */
 
 .header {
@@ -722,6 +726,121 @@ a {
     height: 300px;
     width: 300px;
 }
+
+
+                                    /* ----------------------- SETTINGS ------------------------ */
+
+
+/* Profile settings dropdown */
+.profile-settings-dropdown-content {
+    display: none;
+    width: 400px;
+    background-color: #f1f1f1;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform: translate(0, -50%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.profile-settings-dropdown-content a {
+    color: black;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+/* COMMON SETTINGS CSS AND EDIT PROFILE */
+/* settings grid */
+.settings-container {
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 280px;
+    display: grid;
+    grid-template-columns: 240px 700px;
+}
+
+.settings-list {
+    position: relative;
+    border: 1px solid black;
+    height: 840px;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.settings-list p {
+    padding-left: 20px;
+}
+
+.settings-list hr {
+    margin-left: -30px;
+}
+
+.edit-profile {
+    position: relative;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding-top: 15px;
+    height: 840px;
+}
+
+.edit-profile .edit-accounts-forms {
+    margin-top: 15px;
+}
+
+.edit-profile .settings-tips {
+    margin-top: 10px;
+}
+
+.edit-profile form {
+    margin-top: 15px;
+}
+
+.edit-profile-forms {
+    height: 25px;
+    width: 350px;
+}
+
+.edit-profile-textarea-form {
+    height: 80px;
+    width: 350px;
+}
+
+.edit-profile .change-profile-photo-dropbtn {
+    width: 2.2rem;
+    height: 2.2rem;
+    display: block;
+    border-radius: 50%;
+}
+
+.edit-profile .edit-profile-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 130px;
+}
+
+.edit-profile .edit-profile-header h2 {
+    margin-top: 0px;
+    margin-left: 30px;
+}
+
+.edit-profile .edit-profile-header .change-profile-photo-link {
+    margin-top: 20px;
+    margin-left: -45px;
+}
+
+.edit-submit-button {
+    margin-top: 30px;
+}
+
 
 
 

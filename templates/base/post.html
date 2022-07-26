@@ -67,7 +67,7 @@
             </div>
 
             <div class="edit-post-logo-username-text">
-                <img src="{{ post.logo.url }}"/><p>{{ post.user }}</p>
+                <img src="{{ post.user.users.logo.url }}"/><p>{{ post.user }}</p>
                 <div class="edit-text-form">
                     <form method="POST" name="post-edit-form">
                         {% csrf_token %}
@@ -127,7 +127,11 @@
             {% endif %}
         </button>
         <button type="submit" name="actionbtn" value="save" class="post-action post-save-dropbtn">
-            <img src="{% static 'media/icons/save_icon.png' %}" class="post-action-icon"/>
+            {% if post.id in saved_posts %}
+                <img src="{% static 'media/icons/save_icon_pressed.png' %}" class="post-action-icon"/>
+            {% else %}
+                <img src="{% static 'media/icons/save_icon.png' %}" class="post-action-icon"/>
+            {% endif %}
         </button>
     </form>
 
@@ -206,7 +210,7 @@
                             {% csrf_token %}
                             <button type="submit" name="actionbtn" value="like" class="post-comments-action post-comments-like-dropbtn">
                                 <!-- show liked and unliked like button -->
-                                {% if post.likes.is_like == request.user %}
+                                {% if request.user in post.users_likes %}
                                     <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-comments-action-icon"/>
                                 {% else %}
                                     <img src="{% static 'media/icons/like_icon.png' %}" class="post-comments-action-icon"/>
@@ -214,7 +218,11 @@
                             </button>
                             
                             <button type="submit" name="actionbtn" value="save" class="post-comments-action post-comments-save-dropbtn">
-                                <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
+                                {% if post.id in saved_posts %}
+                                    <img src="{% static 'media/icons/save_icon_pressed.png' %}" class="post-comments-action-icon"/>
+                                {% else %}
+                                    <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
+                                {% endif %}
                             </button>
                         </form>
                         
@@ -224,7 +232,7 @@
                         <!-- post share -->
                         <input type="image" onclick="" class="dropbtn post-comments-action post-comments-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
                         
-                        <p><b>{{ post.total_likes }} likes {{ post.likes }}</b></p>
+                        <p><b>{{ post.total_likes }} likes </b></p>
 
                         <p>{{ post.created | timesince }} ago </p>
 

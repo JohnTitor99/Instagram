@@ -22,6 +22,12 @@ def mainPage(request):
             if i.django_user_model_id == request.user.id:
                 user_profile = i
 
+    # saved posts
+    saved_posts = []
+    saved = Saved.objects.filter(user=request.user)
+    for save in saved:
+        saved_posts.append(save.post_id)
+
     if request.method == 'POST':
         # post request for login
         if 'login-form' in request.POST:
@@ -73,6 +79,7 @@ def mainPage(request):
         'posts': posts,
         'form': form,
         'user_profile': user_profile,
+        'saved_posts': saved_posts,
     }
     return render(request, 'base/main_page.html', context)
 
@@ -111,26 +118,19 @@ def postAction(request, pk):
     action = request.POST.get('actionbtn')
 
     if action == "like":
-        print("hello")
         # objects = post.likes.all()
-        # print(type(post.likes))
-        # # print(objects)
-        # # if request.user in objects:
-        # #     obj = post.likes.filter(username=request.user)
-        # #     print(obj)
-        # #     # obj.clear()    #! delete obj from intermidiate table many to many relationship
-        # # else:
-        # #     post.likes.add(request.user)
+        # if request.user in objects:
+        #     # obj.clear()    #! delete all instances from intermidiate table many to many relationship
+        # else:
+        #     post.likes.add(request.user)
+        post.likes.add(request.user)
             
     elif action == "save":
         saved = Saved()
-        obj = None
         try:
             obj = Saved.objects.get(post_id=pk)
+            obj.delete()
         except:
-            pass
-
-        if obj == None:
             saved.post = post
             saved.user = request.user
             saved.save()
@@ -166,6 +166,12 @@ def userProfile(request, user):
             my_posts.append(post)
     my_posts_amount = len(my_posts) # amount of user's posts
 
+    # saved posts
+    saved_posts = []
+    saved = Saved.objects.filter(user=request.user)
+    for save in saved:
+        saved_posts.append(save.post_id)
+
     if request.method == 'POST':
         # post request for creating post
         if 'posts-tape-form' in request.POST:
@@ -184,6 +190,7 @@ def userProfile(request, user):
             obj = Post.objects.get(id=post_id)
             obj.post_text = post_text
             obj.save()
+            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
         # post request for adding a comments
         elif 'add-comment-form' in request.POST:
@@ -203,6 +210,7 @@ def userProfile(request, user):
         'form': form,
         'my_posts_amount': my_posts_amount,
         'user_profile': user_profile,
+        'saved_posts': saved_posts,
     }
     return render(request, 'account/user_profile.html', context)
 
@@ -227,6 +235,12 @@ def userProfileSaved(request, user):
             saved_posts.append(save)
     saved_posts_amount = len(saved_posts) # amount of user's posts
 
+    # saved posts
+    saved_posts = []
+    saved = Saved.objects.filter(user=request.user)
+    for save in saved:
+        saved_posts.append(save.post_id)
+
     if request.method == 'POST':
         # post request for creating post
         if 'posts-tape-form' in request.POST:
@@ -245,6 +259,7 @@ def userProfileSaved(request, user):
             obj = Post.objects.get(id=post_id)
             obj.post_text = post_text
             obj.save()
+            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
         # post request for adding a comments
         elif 'add-comment-form' in request.POST:
@@ -264,6 +279,7 @@ def userProfileSaved(request, user):
         'form': form,
         'user_profile': user_profile,
         'saved_posts_amount': saved_posts_amount,
+        'saved_posts': saved_posts,
     }
     return render(request, 'account/user_profile_saved.html', context)
 
@@ -326,3 +342,61 @@ def userProfileTagged(request, user):
         'user_profile': user_profile,
     }
     return render(request, 'account/user_profile_tagged.html', context)
+
+# ACCOUNT SETTINGS
+def accountsEdit(request):
+    form = PostForm()
+    user_profiles = UserProfile.objects.all()
+    user_profile = None         # user profile (logo) of a current user
+
+    if len(user_profiles) > 0:  # it needs this codition, because if user is logout it will be error "matching query does not exist"
+        for i in user_profiles:
+            if i.django_user_model_id == request.user.id:
+                user_profile = i
+
+    # post request for creating post
+    if request.method == 'POST':
+        if 'posts-tape-form' in request.POST:
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.logo = user_profile.logo
+                obj.user = request.user
+                obj.save()
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+    context = {
+        'user_profile': user_profile,
+        'form': form,
+    }
+
+    return render(request, 'account_settings/accounts_edit.html', context)
+
+
+def accountsPasswordChange(request):
+    form = PostForm()
+    user_profiles = UserProfile.objects.all()
+    user_profile = None         # user profile (logo) of a current user
+
+    if len(user_profiles) > 0:  # it needs this codition, because if user is logout it will be error "matching query does not exist"
+        for i in user_profiles:
+            if i.django_user_model_id == request.user.id:
+                user_profile = i
+
+    # post request for creating post
+    if request.method == 'POST':
+        if 'posts-tape-form' in request.POST:
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.logo = user_profile.logo
+                obj.user = request.user
+                obj.save()
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+    context = {
+        'user_profile': user_profile,
+        'form': form,
+    }
+    
+    return render(request, 'account_settings/accounts_password_change.html', context)

@@ -18,30 +18,20 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
     image = models.ImageField(upload_to='media/images', null=True, blank=True)
     post_text = models.TextField(null=True, blank=True)
+    likes = models.ManyToManyField(User, related_name="posts")
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.post_text
 
-    # def total_likes(self):
-    #     return self.likes.count()
+    def total_likes(self):
+        return self.likes.count()
 
-    # def users_likes(self):
-    #     return self.likes.all()
+    def users_likes(self):
+        return self.likes.all()
 
     class Meta:
         ordering = ['-created']
-
-
-class Like(models.Model):
-    post = models.ForeignKey(Post, related_name="likes", on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name="likes", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.post.post_text
-
-    def is_like(self):
-        return self.user.username
 
 
 class Comment(models.Model):
@@ -56,8 +46,11 @@ class Comment(models.Model):
 
 
 class Saved(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name="saved",on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name="saved", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.post.post_text
+
+    def is_saved(self):
+        return self.user

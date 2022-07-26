@@ -23,7 +23,7 @@
     <div id="userMenuDropdown" class="dropdown-content user-menu-dropdown-content">
         <a href="{% url 'user_profile' request.user %}">Profile</a>
         <a href="{% url 'user_profile_saved' request.user %}">Saved</a>
-        <a href="">Settings</a>
+        <a href="{% url 'accounts_edit' %}">Settings</a>
         <a href="">Switch Accounts</a>
         <hr>
         <a href="{% url 'logout_user' %}">Log Out</a>
