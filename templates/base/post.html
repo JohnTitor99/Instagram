@@ -232,7 +232,15 @@
                         <!-- post share -->
                         <input type="image" onclick="" class="dropbtn post-comments-action post-comments-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
                         
-                        <p><b>{{ post.total_likes }} likes </b></p>
+                        <!-- total likes -->
+                        {% if post.total_likes is not 0 %}
+                            <p><a href="javascript:usersWhoLikedPostFunc('{{ post.id }}')" class="dropbtn users-who-liked-post-dropbtn"><b>{{ post.total_likes }} likes</b></a></p>
+                        {% else %}
+                            <form action="{% url 'post_action' post.id %}" method="POST">
+                                {% csrf_token %}
+                                <p>Be the first to <input type="submit" value="like this"/></p>
+                            </form>
+                        {% endif %}
 
                         <p>{{ post.created | timesince }} ago </p>
 
@@ -261,9 +269,9 @@
         <div id="usersWhoLikedPostDropdown{{ post.id }}" class="dropdown-content users-who-liked-post-dropdown-content">
             <span>Likes</span>
             <hr>
-            {% for u in post.users_likes %}
+            {% for user in post.users_likes %}
                 <div class="users-who-liked-post-body">
-                    <a href=""><img src="{{ u.users.logo.url }}"/><p>{{ u.username }}</p></a> <button onclick="" class="follow-btn">Follow</button>
+                    <a href=""><img src="{{ user.userprofile.logo.url }}"/><p>{{ u.username }}</p></a> <button onclick="" class="follow-btn">Follow</button>
                 </div>
             {% endfor %}
         </div>

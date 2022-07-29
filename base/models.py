@@ -6,8 +6,18 @@ from django.contrib.auth.models import User
 
 # a model to add a logos to users
 class UserProfile(models.Model):
+    GENDERS = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     logo = models.ImageField(upload_to='media/logo', null=True, blank=True)
+    full_name = models.CharField(max_length=50, null=True, blank=True)
+    email = models.CharField(max_length=50, null=True, blank=True)
+    phone = models.CharField(max_length=20, null=True, blank=True)
+    website = models.CharField(max_length=50, null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    gender = models.CharField(max_length=6, null=True, blank=True, choices=GENDERS)
 
     def __str__(self):
         return self.user.username

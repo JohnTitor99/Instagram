@@ -43,15 +43,71 @@ body {
 
 .start-login-page {
     position: absolute;
-    margin-top: 100px;
-    margin-left: 500px;
+    margin-top: 10px;
+    margin-left: 350px;
+    display: grid;
+    grid-template-columns: 440px 340px;
+}
+
+.login-page-image img {
+    height: 620px;
+}
+
+.login-page-form {
+    position: relative;
+    height: 425px;
+    margin-top: 30px;
+    border: 1px solid black;
+}
+
+.login-page-form h1 {
+    margin-top: 50px;
+}
+
+.login-page-input {
+    height: 30px;
+    width: 260px;
+}
+
+.login-input-field {
+    margin-top: 30px;
+}
+
+.log-in-button {
+    height: 30px;
+    width: 270px;
+    margin-top: 20px;
 }
 
 
 .register-page {
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 500px;
+    position: relative;
+}
+
+.register-page-form {
+    height: 700px;
+    width: 350px;
+    margin-top: 30px;
+    border: 1px solid black;
+}
+
+.register-page-form h1 {
+    margin-top: 50px;
+}
+
+.register-page-input {
+    height: 30px;
+    width: 260px;
+}
+
+.register-buttons {
+    height: 30px;
+    width: 265px;
+}
+
+.register-hr {
+    margin-top: 30px;
+    margin-bottom: 25px
 }
 
 
@@ -216,7 +272,7 @@ body {
 
 .users-who-liked-post-dropdown-content .users-who-liked-post-body .follow-btn {
     position: absolute;
-    margin-top: -35px;
+    margin-top: -15px;
     margin-left: 320px;
 }
 
@@ -226,7 +282,7 @@ body {
 .post-comments-dropdown-content {
     display: none;
     width: 1000px;
-    height: 600px;
+    height: 627px;
     background-color: #f1f1f1;
     position: fixed;
     left: 0;
@@ -250,7 +306,7 @@ body {
 }
 
 .post-comments-body .post-comments-image img {
-    height: 600px;
+    height: 627px;
     width: 500px;
 }
 
@@ -288,7 +344,7 @@ body {
     position: absolute;
     overflow: auto;
     margin-top: 60px;
-    height: 370px;
+    height: 350px;
     width: 500px;
 }
 
@@ -316,7 +372,7 @@ body {
     position: absolute;
     background-color: #f1f1f1;
     margin-top: 450px;
-    height: 180px;
+    height: 150px;
     width: 500px;
 }
 
@@ -348,14 +404,13 @@ body {
     margin-top: -38px;
 }
 
-.post-comments-body .post-comments .post-comments-actions-and-form p {
-    margin-top: -5px;
+.post-comments-body .post-comments .post-comments-actions-and-form .comments-total-likes {
+    margin-top: 5px;
 }
 
 /* add comments form */
 .post-comments-body .post-comments .post-comments-actions-and-form .add-comments-form {
     position: absolute;
-    bottom: 20px;
 }
 
 .post-comments-body .post-comments .post-comments-actions-and-form .add-comments-input {
@@ -368,7 +423,7 @@ body {
 
 .side-panel {
     margin-left: 30px;
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 .avatar {
@@ -377,8 +432,7 @@ body {
 
 .avatar a {
     display: flex;
-    gap: 1.5rem;
-    align-items: center;
+    gap: 1.2rem;
 }
 
 .avatar img {
@@ -389,11 +443,30 @@ body {
     object-position: center;
 }
 
+.avatar a p {
+    margin-top: 8px;
+}
+
+.side-panel-full-name {
+    margin-top: -28px;
+    margin-left: 75px;
+}
+
+.side-panel-switch {
+    position: fixed;
+    margin-top: 20px;
+    margin-left: 280px;
+}
+
 
 .suggestions {
     margin-top: 50px;
     position: fixed;
     display: inline-block;
+}
+
+.suggestions small {
+    margin-left: 152px;
 }
 
 

@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% include 'navbar.html' %}
+
 <div class="settings-container">
     <div class="settings-list">
         <b><a href="">Edit profile</a></b>
@@ -43,10 +45,15 @@
                 <a href="" class="change-profile-photo-link">Change profile photo</a>
             </div>
 
-            <form method="POST" name="">
+            <form method="POST" name="profile-edit-form">
                 {% csrf_token %}
+
                 <label>Name</label>
-                <input type="text" name="name" placeholder="" class="edit-profile-forms"/>
+                {% if user_profile.full_name %}
+                    <input type="text" name="fullname" value="{{ user_profile.full_name }}" class="edit-profile-forms"/>
+                {% else %}
+                    <input type="text" name="fullname" placeholder="Name" class="edit-profile-forms"/>
+                {% endif %}
 
                 <div class="settings-tips">
                     <small>Help people discover your account by using the name you're</small>
@@ -58,7 +65,11 @@
 
                 <div class="edit-accounts-forms">
                     <label>Username</label>
-                    <input type="text" name="username" placeholder="" class="edit-profile-forms"/>
+                    {% if user_profile.user %}
+                        <input type="text" name="username" value="{{ user_profile.user }}" class="edit-profile-forms"/>
+                    {% else %}
+                        <input type="text" name="username" placeholder="Usetname" class="edit-profile-forms"/>
+                    {% endif %}
                 </div>
 
                 <div class="settings-tips">
@@ -69,12 +80,20 @@
 
                 <div class="settings-tips">
                     <label>Website</label>
-                    <input type="text" name="website" placeholder="" class="edit-profile-forms"/>
+                    {% if user_profile.website %}
+                        <input type="text" name="website" value="{{ user_profile.website }}" class="edit-profile-forms"/>
+                    {% else %}
+                        <input type="text" name="website" placeholder="Website" class="edit-profile-forms"/>
+                    {% endif %}
                 </div>
 
                 <div class="edit-accounts-forms">
                     <label>Bio</label>
-                    <textarea class="edit-profile-textarea-form"></textarea>
+                    {% if user_profile.bio %}
+                        <textarea name="bio" value="{{ user_profile.bio }}" class="edit-profile-textarea-form"></textarea>
+                    {% else %}
+                        <textarea name="bio" class="edit-profile-textarea-form"></textarea>
+                    {% endif %}
                 </div>
 
                 <p>Personal information</p>
@@ -86,17 +105,29 @@
 
                 <div class="edit-accounts-forms">
                     <label>Email</label>
-                    <input type="text" name="email" placeholder="" class="edit-profile-forms"/>
+                    {% if user_profile.email %}
+                        <input type="text" name="email" value="{{ user_profile.email }}" class="edit-profile-forms"/>
+                    {% else %}
+                        <input type="text" name="email" placeholder="Email" class="edit-profile-forms"/>
+                    {% endif %}
                 </div>
 
                 <div class="edit-accounts-forms">
                     <label>Phone number</label>
-                    <input type="text" name="phone-number" placeholder="" class="edit-profile-forms"/>
+                    {% if user_profile.phone %}
+                        <input type="text" name="phone" value="{{ user_profile.phone }}" class="edit-profile-forms"/>
+                    {% else %}
+                        <input type="text" name="phone" placeholder="Phone number" class="edit-profile-forms"/>
+                    {% endif %}
                 </div>
 
                 <div class="edit-accounts-forms">
                     <label>Gender</label>
-                    <input type="text" name="gender" placeholder="" class="edit-profile-forms"/>
+                    {% if user_profile.gender %}
+                        <input type="text" name="gender" value="{{ user_profile.get_gender_display }}" class="edit-profile-forms"/>
+                    {% else %}
+                        <input type="text" name="gender" placeholder="Gender" class="edit-profile-forms"/>
+                    {% endif %}
                 </div>
 
                 <div class="edit-accounts-forms">
@@ -104,9 +135,9 @@
                     <input type="text" name="similar-accounts-suggestions" placeholder="" class="edit-profile-forms"/>
                 </div>
 
-            </form>
+                <input type="submit" value="submit" name="profile-edit-form" class="edit-submit-button"/> <a href="">Temporarily deactivate my account</a>
 
-            <input type="submit" value="submit" name="" class="edit-submit-button"/> <a href="">Temporarily deactivate my account</a>
+            </form>
             
         </center>
     </div>

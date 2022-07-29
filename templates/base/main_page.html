@@ -8,37 +8,84 @@
 
     {% if page == 'login' %}
         <div class="start-login-page">
-            <form method="POST" name="login-form">
-                {% csrf_token %}
-                <p>
-                    <label>Username</label>
-                    <input type="text" name="username" placeholder="Enter a username..." />
-                </p>
+            <div class="login-page-image">
+                <img src="{% static 'media/icons/instagram_login_page.png' %}"/>
+            </div>
 
-                <p>
-                    <label>Password</label>
-                    <input type=text/ name="password" placeholder="Enter a password..." />
-                </p>
+            <div class="login-page-form">
+                <center>
+                    <h1>INSTAGRAM</h1>
+                    <form method="POST" name="login-form">
+                        {% csrf_token %}
+                        <input type="text" name="username" class="login-page-input login-input-field" placeholder="Phone number, username, or email" />
 
-                <input type="submit" value="submit" name="login-form" />
-            </form>
+                        <br><br>
 
-            <a href="{% url 'register_page' %}">Haven't sign up yet?</a>
+                        <input type=text/ name="password" class="login-page-input" placeholder="Password" />
+                        <br>
+
+                        <input type="submit" value="Log in" name="login-form" class="log-in-button"/>
+
+                        <p>OR</p>
+                        <p>Log in with Facebook</p>
+                        <small><a href="">Forgot password?</a></small>
+
+                        <hr><hr>
+
+                        <p>Don't have an account? <a href="{% url 'register_page' %}">Sign up</a></p>
+                    </form>
+                </center>
+            </div>
+
         </div>
     {% else %}
         <div class="register-page">
-            <form method="POST" name="register-form">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Register" name="register-form" />
-            </form>
-            <p>Already signed up?</p>
-            <a href="{% url 'main_page' %}">Login</a>
+            <center>
+                <div class="register-page-form">
+                    <h1>INSTAGRAM</h1>
+                    <p>Sign up to see photos and videos</p>
+                    <p>from your friends.</p>
+                    <input type="button" class="register-buttons" value="Log in with Facebook">
+
+                    <p>OR</p>
+
+                    <form method="POST" name="register-form">
+                        {% csrf_token %}
+                        <input type=text/ name="nummer-or-email" class="register-page-input" placeholder="Mobile Number or Email" />
+                        <br><br>
+                        <input type=text/ name="full-name" class="register-page-input" placeholder="Full Name" />
+                        <br><br>
+                        <input type=text/ name="username" class="register-page-input" placeholder="Username" />
+                        <br><br>
+                        <input type=text/ name="password" class="register-page-input" placeholder="Password" />
+                        <br><br>
+
+                        <small>People who use our service may have uploaded</small>
+                        <br>
+                        <small>your contact information to Instagram. Learn</small>
+                        <br>
+                        <small>More</small>
+                        <br><br>
+                        <small>By signing up, you agree to our Terms , Privacy</small>
+                        <br>
+                        <small>Policy and Cookies Policy .</small>
+                        <br><br>
+
+                        <input type="submit" class="register-buttons" value="Sign up" name="register-form" />
+                    </form>
+                    <div class="register-hr">
+                        <hr><hr>
+                    </div>
+
+                    <p>Have an account? <a href="{% url 'main_page' %}">Log in</a></p>
+                </div>
+            </center>
         </div>
     {% endif %}
 
 <!-- USER IS AUTHENTICATED -->
 {% else %}
+    {% include 'navbar.html' %}
 
     <div class="main-container">
         <div>
@@ -59,12 +106,15 @@
             {% if request.user.is_authenticated %}
                 <div class="avatar">
                     <a href="">
-                        <img src="{{ user_profile.logo.url }}"/> <p>{{ request.user }}</p> <p>Switch</p>
+                        <img src="{{ user_profile.logo.url }}"/>
+                        <p>{{ request.user }}</p>                       
                     </a>
+                    <p class="side-panel-full-name"><small>{{ user_profile.full_name }}</small></p>
                 </div>
+                <small><a href="" class="side-panel-switch">Switch</a></small>
 
                 <div class="suggestions">
-                    <p>Suggestions for you <a href="">See All</a></p>
+                    <p>Suggestions for you <small><a href="">See All</a></small></p>
                 </div>
                 {% for likes_user in post.users_who_liked %}
                     <p>{{ likes_user }}</p>

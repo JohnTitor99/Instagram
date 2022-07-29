@@ -25,9 +25,10 @@ def mainPage(request):
     # saved posts
     saved_posts = []
     try:
-        saved = Saved.objects.filter(user=request.user)
+        saved = Saved.objects.all()
         for save in saved:
-            saved_posts.append(save.post_id)
+            if save.user == request.user:
+                saved_posts.append(save.post_id)
     except:
         pass
 
@@ -171,9 +172,13 @@ def userProfile(request, user):
 
     # saved posts
     saved_posts = []
-    saved = Saved.objects.filter(user=request.user)
-    for save in saved:
-        saved_posts.append(save.post_id)
+    try:
+        saved = Saved.objects.all()
+        for save in saved:
+            if save.user == request.user:
+                saved_posts.append(save.post_id)
+    except:
+        pass
 
     if request.method == 'POST':
         # post request for creating post
@@ -240,9 +245,13 @@ def userProfileSaved(request, user):
 
     # saved posts
     saved_posts = []
-    saved = Saved.objects.filter(user=request.user)
-    for save in saved:
-        saved_posts.append(save.post_id)
+    try:
+        saved = Saved.objects.all()
+        for save in saved:
+            if save.user == request.user:
+                saved_posts.append(save.post_id)
+    except:
+        pass
 
     if request.method == 'POST':
         # post request for creating post
@@ -284,6 +293,7 @@ def userProfileSaved(request, user):
         'saved_posts_amount': saved_posts_amount,
         'saved_posts': saved_posts,
     }
+    
     return render(request, 'account/user_profile_saved.html', context)
 
 
@@ -354,7 +364,7 @@ def accountsEdit(request):
 
     if len(user_profiles) > 0:  # it needs this codition, because if user is logout it will be error "matching query does not exist"
         for i in user_profiles:
-            if i.django_user_model_id == request.user.id:
+            if i.user_id == request.user.id:
                 user_profile = i
 
     # post request for creating post
@@ -367,6 +377,22 @@ def accountsEdit(request):
                 obj.user = request.user
                 obj.save()
                 return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+
+        elif 'profile-edit-form' in request.POST:
+            user = User.objects.get(username=request.user)
+            obj = UserProfile.objects.get(user=request.user)
+
+            obj.full_name = request.POST.get('fullname')
+            user.username = request.POST.get('username')
+            obj.website = request.POST.get('website')
+            obj.bio = request.POST.get('bio')
+            obj.email = request.POST.get('email')
+            obj.phone = request.POST.get('phone')
+            obj.gender = request.POST.get('gender')
+            
+            user.save()
+            obj.save()
+            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
 
     context = {
         'user_profile': user_profile,
