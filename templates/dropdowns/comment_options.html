@@ -1,0 +1,10 @@
+<!-- COMMENTS OPTIONS DROPDOWN-->
+<div class="dropdown">
+    <div id="commentOptionsDropdown{{ comment.id }}" class="dropdown-content comment-options-dropdown-content">
+        <a href="">Report</a>
+        <hr>
+        <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+        <hr>
+        <a href="javascript:hidePopupFunc()">Cancel</a>
+    </div>
+</div>

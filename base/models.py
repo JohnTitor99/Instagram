@@ -9,15 +9,17 @@ class UserProfile(models.Model):
     GENDERS = (
         ('M', 'Male'),
         ('F', 'Female'),
+        ('', 'Prefer not to say')
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    logo = models.ImageField(upload_to='media/logo', null=True, blank=True)
+    logo = models.ImageField(upload_to='media/logo', default='media/logo/empty_photo.png')
     full_name = models.CharField(max_length=50, null=True, blank=True)
     email = models.CharField(max_length=50, null=True, blank=True)
     phone = models.CharField(max_length=20, null=True, blank=True)
     website = models.CharField(max_length=50, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     gender = models.CharField(max_length=6, null=True, blank=True, choices=GENDERS)
+    similar_account_suggestions = models.BooleanField(default=True)
 
     def __str__(self):
         return self.user.username
@@ -47,7 +49,6 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    logo = models.ImageField(upload_to='media/logo', null=True, blank=True)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
@@ -56,8 +57,8 @@ class Comment(models.Model):
 
 
 class Saved(models.Model):
-    post = models.ForeignKey(Post, related_name="saved",on_delete=models.CASCADE)
-    user = models.ForeignKey(User, related_name="saved", on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.post.post_text

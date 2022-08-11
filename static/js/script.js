@@ -1,5 +1,4 @@
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+/* POPUPS */
 
 // Owner's posts options
 function postOptionsFunc(postId) {
@@ -56,7 +55,21 @@ function profileSettings() {
   document.getElementById("profileSettingsDropdown").classList.toggle("show");
 }
 
+// Change profile picture
+function changeLogoFunc() {
+  document.getElementById("changeLogoDropdown").classList.toggle("show");
+}
 
+function switchAccountfunc() {
+  document.getElementById("switchAccountDropdown").classList.toggle("show");
+}
+
+function otherProfileOptionsFunc() {
+  document.getElementById("otherProfileOptions").classList.toggle("show");
+}
+
+
+// hide popup
 function hidePopupFunc() {
   var dropdowns = document.getElementsByClassName('dropdown-content');
   var i;
@@ -83,3 +96,52 @@ window.onclick = function(event) {
     }
   }
 }
+
+// making submit button inactive until user don't fills form inputs
+const registerSubmitButton = document.getElementById("register-submit");
+const phone = document.getElementById("phone");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+
+let phone_check = false
+let username_check = false
+let password_check = false
+
+phone.addEventListener("keyup", (e) => {
+  const value = e.currentTarget.value;
+  if (value === "") {
+    phone_check = false;
+    registerSubmitButton.disabled = true;
+  } else {
+    phone_check = true;
+    if (phone_check == true && username_check == true && password_check == true) {
+      registerSubmitButton.disabled = false;
+    }
+  }
+});
+
+username.addEventListener("keyup", (e) => {
+  const value = e.currentTarget.value;
+  if (value === "") {
+    username_check = false;
+    registerSubmitButton.disabled = true;
+  } else {
+    username_check = true;
+    if (phone_check == true && username_check == true && password_check == true) {
+      registerSubmitButton.disabled = false;
+    }
+  }
+});
+
+password.addEventListener("keyup", (e) => {
+  const value = e.currentTarget.value;
+  if (value === "") {
+    password_check = false;
+    registerSubmitButton.disabled = true;
+  } else {
+    password_check = true;
+    if (phone_check == true && username_check == true && password_check == true) {
+      registerSubmitButton.disabled = false;
+    }
+  }
+});

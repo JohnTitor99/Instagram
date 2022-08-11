@@ -10,21 +10,21 @@
         <br><br><br>
         <a href="{% url 'accounts_password_change' %}">Change password</a>
         <br><br><br>
-        <a href="">Apps and websites</a>
+        <a>Apps and websites</a>
         <br><br><br>
-        <a href="">Email notifications</a>
+        <a>Email notifications</a>
         <br><br><br>
-        <a href="">Push notifications</a>
+        <a>Push notifications</a>
         <br><br><br>
-        <a href="">Manage contacts</a>
+        <a>Manage contacts</a>
         <br><br><br>
-        <a href="">Privacy and security</a>
+        <a>Privacy and security</a>
         <br><br>
-        <a href="">Login activity</a>
+        <a>Login activity</a>
         <br><br><br>
-        <a href="">Emails from instagram</a>
+        <a>Emails from instagram</a>
         <br><br><br>
-        <a href="">Help</a>
+        <a>Help</a>
         <br><br>
         <p>Switch to professional account</p>
         <br><br>
@@ -39,14 +39,27 @@
     <div class="edit-profile">
         <center>
 
-            <div class="edit-profile-header">
-                <input type="image" onclick="" class="dropbtn change-profile-photo-dropbtn" src="{{ user_profile.logo.url }}"/>
-                <h2>{{ request.user }}</h2>
-                <a href="" class="change-profile-photo-link">Change profile photo</a>
-            </div>
-
-            <form method="POST" name="profile-edit-form">
+            <form method="POST" enctype="multipart/form-data" name="profile-edit-form">
                 {% csrf_token %}
+
+                <div class="edit-profile-header">
+                    <input type="image" onclick="" class="dropbtn change-profile-photo-dropbtn" src="{{ user_profile.logo.url }}"/>
+                    <h2>{{ request.user }}</h2>
+                    <a href="javascript:hidePopupFunc(); changeLogoFunc()" class="dropbtn change-profile-photo-link">Change profile photo</a>
+                </div>
+    
+                <div class="dropdown">
+                    <div id="changeLogoDropdown" class="dropdown-content change-logo-dropdown-content">
+                        <h2>Change Profile Photo</h2>
+                        <hr>
+                        <label for="files">Upload Photo</label>
+                        <input type="file" id="files" name="new-logo"/>
+                        <hr>
+                        <a href="{% url 'remove_logo' %}">Remove Current Photo</a>
+                        <hr>
+                        <a href="javascript:hidePopupFunc()">Cancel</a>
+                    </div>
+                </div>
 
                 <label>Name</label>
                 {% if user_profile.full_name %}
@@ -68,14 +81,14 @@
                     {% if user_profile.user %}
                         <input type="text" name="username" value="{{ user_profile.user }}" class="edit-profile-forms"/>
                     {% else %}
-                        <input type="text" name="username" placeholder="Usetname" class="edit-profile-forms"/>
+                        <input type="text" name="username" placeholder="Username" class="edit-profile-forms"/>
                     {% endif %}
                 </div>
 
                 <div class="settings-tips">
                     <small>In most cases, you'll be able to change your username back to</small>
                     <br>
-                    <small>hinamizawa99 for another 14 days. Learn more</small>
+                    <small>{{ request.user }} for another 14 days. Learn more</small>
                 </div>
 
                 <div class="settings-tips">
@@ -90,7 +103,7 @@
                 <div class="edit-accounts-forms">
                     <label>Bio</label>
                     {% if user_profile.bio %}
-                        <textarea name="bio" value="{{ user_profile.bio }}" class="edit-profile-textarea-form"></textarea>
+                        <textarea name="bio" class="edit-profile-textarea-form">{{ user_profile.bio }}</textarea>
                     {% else %}
                         <textarea name="bio" class="edit-profile-textarea-form"></textarea>
                     {% endif %}
@@ -123,19 +136,24 @@
 
                 <div class="edit-accounts-forms">
                     <label>Gender</label>
+                    {{ user_profile_form.gender }}
                     {% if user_profile.gender %}
-                        <input type="text" name="gender" value="{{ user_profile.get_gender_display }}" class="edit-profile-forms"/>
+                    <input type="text" value="{{ user_profile.get_gender_display }}" class="edit-profile-forms"/>
                     {% else %}
-                        <input type="text" name="gender" placeholder="Gender" class="edit-profile-forms"/>
+                        <input type="text" placeholder="Gender" class="edit-profile-forms"/>
                     {% endif %}
                 </div>
 
                 <div class="edit-accounts-forms">
-                    <label>Similar accounts suggestions</label>
-                    <input type="text" name="similar-accounts-suggestions" placeholder="" class="edit-profile-forms"/>
-                </div>
+                    <label>Similar accounts <br> suggestions</label>
+                    {% if user_profile.similar_account_suggestions %}
+                        <label><input type="checkbox" name="similar-account-suggestions" value="checked" checked="checked" />Include your account when <br> recommending similar account <br> people might want to follow.</label>
+                    {% else %}
+                        <label><input type="checkbox" name="similar-account-suggestions" value="check" />Include your account when <br> recommending similar account <br> people might want to follow.</label>
+                    {% endif %}
+                    </div>
 
-                <input type="submit" value="submit" name="profile-edit-form" class="edit-submit-button"/> <a href="">Temporarily deactivate my account</a>
+                <input type="submit" value="Submit" name="profile-edit-form" class="edit-submit-button"/> <a href="">Temporarily deactivate my account</a>
 
             </form>
             

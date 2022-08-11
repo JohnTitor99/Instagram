@@ -1,0 +1,36 @@
+<!-- post edit -->
+<div class="dropdown">
+    <div id="postEditDropdown{{ post.id }}" class="dropdown-content post-edit-dropdown-content">
+        <div class="edit-post-header-left">
+            <a href="javascript:hidePopupFunc()">Cancel</a>
+        </div>
+
+        <div class="edit-post-header-right">
+            
+        </div>
+
+        <div class="edit-post-header-center">
+            Edit Info
+        </div>
+
+        <hr>
+        
+        <div class="edit-post-body">
+            <div class="edit-post-image">
+                <img src="{{ post.image.url }}"/>
+            </div>
+
+            <div class="edit-post-logo-username-text">
+                <img src="{{ post.user.userprofile.logo.url }}"/><p>{{ post.user }}</p>
+                <div class="edit-text-form">
+                    <form method="POST" name="post-edit-form">
+                        {% csrf_token %}
+                        <textarea name="post-text">{{ post.post_text }}</textarea>
+                        <input type="hidden" name="post-id" value="{{ post.id }}">
+                        <button type="submit" name="post-edit-form">Done</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="dropdown">
+    <div id="usersWhoLikedPostDropdown{{ post.id }}" class="dropdown-content users-who-liked-post-dropdown-content">
+        <span>Likes</span>
+        <hr>
+        {% for user in post.users_likes %}
+            <div class="users-who-liked-post-body">
+                <a href=""><img src="{{ user.userprofile.logo.url }}"/><p>{{ user.username }}</p></a> <button onclick="" class="follow-btn">Follow</button>
+            </div>
+        {% endfor %}
+    </div>
+</div>

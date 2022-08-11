@@ -1,51 +1,17 @@
+{% load static %}
+
 <header id="header" class="header">
     <p>
-        <a href="{% url 'main_page' %}">INSTAGRAM</a> <input type="text" name="search" class="search" />
-        <a href="{% url 'main_page' %}">Home</a>
-        <a href="">Chats</a>
-        <button onclick="hidePopupFunc(); postCreateFunc()" class="dropbtn post-create-dropbtn">Create New Post</button>
+        <a href="{% url 'main_page' %}">INSTAGRAM</a> <input type="text" name="search" class="search" placeholder="Search" />
+        <a href="{% url 'main_page' %}"><img src="{% static 'media/icons/home.png' %}" class="navbar-buttons"/></a>
+        <a href=""><img src="{% static 'media/icons/chats.png' %}" class="navbar-buttons"/></a>
+        <input type="image" onclick="hidePopupFunc(); postCreateFunc()" class="dropbtn navbar-buttons" src="{% static 'media/icons/add_post.png' %}"/>
+        <a href="{% url 'explore' %}"><img src="{% static 'media/icons/explore.png' %}" class="navbar-buttons"/></a>
+        <a href=""><img src="{% static 'media/icons/notifications.png' %}" class="navbar-buttons"/></a>
         <span class="navbar-user-logo">
-            {% if request.user.is_authenticated %}
-                <input type="image" onclick="hidePopupFunc(); userMenuFunc()" class="dropbtn user-menu-dropbtn" src="{{ user_profile.logo.url }}" />
-            {% else %}
-                <input type="image" onclick="hidePopupFunc(); userMenuFunc()" class="dropbtn user-menu-dropbtn" src="" />
-            {% endif %}
+            <input type="image" onclick="hidePopupFunc(); userMenuFunc()" class="dropbtn user-menu-dropbtn" src="{{ request.user.userprofile.logo.url }}" />
         </span>
     </p>
 </header>
 
-
-<!-- NAVBAR POPUPS -->
-
-<!-- user menu -->
-{% if request.user.is_authenticated %}
-<div class="dropdown">
-    <div id="userMenuDropdown" class="dropdown-content user-menu-dropdown-content">
-        <a href="{% url 'user_profile' request.user %}">Profile</a>
-        <a href="{% url 'user_profile_saved' request.user %}">Saved</a>
-        <a href="{% url 'accounts_edit' %}">Settings</a>
-        <a href="">Switch Accounts</a>
-        <hr>
-        <a href="{% url 'logout_user' %}">Log Out</a>
-    </div>
-</div>
-{% endif %}
-
-
-<!-- post create -->
-{% if request.user.is_authenticated %}
-<div class="dropdown">
-    <div id="postCreateDropdown" class="dropdown-content post-create-dropdown-content">
-        <p>Create New Post</p>
-        <hr>
-        <div class="post-create-dropdown-text">
-            <p>Drag photos and videos here</p>
-            <form method="POST" enctype="multipart/form-data" name="posts-tape-form">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" name="posts-tape-form">Share</button>
-            </form>
-        </div>
-    </div>
-</div>
-{% endif %}
+{% include 'dropdowns/navbar_dropdowns.html' %}
