@@ -1,18 +1,11 @@
-from datetime import datetime
-from itertools import chain
 import json
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 from django.template.defaulttags import register
-from django.urls import reverse
-from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
 from django.core import serializers
 
 from .forms import PostForm, RegistrationForm
