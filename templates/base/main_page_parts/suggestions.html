@@ -1,0 +1,234 @@
+<div id="suggestionsId" class="covers_content _aak6 _aak9" style="left: 973.1px;">
+
+    <!-- SUGGESTIONS HEADER -->
+    <div class="_aakb _aakc">
+        <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abbh _abcm"
+            style="width: 100%;">
+            <div aria-labelledby="f37c340ff4bcdf4 f3a2f68de4f0488 f143f9b552eba94 f1c59396493bbc4"
+                class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm">
+                <div
+                    class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abbj _abcm">
+                    <div class="_aarf _aak0"
+                        aria-disabled="true"
+                        role="button" tabindex="-1">
+                        <canvas class="_aarh"
+                            height="83" width="83"
+                            style="position: absolute; top: -5px; left: -5px; width: 66px; height: 66px;"></canvas><a
+                            class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xa49m3k xqeqjp1 x2hbi6w x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk x78zum5 xdl72j9 xdt5ytf x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j xeuugli xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt xnz67gz x14yjl9h xudhj91 x18nykt9 xww2gxu x9f619 x1lliihq x2lah0s x6ikm8r x10wlt62 x1n2onr6 x1ykvv32 xougopr x159fomc xnp5s1o x194ut8o x1vzenxt xd7ygy7 xt298gk x1xrz1ek x1s928wv x162n7g1 x2q1x1w x1j6awrg x1n449xj x1m1drc7 x4gyw5p x1ypdohk _a6hd"
+                            href="{% url 'user_profile' request.user %}"
+                            role="link" tabindex="0"
+                            style="width: 56px; height: 56px;"><img
+                                alt=""
+                                class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu x5yr21d xpdipgo xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf xh8yej3"
+                                crossorigin="anonymous"
+                                draggable="false"
+                                src="{{ user_profile.logo.url }}"></a>
+                    </div>
+                </div>
+                <div
+                    class="_ab8w  _ab94 _ab99 _ab9h _ab9m _ab9o _abcm">
+                    <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm"
+                        id="f3a2f68de4f0488">
+                        <div
+                            class="_aacl _aaco _aacu _aacx _aada">
+                            <div
+                                class="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9o  _abb1 _abcm">
+                                <a class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _aak1 _a6hd"
+                                    href="{% url 'user_profile' request.user %}"
+                                    role="link"
+                                    tabindex="0"><b style="color: black;">{{ request.user.username }}</b></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abb- _abcm"
+                        id="f143f9b552eba94">
+                        <div class="_aacl _aaco _aacu _aacy _aada">
+                            <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o  _abb1 _abcm">
+                                <div class="_aacl _aaco _aacu _aacy _aada">
+                                    {% if user_profile.full_name != None %}
+                                        {{ user_profile.full_name }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p  _abb0 _abcm"
+                    id=""><button
+                        class="dropbtn _acan _acao _acas"
+                        type="button"
+                        onclick="switchAccountDropdownFunc()">
+                        <div
+                            class="dropbtn _aacl _aacn _aacw _aad6">
+                            Switch</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- SUGGESTED USERS -->
+    <div class="_aak3" style="margin-left: -15px;">
+        <div
+            class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p  _ab9- _aba7 _abcm">
+            <div
+                class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm">
+                <div
+                    class="_aacl _aaco _aacw _aacy _aad6">
+                    Suggestions For You</div>
+            </div><a
+                class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _acan _acao _acat _acaw _a6hd"
+                style="left: 16px;"
+                tabindex="0">
+                <div
+                    class="_aacl _aacn _aacw _aacx _aad6">
+                    See All</div>
+            </a>
+        </div>
+        <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p _abaj _aba_ _abcm">
+            <div class=" _ab8q _ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _aba8 _abcm">
+                <div style="height: auto; overflow: hidden auto;">
+                    
+                    <!-- suggestions block -->
+                    <div style="position: relative; display: flex; flex-direction: column; padding-bottom: 0px; padding-top: 0px;">
+                        {% for suggested_user in suggested_users %}
+                            <div aria-labelledby="f1ee3b7b71fae38 f19b382542261d4 f12dbca21c05a1c f17b7a839bfcbf8"
+                                class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p  _ab9- _aba8 _abcm">
+                                <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abbj _abcm">
+                                    <div class="_aap6 _aap7 _aapa">
+                                        <div class="_aarf"
+                                            aria-disabled="true"
+                                            role="button"
+                                            tabindex="-1">
+                                            <canvas
+                                                class="_aarh"
+                                                height="53"
+                                                width="53"
+                                                style="position: absolute; top: -5px; left: -5px; width: 42px; height: 42px;"></canvas><a
+                                                class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xa49m3k xqeqjp1 x2hbi6w x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk x78zum5 xdl72j9 xdt5ytf x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j xeuugli xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt xnz67gz x14yjl9h xudhj91 x18nykt9 xww2gxu x9f619 x1lliihq x2lah0s x6ikm8r x10wlt62 x1n2onr6 x1ykvv32 xougopr x159fomc xnp5s1o x194ut8o x1vzenxt xd7ygy7 xt298gk x1xrz1ek x1s928wv x162n7g1 x2q1x1w x1j6awrg x1n449xj x1m1drc7 x4gyw5p x1ypdohk _a6hd"
+                                                href="{% url 'user_profile' suggested_user %}"
+                                                role="link"
+                                                tabindex="0"
+                                                style="width: 32px; height: 32px;"><img
+                                                    alt=""
+                                                    class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu x5yr21d xpdipgo xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf xh8yej3"
+                                                    crossorigin="anonymous"
+                                                    draggable="false"
+                                                    src="{{ suggested_user.userprofile.logo.url }}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="_ab8w  _ab94 _ab99 _ab9h _ab9m _ab9o _abcm">
+                                    <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm" id="f19b382542261d4">
+                                        <div class="_aacl _aaco _aacu _aacx _aada">
+                                            <div class="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9p _abcm">
+                                                <span class="_aap6 _aap7 _aap8">
+                                                    <a class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz notranslate _a6hd"
+                                                        href="{% url 'user_profile' suggested_user %}"
+                                                        role="link"
+                                                        tabindex="0">
+                                                        <span class="_aacl _aaco _aacw _aacx _aad7 _aade">
+                                                            <div class=" _ab8y  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm">
+                                                                {{ suggested_user.username }}
+                                                            </div>
+                                                        </span>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abb- _abcm" id="f17b7a839bfcbf8">
+                                        <div class="_aacl _aacn _aacu _aacy _aada">
+                                            Follows you
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p  _abb0 _abcm" id="f1ee3b7b71fae38">
+                                    <!-- following form -->
+                                    <form method="POST" id="followingFormId{{ suggested_user.id }}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="following" value="{{ suggested_user.id }}"/>
+                                        <input type="hidden" name="check-follow" value="Follow"/>
+                                        <button class="_acan _acao _acas"
+                                            type="submit"
+                                            name="follow-unfollow-following-form"
+                                            style="left: 15px;"
+                                            onclick="followingFormFunc('{{ suggested_user.id }}')">
+                                            <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p _abcm"
+                                                style="height: 100%;">
+                                                <div class="_aacl _aacn _aacw _aad6">
+                                                    Follow
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class=" _ab8b">
+        <nav class="_ab8c">
+            <ul class="_ab8d _ab8e">
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">About</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Help</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Press</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">API</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Jobs</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Privacy</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g _ab8h"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Terms</span></a>
+                </li>
+                <li class="_ab8f"><a class="_ab8g"
+                        rel="nofollow noopener noreferrer"
+                        target="_blank"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Locations</span></a>
+                </li>
+                <li class="_ab8f"><span
+                        class="_aajg _aajl _ab8g"><span
+                            class="_aacl _aacn _aacu _aad1 _aad7 _aade">Language</span><select
+                            aria-label="Switch Display Language"
+                            class="_aajm">
+
+                        </select></span></li>
+            </ul>
+        </nav><span class="_ab8i"><span
+                class="_aacl _aacn _aacu _aad1 _aad7 _aade">©
+                2022 Instagram from Meta</span></span>
+    </div>
+</div>

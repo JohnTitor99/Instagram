@@ -1,0 +1,35 @@
+<div class="user-profile-posts">
+    {% if posts %}
+        <div class="user-profile-posts-grid">
+            {% for post in posts %}
+
+                <!-- POST COMMENTS -->
+                <div class="dropbtn user-profile-post-comments-dropbtn">
+                    <input type="image"
+                        class="user-profile-post-comments-img" src="{{ post.image.url }}"
+                        onclick="hidePopupFunc(); postCommentsDropdownFunc('{{ post.id }}',
+                                                                            '{{ post.image.url }}',
+                                                                            '{{ post.user.username }}',
+                                                                            '{{ post.user.id }}',
+                                                                            '{{ post.user.userprofile.logo.url }}',
+                                                                            '{{ post.post_text }}')"/>
+                </div>
+
+                <!-- save form -->
+                <div  style="position: absolute;">
+                    <form action="{% url 'post_action' post.id %}" method="POST" id="saveFormId{{ post.id }}">
+                        {% csrf_token %}
+                        <input type="hidden" name="actionbtn" value="save"/>
+                    </form>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% else %}
+        <center class="user-profile-no-posts">
+            <font size="+2">Share Photos</font>
+            <p>When you share photos, they will appear on your profile.</p>
+            <a href="javascript: postCreateDropdownFunc()">Share you first photo</a>
+        </center>
+    {% endif %}
+</div>

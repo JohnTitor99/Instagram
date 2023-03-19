@@ -1,0 +1,111 @@
+<div class="inbox-container">
+
+
+    <div class="chat-messages">
+        <div class="chats-header">
+            <input type="image" src="{{ chat_user.userprofile.logo.url }}" class="chats-header-user-logo"/>
+            <a href="{% url 'user_profile' chat_user %}"><h3>{{ chat_user }}</h3></a>
+        </div>
+        
+        <!-- chat content will be placed here with websockets -->
+        <div class="chat" id="chat">
+
+
+
+        </div>
+
+        <div class="form-for-message">
+            <form id="message-form">
+                {% csrf_token %}
+                <input type="hidden" name="chat_user" value="{{ chat_user.id }}"/>
+                <input type="hidden" name="request_user" value="{{ request.user.id }}"/>
+                <input type="text" class="chat-text-input" name="message" placeholder="  Message..."/>
+                <input type="submit" class="chat-text-submit" value="Send">
+            </form>
+        </div>
+
+
+        <!-- websockets -->
+        <script type="text/javascript">
+            let other_user_profile_url = "{% url 'user_profile' chat_user %}";
+            let current_user_id = "{{ request.user.id }}";
+            let chat_user_id = "{{ chat_user.id }}";
+
+            let url = `ws://${window.location.host}/ws/socket-server/`
+
+            const chatSocket = new WebSocket(url)
+
+            chatSocket.onmessage = function(e){
+                let data = JSON.parse(e.data)
+                console.log('Data:', data)
+
+                // get a list of messages from consumers
+                if(data.type === 'messages'){
+                    // a cycle for render all messages
+                    data.message.forEach(i => {
+                        i_id = i.id // message id for options button
+                        if (i.user_id == current_user_id && i.user2_id == chat_user_id) {
+                            chat.insertAdjacentHTML('beforeend', `<div class='my-message-block'>
+                                                        <span class='my-message'>
+
+                                                            <!-- unsend message dropdown (message disappears only after page reloading) -->
+                                                            <div class="dropdown">
+                                                                <div id="messageOptionsDropdown${i_id}" class="dropdown-content message-options-dropdown-content">
+                                                                    <a href="javascript:passMesIdForDel(${i_id}); hidePopupFunc()" class="dropbtn">Unsend</a>
+                                                                </div>
+                                                            </div>
+                                                            <button onclick="hidePopupFunc(); messsageOptionsFunc('${i_id}')" class="dropbtn my-message-button">•••</button>
+                                                            ${i.text}
+                                                        </span>
+                                                    </div><br><br><br>`)
+                        }
+                        
+                        if (i.user_id == chat_user_id && i.user2_id == current_user_id) {
+                            chat.insertAdjacentHTML('beforeend', `<div class='other-message-block'>
+                                                        <a href="${other_user_profile_url}"><input type='image' src='{{ chat_user.userprofile.logo.url }}' class='other-user-message-logo'/></a>
+                                                        <span class='other-user-message'>
+                                                            ${i.text}
+                                                        </span>
+                                                    </div>`)
+                        }
+                    })
+
+                    updateScroll(); // call a function for keep chat scroll bottom
+
+                }
+            }
+
+            // func for passing a message id for deleting
+            function passMesIdForDel(messageId) {
+                chatSocket.send(JSON.stringify({
+                    'delMessage': messageId
+                }))
+            }
+
+            // pass form data for create a message
+            let form = document.getElementById('message-form')
+
+            form.addEventListener('submit', (e)=> {
+                e.preventDefault()
+                let message = e.target.message.value
+                let request_user = e.target.request_user.value
+                let chat_user = e.target.chat_user.value
+                
+                chatSocket.send(JSON.stringify({
+                    'message':message,
+                    'chat_user':chat_user,
+                    'request_user':request_user
+                }))
+
+                form.reset();
+            })
+
+            // a func for keep chat scroll bottom
+            function updateScroll(){
+                var element = document.getElementById("chat");
+                element.scrollTop = element.scrollHeight;
+            }
+
+        </script>
+    </div>
+</div>

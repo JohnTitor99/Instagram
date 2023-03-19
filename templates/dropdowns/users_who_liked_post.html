@@ -1,11 +1,14 @@
+<!-- USERS WHO LIKED POST DROPDONW -->
 <div class="dropdown">
-    <div id="usersWhoLikedPostDropdown{{ post.id }}" class="dropdown-content users-who-liked-post-dropdown-content">
-        <span>Likes</span>
-        <hr>
-        {% for user in post.users_likes %}
-            <div class="users-who-liked-post-body">
-                <a href=""><img src="{{ user.userprofile.logo.url }}"/><p>{{ user.username }}</p></a> <button onclick="" class="follow-btn">Follow</button>
-            </div>
-        {% endfor %}
+    <div id="usersWhoLikedPostDropdown" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="users-who-liked-post-dropdown-content">
+            <span><b>Likes</b></span>
+            <hr>
+            <!-- content will be passed with js -->
+            <div class="users-who-liked-post-body" id="usersWhoLikesPostDropbdownId"></div>
+        </div>
     </div>
 </div>
+
+

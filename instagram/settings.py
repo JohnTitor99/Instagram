@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,9 +41,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base.apps.BaseConfig',
-
-    # 'storages',
+    'account.apps.AccountConfig',
+    'explore.apps.ExploreConfig',
+    'direct.apps.DirectConfig',
+    
+    'rest_framework',
+    'storages',
 ]
+
+ASGI_APPLICATION = 'instagram.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,7 +133,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -128,13 +142,13 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # comment this when i don't need s3
-# MEDIA_URL = 'media/'
+MEDIA_URL = 'media/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static/',
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static/',
+# ]
 
-MEDIA_ROOT = BASE_DIR / 'static/'       # delete media/ when i don't need s3
+MEDIA_ROOT = BASE_DIR / 'media/static/'       # delete media/ when i don't need s3
 
 
 # Default primary key field type
@@ -146,15 +160,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # comment all buckets config when i don't need s3
 #S3 BUCKETS CONFIG
 
-# AWS_ACCESS_KEY_ID = 'AKIA245GXT5P54LAKD6Z'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'my-instagram-bucket'
+AWS_ACCESS_KEY_ID = 'AKIA245GXT5P54LAKD6Z'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'my-instagram-bucket'
 
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# python manage.py collectstatic
 
 
 # [

@@ -1,25 +1,13 @@
+<!-- profile settings -->
 <div class="dropdown">
-    <div id="profileSettingsDropdown" class="dropdown-content profile-settings-dropdown-content">
-        <a href="{% url 'accounts_password_change' %}">Change password</a>
-        <hr>
-        <a href="">QR Code</a>
-        <hr>
-        <a href="">Apps and Websites</a>
-        <hr>
-        <a href="">Notifications</a>
-        <hr>
-        <a href="">Privacy and security</a>
-        <hr>
-        <a href="">Login activity</a>
-        <hr>
-        <a href="">Emails from Instagram</a>
-        <hr>
-        <a href="">Report a problem</a>
-        <hr>
-        <a href="">Embed</a>
-        <hr>
-        <a href="{% url 'logout_user' %}">Logout</a>
-        <hr>
-        <a href="javascript:hidePopupFunc()">Cancel</a>
+    <div id="profileSettingsDropdownId" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="profile-settings-dropdown-content">
+            <a href="{% url 'accounts_password_change' %}">Change password</a>
+            <hr>
+            <a href="{% url 'logout_user' %}">Logout</a>
+            <hr>
+            <a href="javascript: hidePopupFunc();">Cancel</a>
+        </div>
     </div>
 </div>

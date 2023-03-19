@@ -6,92 +6,24 @@
 <!-- USER IS NOT AUTHENTICATED -->
 {% if not user.is_authenticated %}
 
+    
     {% if page == 'login' %}
-        <div class="start-login-page">
-            <div class="login-page-image">
-                <img src="{% static 'media/icons/instagram_login_page.png' %}"/>
-            </div>
 
-            <div class="login-page-form">
-                <center>
-                    <h1>INSTAGRAM</h1>
-                    <form method="POST" name="login-form">
-                        {% csrf_token %}
-                        <input type="text" name="username" class="login-page-input" placeholder="Phone number, username, or email" />
+        <!-- LOGIN PAGE -->
 
-                        <br><br>
+        {% include 'base/main_page_parts/login_page.html' %}
 
-                        <input type="text" name="password" class="login-page-input" placeholder="Password" />
-                        <br>
-
-                        <input type="submit" value="Log in" name="login-form" class="log-in-button"/>
-
-                        <p>OR</p>
-                        <p>Log in with Facebook</p>
-                        {% if messages %}
-                            <div class="error-messages">
-                                {% for message in messages %}
-                                    <small>{{ message }}</small>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                        <br><br>
-                        <small><a href="">Forgot password?</a></small>
-
-                        <hr><hr>
-
-                        <p>Don't have an account? <a href="{% url 'register_page' %}">Sign up</a></p>
-                    </form>
-                </center>
-            </div>
-
-        </div>
     {% else %}
-        <div class="register-page">
-            <center>
-                <div class="register-page-form">
-                    <h1>INSTAGRAM</h1>
-                    <p>Sign up to see photos and videos</p>
-                    <p>from your friends.</p>
-                    <input type="button" class="register-buttons" value="Log in with Facebook">
 
-                    <p>OR</p>
+        <!-- REGISTER PAGE -->
 
-                    <form method="POST" name="register-form">
-                        {% csrf_token %}
-                        <input type="text" id="phone" name="phone-or-email" class="register-page-input" placeholder="Mobile Number or Email" />
-                        <br><br>
-                        <input type="text" id="full-name" name="full-name" class="register-page-input" placeholder="Full Name" />
-                        <br><br>
-                        {{ user_create_form.username }}
-                        <br><br>
-                        {{ user_create_form.password1 }}
-                        <br><br>
-                        <small>People who use our service may have uploaded</small>
-                        <br>
-                        <small>your contact information to Instagram. Learn</small>
-                        <br>
-                        <small>More</small>
-                        <br><br>
-                        <small>By signing up, you agree to our Terms , Privacy</small>
-                        <br>
-                        <small>Policy and Cookies Policy .</small>
-                        <br><br>
+        {% include 'base/main_page_parts/register_page.html' %}
 
-                        <input disabled type="submit" id="register-submit" class="register-buttons" value="Sign up" name="register-form" />
-                    </form>
-                    <div class="register-hr">
-                        <hr><hr>
-                    </div>
-
-                    <p>Have an account? <a href="{% url 'main_page' %}">Log in</a></p>
-                </div>
-            </center>
-        </div>
     {% endif %}
 
 <!-- USER IS AUTHENTICATED -->
 {% else %}
+<<<<<<< HEAD
     <header id="header" class="header">
         <p>
             <a href="{% url 'main_page' %}">INSTAGRAM</a> <input type="text" name="search" class="search" placeholder="Search" />
@@ -105,85 +37,96 @@
             </span>
         </p>
     </header>
+=======
+>>>>>>> tmp
 
-    {% include 'dropdowns/navbar_dropdowns.html' %}
-
-    <div class="main-container">
-        <div>
-
-        </div>
-
-        <div class="posts-tape">
-            {% for post in posts %}
-                <div class="post">
-                    <!-- POST (INCLUDING POST.HTML) -->
-                    {% include 'base/post.html' %}
-                </div>
-                
-            {% endfor %}
-        </div>
-
-        <div class="side-panel">
-            {% if request.user.is_authenticated %}
-                <div class="avatar">
-                    <a href="{% url 'user_profile' request.user %}">
-                        <img src="{{ user_profile.logo.url }}"/>
-                        <p>{{ request.user }}</p>                       
-                    </a>
-                    {% if user_profile.full_name %}
-                        <p class="side-panel-full-name"><small>{{ user_profile.full_name }}</small></p>
-                    {% endif %}
-                </div>
-                <small><a href="javascript:switchAccountfunc()" class="side-panel-switch">Switch</a></small>
-
-                <div class="dropdown">
-                    <div id="switchAccountDropdown" class="dropdown-content switch-account-dropdown">
-                        <center>
-                            <a href="javascript:hidePopupFunc()" class="hide-switch-account-popup">X</a>
-                            <h1>INSTAGRAM</h1>
-                            <form method="POST" name="login-form">
-                                {% csrf_token %}
-                                <input type="text" name="username" class="login-page-input" placeholder="Phone number, username, or email" />
-        
-                                <br><br>
-        
-                                <input type="text" name="password" class="login-page-input" placeholder="Password" />
-                                <br>
-        
-                                <input type="submit" value="Log in" name="login-form" class="log-in-button"/>
-        
-                                {% if messages %}
-                                    <div class="error-messages">
-                                        {% for message in messages %}
-                                            <small>{{ message }}</small>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                                <br><br>
-                                <small><a href="">Forgot password?</a></small>
-                
-                            </form>
-                        </div>
-                    </center>
-                </div>
-
-                <div class="suggestions">
-                    <p>Suggestions for you <small><a href="">See All</a></small></p>
-                </div>
-                {% for likes_user in post.users_who_liked %}
-                    <p>{{ likes_user }}</p>
-                {% endfor %}
-            {% endif %}
-
-        </div>
-
-        <div>
-
-        </div>
-        
-    </div>
+    <!-- MAIN PAGE -->
     
+    <body class="_a3wf system-fonts--body segoe">
+
+        <div id="mount_0_0_XL"><span id="ssrb_root_start" style="display: none;"></span>
+            <div>
+                <div class="">
+                    <div class="x9f619 x1n2onr6 x1ja2u2z"><span id="ssrb_top_nav_start" style="display: none;"></span><span
+                            id="ssrb_top_nav_end" style="display: none;"></span>
+
+                        <!-- classes for dropdowns -->
+                        <div class="x9f619 x1ja2u2z x1pq812k x5yr21d xw2csxc x1odjw0f xixxii4 x1rohswg x17qophe x13vifvy xh8yej3">
+                            
+                            <div class="x78zum5 xdt5ytf x1n2onr6 x1ja2u2z">
+                                <div class="x78zum5 xdt5ytf x1n2onr6">
+                                    <div class="x78zum5 xdt5ytf x1n2onr6 xat3117 xxzkxad">
+                                        <div class="x78zum5 xdt5ytf x10cihs4 x1t2pt76 x1n2onr6 x1ja2u2z">
+                                            <div class="x9f619 xnz67gz x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1qughib"
+                                                style="height: 100%;">
+                                                <div
+                                                    class="x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 xeq5yr9 x1dr59a3 xixxii4 x13vifvy x1n327nk">
+                                                    <div class="x1uvtmcs x4k7w5x x1h91t0o x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1n2onr6 x1qrby5j x1jfb8zj"
+                                                        tabindex="-1">
+
+                                                        <!-- NAVBAR -->
+                                                        <div lass="x78zum5 x1q0g3np x1dr59a3 x1qughib xleuxlb xxfw5ft x1mh60rb x1f91t4q x1n2onr6">
+                                                            {% include 'base/main_page_parts/navbar.html' %}
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="xh8yej3 x1gryazu x10o80wk x14k21rp x1porb0y x17snn68 x6osk4m">
+                                                    <section class="x78zum5 xdt5ytf x1iyjqo2 x6ikm8r xg6iff7">
+                                                        <div></div>
+                                                        <main class="x78zum5 xdt5ytf x1iyjqo2 x182iqb8 xnz67gz" role="main">
+                                                            <div>
+                                                                <section class="_aalv _aalx _aalz">
+
+                                                                    <!-- POSTS TAPE -->
+
+                                                                    {% include 'base/main_page_parts/posts_tape.html' %}
+
+                                                                    <div class="_aak4"></div>
+                                                                    
+                                                                    <!-- SUGGESTIONS -->
+
+                                                                    {% include 'base/main_page_parts/suggestions.html' %}
+
+                                                                </section>
+                                                            </div>
+                                                        </main>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- DROPDOWNS -->
+
+                        <div>
+                            <div>
+                                {% include 'dropdowns/post_comments.html' %}
+                                {% include 'dropdowns/post_options.html' %}
+                                {% include 'dropdowns/post_options2.html' %}
+                                {% include 'dropdowns/post_delete.html' %}
+                                {% include 'dropdowns/users_who_liked_post.html' %}
+                                {% include 'dropdowns/post_edit.html' %}
+                                {% include 'dropdowns/post_create.html' %}
+                                {% include 'dropdowns/switch_account.html' %}
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div><span id="ssrb_root_end" style="display: none;"></span>
+        </div>
+    </body>
+
 {% endif %}
 
 {% endblock %}
-

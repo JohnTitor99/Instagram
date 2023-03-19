@@ -1,0 +1,118 @@
+{% load static %}
+
+<div class="dropdown">
+    <div id="switchAccountDropdown" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="switch-account-dropdown x1qjc9v5 x9f619 x78zum5 xdt5ytf x1iyjqo2 xl56j7k">
+            <div class="x1cy8zhl x9f619 x78zum5 xl56j7k x2lwn1j xeuugli x47corl">
+                <div role="dialog"
+                    class="x1ja2u2z x1afcbsf x1a2a7pz x6ikm8r x10wlt62 x71s49j x78zum5 xdt5ytf x1n2onr6 xl56j7k x6s0dn4">
+                    <div class="xs83m0k xl56j7k x1iy3rx x1n2onr6 x1sy10c2 x1h5jrl4 xieb3on xmn8rco x1hfn5x7 x13wlyjk">
+                        <div></div>
+                        <div class="x7r02ix xf1ldfh x131esax xdajt7p xxfnqb6 xb88tzc xw2csxc x1odjw0f x5fp0pe" role="dialog">
+                            <div style="display: flex; flex-direction: column; height: 100%; max-width: 100%;">
+                                <div>
+                                    <div class="_ab8w  _ab94 _ab97 _ab9f _ab9m _ab9p  _ab9w _abcm" style="max-height: 800px;">
+                                        <div class="_ab1y _ab1z">
+                                            <div class="_ab21 _ab22 _ab23">
+
+                                                <!-- INSTAGRAM LOGO -->
+                                                <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abal _abc5 _abcm">
+                                                    <div aria-disabled="false" role="button" tabindex="0"
+                                                        style="cursor: pointer;">
+                                                        <img src="{% static 'media/icons/instagram_logo.png' %}"
+                                                            style="height: auto; width: 200px; margin-left: 60px;">
+                                                    </div>
+                                                </div>
+                                                <div class="_ab3a">
+
+                                                    <!-- LOGIN FORM-->
+                                                    <form class="_ab3b"  method="POST">
+                                                        {% csrf_token %}
+                                                        <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abc2 _abcm">
+
+                                                            <!-- username -->
+                                                            <div class="switch-account-fields _ab32"
+                                                                style="padding-bottom: 6px; margin-left: 40px;">
+                                                                <div
+                                                                    class="x6s0dn4 x1npaq5j x1c83p5e x1enjb0b x199158v x9f619 x78zum5 x1q0g3np xvs91rp x1n2onr6 xh8yej3 xnz67gz x5n08af xx7zo7k x1fzb3qy xb0nk2e xubunj8">
+                                                                    <label class="_aa48 _aa49">
+                                                                        <span class="_aa4a">Phone number,
+                                                                            username, or email
+                                                                        </span>
+                                                                        <input
+                                                                            aria-label="Phone number, username, or email"
+                                                                            aria-required="true" maxlength="75" name="username"
+                                                                            type="text" name="username" class="_aa4b _add6 _ac4d">
+                                                                    </label>
+                                                                    <div
+                                                                        class="x6s0dn4 x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x78zum5 x1c4vz4f x2lah0s xdl72j9 x1q0g3np xk390pu x5yr21d xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x1sxyh0 x18d9i69 xkhd6sd x1n2onr6 xxymvpz">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- password -->
+                                                            <div class="switch-account-fields _ab32"
+                                                                style="margin-left: 40px;">
+                                                                <div
+                                                                    class="x6s0dn4 x1npaq5j x1c83p5e x1enjb0b x199158v x9f619 x78zum5 x1q0g3np xvs91rp x1n2onr6 xh8yej3 xnz67gz x5n08af xx7zo7k x1fzb3qy xb0nk2e xubunj8">
+                                                                    <label class="_aa48 _aa49">
+                                                                        <span
+                                                                            class="_aa4a">Password
+                                                                        </span>
+                                                                        <input
+                                                                            aria-label="Password" aria-required="true"
+                                                                            autocapitalize="off" autocorrect="off"
+                                                                            name="password" type="password"
+                                                                            class="_aa4b _add6 _ac4d">
+                                                                    </label>
+                                                                    <div
+                                                                        class="x6s0dn4 x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x78zum5 x1c4vz4f x2lah0s xdl72j9 x1q0g3np xk390pu x5yr21d xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x1sxyh0 x18d9i69 xkhd6sd x1n2onr6 xxymvpz">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- error message if it is -->
+                                                            <div class="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9p _abcm">
+                                                                {% if messages %}
+                                                                <div class="error-messages">
+                                                                    {% for message in messages %}
+                                                                    <small>{{ message }}</small>
+                                                                    {% endfor %}
+                                                                </div>
+                                                                {% endif %}
+                                                            </div>
+                                                            
+                                                            <!-- login submit button -->
+                                                            <div
+                                                                class="switch-account-fields _ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb8 _abbq _abb- _abcm"
+                                                                style="padding-top: 30px;">
+                                                                <button class="_acan _acap _acas _aj1-" type="submit"
+                                                                    value="Log in" name="login-form">
+                                                                    <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm">Log in
+                                                                    </div>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <!-- forgot password -->
+                                                        <a
+                                                            style="margin-left: 110px;"
+                                                            class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _ab2y _a6hd"
+                                                            role="link" tabindex="0">Forgot
+                                                            password?</a>
+                                                        <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abao _abcm"></div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

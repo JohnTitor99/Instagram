@@ -3,54 +3,280 @@
 
 {% block content %}
 
-{% include 'navbar.html' %}
+<body class="_a3wf system-fonts--body segoe">
+    <div id="mount_0_0_sL"><span id="ssrb_root_start" style="display: none;"></span>
+        <div>
+            <div class="">
+                <div class="x9f619 x1n2onr6 x1ja2u2z"><span id="ssrb_top_nav_start" style="display: none;"></span><span
+                        id="ssrb_top_nav_end" style="display: none;"></span>
+                    <div class="x9f619 x1ja2u2z x1pq812k x5yr21d xw2csxc x1odjw0f xixxii4 x1rohswg x17qophe x13vifvy xh8yej3">
+                        <div class="x78zum5 xdt5ytf x1n2onr6 x1ja2u2z">
+                            <div class="x78zum5 xdt5ytf x1n2onr6">
+                                <div class="x78zum5 xdt5ytf x1n2onr6 xat3117 xxzkxad">
+                                    <div class="x78zum5 xdt5ytf x10cihs4 x1t2pt76 x1n2onr6 x1ja2u2z">
+                                        <div class="x9f619 xnz67gz x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s x1q0g3np xqjyukv x1qjc9v5 x1oa3qoh x1qughib"
+                                            style="height: 100%;">
+                                            <div
+                                                class="x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1 xeq5yr9 x1dr59a3 xixxii4 x13vifvy x1n327nk">
+                                                <div class="x1uvtmcs x4k7w5x x1h91t0o x1beo9mf xaigb6o x12ejxvf x3igimt xarpa2k xedcshv x1lytzrv x1t2pt76 x7ja8zs x1n2onr6 x1qrby5j x1jfb8zj"
+                                                    tabindex="-1">
 
-<div class="user-profile-header">
-    <img src="{{ user_profile.logo.url }}" class="user-profile-image"/>
-    
-    <p>
-        <b class="user-profile-username">{{ request.user }}</b>
-        <a href="{% url 'accounts_edit' %}"><button>Edit profile</button></a>
+                                                    <!-- NAVBAR -->
+                                                    <div
+                                                        class="x78zum5 x1q0g3np x1gvbg2u x1qughib xleuxlb xxfw5ft x1mh60rb x1f91t4q x1n2onr6">
+                                                        {% include 'account/user_profile_parts/navbar.html' %}
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="xh8yej3 x1gryazu x10o80wk x14k21rp x1porb0y x17snn68 x6osk4m">
+                                                <div>
+                                                    <form enctype="multipart/form-data" method="POST"
+                                                        role="presentation"><input accept="image/jpeg" class="_ac69"
+                                                            type="file"></form>
+                                                </div>
+                                                <section class="x78zum5 xdt5ytf x1iyjqo2 x6ikm8r xg6iff7">
+                                                    <div></div>
+                                                    <main class="x78zum5 xdt5ytf x1iyjqo2 x182iqb8 xnz67gz" role="main">
+                                                        <div class="_aa_y _aa_z _aa_-">
 
-        <button onclick="profileSettings()" class="dropbtn user-profile-settings-dropbtn">Settings</button>
+                                                            <!-- USER PROFILE HEADER -->
+                                                            <header
+                                                                class="x1qjc9v5 x78zum5 x1q0g3np x2lah0s x1n2onr6 xc2v4qs x1qsaojo x1xl8k2i x1kcpa7z x1ez9qw7"
+                                                                style="padding-bottom: 110px;">
+                                                                <div
+                                                                    style="position: absolute; height: 150px; width: 150px; margin-left: 70px;">
+                                                                    <img
+                                                                        class="_aadp"
+                                                                        style="border-radius: 50%;"
+                                                                        src="{% static 'media/logo/jinx.jpg' %}">
+                                                                </div>
+                                                                <section
+                                                                    class="x1qjc9v5 x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x5n08af x78zum5 xdt5ytf xs83m0k xeuugli xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 xk390pu x11njtxf x139hhg0 x1qgnrqa xg1prrt x1quol0o"
+                                                                    style="margin-left: 320px;">
+                                                                    <div
+                                                                        class="x6s0dn4 x78zum5 x1q0g3np xs83m0k xeuugli x1n2onr6"
+                                                                        style="padding-bottom: 20px;">
+                                                                        <h1 class="x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1ms8i2q xo1l8bm x5n08af x4zkp8e xw06pyt x10wh9bi x1wdrske x8viiok x18hxmgj"
+                                                                            style="line-height: var(--base-line-clamp-line-height); --base-line-clamp-line-height:25px;"
+                                                                            tabindex="-1">{{ user }}</h1>
+                                                                        <div
+                                                                            class="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm">
+                                                                            <div
+                                                                                class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9o _abcm">
+                                                                                <div
+                                                                                    class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm">
+                                                                                    <a class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _acan _aiit _acap _aijb _acat _acaw _aj1- _a6hd"
+                                                                                        href="{% url 'accounts_edit' %}"
+                                                                                        role="link" tabindex="0">Edit
+                                                                                        profile</a></div>
+                                                                            </div>
+                                                                        </div>
 
-        {% include 'dropdowns/profile_settings.html' %}
-    </p>
+                                                                        <!-- PROFILE SETTINGS BTN AND DROPDOWN -->
+                                                                        <div class="x1q0g3np x2lah0s x8j4wrb"><button
+                                                                                class="dropbtn _abl-" type="button" onclick="profileSettingsDropdownFunc()">
+                                                                                <div class="_abm0"><svg
+                                                                                        aria-label="Options"
+                                                                                        class="_ab6-" color="#262626"
+                                                                                        fill="#262626" height="24"
+                                                                                        role="img" viewBox="0 0 24 24"
+                                                                                        width="24">
+                                                                                        <circle cx="12" cy="12"
+                                                                                            fill="none" r="8.635"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-linecap="round"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"></circle>
+                                                                                        <path
+                                                                                            d="M14.232 3.656a1.269 1.269 0 0 1-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 0 1-.796.66m-.001 16.688a1.269 1.269 0 0 1 .796.66l.505.996h1.862l.505-.996a1.269 1.269 0 0 1 .796-.66M3.656 9.768a1.269 1.269 0 0 1-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 0 1 .66.796m16.688-.001a1.269 1.269 0 0 1 .66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 0 1-.66-.796M7.678 4.522a1.269 1.269 0 0 1-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 0 1-.096 1.03m11.8 11.799a1.269 1.269 0 0 1 1.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 0 1 .096-1.03m-14.956.001a1.269 1.269 0 0 1 .096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 0 1 1.03.096m11.799-11.8a1.269 1.269 0 0 1-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 0 1-1.03-.096"
+                                                                                            fill="none"
+                                                                                            stroke="currentColor"
+                                                                                            stroke-linejoin="round"
+                                                                                            stroke-width="2"></path>
+                                                                                    </svg></div>
+                                                                            </button>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="xkfe5hh xxz05av">
+                                                                        <div></div>
+                                                                    </div>
+                                                                    <ul class=" x78zum5 x1q0g3np      xieb3on">
+                                                                        <li
+                                                                            class=" xl565be    x2pgyrj  x1m39q7l x1uw6ca5">
+                                                                            <div
+                                                                                class="_aacl _aacp _aacu _aacx _aad6 _aade">
+                                                                                <span
+                                                                                    class="_ac2a"><span>{{ posts_amount }}</span></span>
+                                                                                post</div>
+                                                                        </li>
+                                                                        <li
+                                                                            class=" xl565be    x2pgyrj  x1m39q7l x1uw6ca5">
+                                                                            <a class="dropbtn x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _a6hd"
+                                                                                href="javascript: showMyFollowersDropdownFunc()"
+                                                                                tabindex="0">
+                                                                                <div
+                                                                                    class="_aacl _aacp _aacu _aacx _aad6 _aade">
+                                                                                    <span class="_ac2a"
+                                                                                        title="10"><span>{{ my_followers_count }}</span></span>
+                                                                                    followers</div>
+                                                                            </a>
+                                                                        </li>
+                                                                        
+                                                                        <li
+                                                                            class=" xl565be    x2pgyrj  x1m39q7l x1uw6ca5">
+                                                                            <a class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _a6hd"
+                                                                                href="javascript: showMyFollowingDropdownFunc();"
+                                                                                tabindex="0">
+                                                                                <div
+                                                                                    class="_aacl _aacp _aacu _aacx _aad6 _aade">
+                                                                                    <span
+                                                                                        class="_ac2a"><span>{{ my_following_count }}</span></span>
+                                                                                    following</div>
+                                                                            </a></li>
+                                                                    </ul>
+                                                                    <div class="_aa_c">
+                                                                        <h1 class="_aacl _aaco _aacu _aacx _aad6 _aade">{{ user_profile.bio }}</h1>
+                                                                    </div>
+                                                                </section>
+                                                            </header>
 
-    <p class="user-profile-posts-followers-following">{{ my_posts_amount }} posts 0 followers 0 following</p>
-    <div class="users-bio">{{ user_profile.bio }}</div>
-</div>
+                                                            <!-- POSTS / SAVED / TAGED -->
+                                                            <div class="x6s0dn4 x1b1mbwd xav7gou x9f619 x1itsidl x78zum5 x1q0g3np x2lah0s x1pg5gke xwhw2v2 xl56j7k x1r0g7yl xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 x2b8uid x11njtxf x1wzhzgj xaqea5y"
+                                                                role="tablist">
 
-<hr class="user-profile-hr">
+                                                                <!-- posts -->
+                                                                <a aria-selected="false"
+                                                                    class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _aa-z _a6hd"
+                                                                    href="{% url 'user_profile' request.user.username  %}" role="tab" tabindex="0">
+                                                                    <div class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm"> <svg aria-label="" class="_ab6-" color="#8e8e8e"
+                                                                            fill="#8e8e8e" height="12" role="img" viewBox="0 0 24 24" width="12">
+                                                                            <rect fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                                                stroke-width="2" width="18" x="3" y="3"> </rect>
+                                                                            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                x1="9.015" x2="9.015" y1="3" y2="21"> </line>
+                                                                            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                x1="14.985" x2="14.985" y1="3" y2="21"> </line>
+                                                                            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                x1="21" x2="3" y1="9.015" y2="9.015"> </line>
+                                                                            <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                x1="21" x2="3" y1="14.985" y2="14.985"> </line>
+                                                                        </svg> <span
+                                                                            class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu xdj266r x11i5rnm xat24cr x1mnrxsn xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf">
+                                                                            Posts </span>
+                                                                    </div>
+                                                                </a>
 
-<div class="user-profile-posts-saved-tagged">
-    <a href="{% url 'user_profile' request.user %}">POSTS</a>
-    <a href=""><b>SAVED</b></a>
-    <a>TAGGED</a>
-</div>
+                                                                <!-- saved -->
+                                                                <a aria-selected="true"
+                                                                    class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _aa-z _aa-- _ac_u _a6hd"
+                                                                    href="{% url 'user_profile_saved' request.user.username %}" role="tab" tabindex="0">
+                                                                    <div class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm"><svg aria-label="" class="_ab6-" color="#262626"
+                                                                            fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12">
+                                                                            <polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor"
+                                                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+                                                                        </svg><span
+                                                                            class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu xdj266r x11i5rnm xat24cr x1mnrxsn xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf">Saved</span>
+                                                                    </div>
+                                                                </a>
+                                                                
+                                                                <!-- tagged -->
+                                                                <a aria-selected="false"
+                                                                    class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _aa-z _a6hd"
+                                                                    role="tab" tabindex="0">
+                                                                    <div
+                                                                        class="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm">
+                                                                        <svg aria-label="" class="_ab6-" color="#8e8e8e"
+                                                                            fill="#8e8e8e" height="12" role="img"
+                                                                            viewBox="0 0 24 24" width="12">
+                                                                            <path
+                                                                                d="M10.201 3.797 12 1.997l1.799 1.8a1.59 1.59 0 0 0 1.124.465h5.259A1.818 1.818 0 0 1 22 6.08v14.104a1.818 1.818 0 0 1-1.818 1.818H3.818A1.818 1.818 0 0 1 2 20.184V6.08a1.818 1.818 0 0 1 1.818-1.818h5.26a1.59 1.59 0 0 0 1.123-.465Z"
+                                                                                fill="none" stroke="currentColor"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                stroke-width="2"></path>
+                                                                            <path
+                                                                                d="M18.598 22.002V21.4a3.949 3.949 0 0 0-3.948-3.949H9.495A3.949 3.949 0 0 0 5.546 21.4v.603"
+                                                                                fill="none" stroke="currentColor"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                stroke-width="2"></path>
+                                                                            <circle cx="12.072" cy="11.075" fill="none"
+                                                                                r="3.556" stroke="currentColor"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                stroke-width="2"></circle>
+                                                                        </svg><span
+                                                                            class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu xdj266r x11i5rnm xat24cr x1mnrxsn xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf">Tagged</span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
 
-<div class="user-saved-posts">
-    <div class="user-profile-posts-grid">
-        {% for post in saved_objs %}
-            <!-- DROPDOWN OWNER'S POSTS OPTIONS -->
-            {% include 'dropdowns/post_options.html' %}
+                                                            <!-- POSTS GRID -->
+                                                            {% include 'account/user_profile_parts/saved_posts_grid.html' %}
 
-            {% include 'dropdowns/post_delete.html' %}
+                                                        </div>
+                                                    </main>
+                                                    <div></div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            {% include 'dropdowns/post_edit.html' %}
-
-            <!-- DROPDOWN OTHER POST OPTIONS -->
-            {% include 'dropdowns/post_options2.html' %}
-
-            <!-- POST COMMENTS -->
-            <input type="image" onclick="hidePopupFunc(); postCommentsFunc('{{ post.id }}')" class="dropbtn user-profile-post-comments-dropbtn" src="{{ post.image.url }}" />
-            
-            {% include 'dropdowns/post_comments.html' %}
-
-            {% include 'dropdowns/users_who_liked_post.html' %}
-
-        {% endfor %}
+                    <!-- DROPDOWNS -->
+                    <div>
+                        <div>
+                            {% include 'dropdowns/post_comments.html' %}
+                            {% include 'dropdowns/post_options.html' %}
+                            {% include 'dropdowns/post_options2.html' %}
+                            {% include 'dropdowns/post_delete.html' %}
+                            {% include 'dropdowns/users_who_liked_post.html' %}
+                            {% include 'dropdowns/post_edit.html' %}
+                            {% include 'dropdowns/post_create.html' %}
+                            {% include 'dropdowns/profile_settings.html' %}
+                            {% include 'dropdowns/my_followers.html' %}
+                            {% include 'dropdowns/my_following.html' %}
+                            {% include 'dropdowns/switch_account.html' %}
+                        </div>
+                    </div>
+                    
+                    <iframe src="" title="fr"
+                        style="height: 0px; width: 0px; border: none; display: none;"></iframe>
+                </div>
+            </div>
+        </div><span id="ssrb_root_end" style="display: none;"></span>
     </div>
-</div>
+
+    <div id="fb-root" class=" fb_reset">
+        <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <div class="_acb3">
+            <div class="_acb4"></div>
+        </div>
+        <div class="_acb6">
+            <div class="_acb7"></div>
+        </div>
+    </div>
+    <div data-visualcompletion="ignore"
+        style="position: fixed; top: env(safe-area-inset-top); right: env(safe-area-inset-right); bottom: env(safe-area-inset-bottom); left: env(safe-area-inset-left); pointer-events: none; contain: strict; z-index: -9999;">
+    </div>
+</body>
 
 {% endblock %}
+
+
+

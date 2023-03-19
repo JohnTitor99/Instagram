@@ -1,0 +1,8 @@
+<!-- REPLY OPTIONS DROPDOWN-->
+<div class="dropdown">
+    <div id="replyOptionsDropdown{{ reply.id }}" class="dropdown-content reply-options-dropdown-content">
+        <a href="{% url 'delete_reply' reply.id %}">Delete</a>
+        <hr>
+        <a href="javascript:hidePopupFunc()">Cancel</a>
+    </div>
+</div>

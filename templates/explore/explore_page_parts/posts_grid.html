@@ -1,0 +1,67 @@
+{% load static %}
+
+<div class="user-profile-posts">
+
+    <!-- SEARCH RESULTS -->
+    <div class="explore-grid">
+        <div class="user-profile-posts">
+            <form metdod="GET" id="searchFormId" name="search-form" class="search-field" onchange="searchDropdownFunc()">
+                <input type="text" name="q" class="search-field-input" placeholder="Search users or hashtags..." />
+            </form>
+            <div style="margin-left: 170px;">
+
+                <!-- display users search results -->
+                {% if search_users %}
+                    <div class="search-results">
+                        {% for search_user in search_users %}
+                            <a href="{% url 'user_profile' search_user %}">
+                                <img src="{{ search_user.userprofile.logo.url }}"/>
+                                <b>{{ search_user.username }}</b>
+                                <p style="width: 100px;">{{ search_user.userprofile.bio|slice:":15" }}</p>
+                            </a>
+                            <br>
+                        {% endfor %}
+                    </div>
+
+                <!-- hashtags search results -->
+                {% elif search_hashtags %}
+                    <div class="search-results">
+                        {% for hashtag in search_hashtags %}
+                            <a href="{% url 'hashtag_page' hashtag %}">
+                                <img src="{% static 'media/icons/hashtag.png' %}"/>
+                                <b>#{{ hashtag.name }}</b>
+                                <p style="width: 100px;">{{ hashtags_dict|get_item:hashtag.name }} posts</p>
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                <!-- posts of mu followers i don't follow -->
+                {% else %}
+                    <div class="user-profile-posts-grid">
+                        {% for post in posts %}
+                            {% if post.user != request.user %}
+                                <input type="image"
+                                    src="{{ post.image.url }}"
+                                    class="dropbtn user-profile-post-comments-img"
+                                    onclick="postCommentsDropdownFunc('{{ post.id }}',
+                                                                    '{{ post.image.url }}',
+                                                                    '{{ post.user.username }}',
+                                                                    '{{ post.user.id }}',
+                                                                    '{{ post.user.userprofile.logo.url }}',
+                                                                    '{{ post.post_text }}')"/>
+
+                                <!-- save form -->
+                                <div  style="position: absolute;">
+                                    <form action="{% url 'post_action' post.id %}" method="POST" id="saveFormId{{ post.id }}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="actionbtn" value="save"/>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>    
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,34 +1,47 @@
 <!-- post edit -->
 <div class="dropdown">
-    <div id="postEditDropdown{{ post.id }}" class="dropdown-content post-edit-dropdown-content">
-        <div class="edit-post-header-left">
-            <a href="javascript:hidePopupFunc()">Cancel</a>
-        </div>
-
-        <div class="edit-post-header-right">
-            
-        </div>
-
-        <div class="edit-post-header-center">
-            Edit Info
-        </div>
-
-        <hr>
-        
-        <div class="edit-post-body">
-            <div class="edit-post-image">
-                <img src="{{ post.image.url }}"/>
+    <div id="postEditDropdownId" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="post-edit-dropdown-content">
+            <div class="edit-post-header-left">
+                <a href="javascript:hidePopupFunc()" style="color: black; text-decoration: none;">Cancel</a>
             </div>
 
-            <div class="edit-post-logo-username-text">
-                <img src="{{ post.user.userprofile.logo.url }}"/><p>{{ post.user }}</p>
-                <div class="edit-text-form">
-                    <form method="POST" name="post-edit-form">
-                        {% csrf_token %}
-                        <textarea name="post-text">{{ post.post_text }}</textarea>
-                        <input type="hidden" name="post-id" value="{{ post.id }}">
-                        <button type="submit" name="post-edit-form">Done</button>
-                    </form>
+            <div class="edit-post-header-right">
+                <button type="button" class="post-edit-done-btn" onclick="postEditFormFunc()"><b>Done</b></button>
+            </div>
+
+            <div class="edit-post-header-center">
+                <b>Edit Info</b>
+            </div>
+
+            <hr>
+            
+            <div class="edit-post-body">
+                <div class="edit-post-image">
+                    <img id="postEditImageId" src=""/>
+                </div>
+
+                <div class="edit-post-logo-username-text">
+                    <img id="postEditUserLogoId" src=""/><p id="postEditUserNameId"></p>
+                    <div class="edit-text-form">
+                        <form method="POST" id="postEditFormId">
+                            {% csrf_token %}
+                            <textarea class="post-edit-textarea-class" id="postEditTextareaId" name="post-text"></textarea>
+                            <input id="postEditPostId" type="hidden" name="post-id" value="">
+                            <input type="hidden" name="post-edit-form">
+                        </form>
+                    </div>
+                    <br><br>
+                    <div class="hashtags-window">
+                        {% for hashtag in hashtags %}
+                            <input type="button" onclick="postEditAddHashtag('{{ hashtag }}')" id="addHashtagBtn{{ hashtag }}" value="#{{ hashtag }}"/>
+                            <br>
+                            <span>{{ hashtags_dict|get_item:hashtag.name }} posts</span>
+                            <br>
+                        {% endfor %}
+                        <hr>
+                    </div>
                 </div>
             </div>
         </div>

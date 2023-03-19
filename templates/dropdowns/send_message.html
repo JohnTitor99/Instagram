@@ -1,0 +1,20 @@
+<div class="dropdown">
+    <div id="sendMessageDropdown" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="send-message-dropdown-content">
+            <p><b>New message</b></p>
+            <hr>
+            <div class="send-message-followers-list">
+                {% for follower in my_following %}
+                    <div style="padding: 5px;">
+                        <a href="{% url 'open_chat' follower %}">
+                            <img src="{{ follower.userprofile.logo.url }}" class="follows-logo"/>
+                            <a style="text-decoration: none;" href="{% url 'open_chat' follower %}" class="show-follow-follower"><b style="color: black;">{{ follower }}</b></a>
+                        </a>
+                        <br><br><br>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

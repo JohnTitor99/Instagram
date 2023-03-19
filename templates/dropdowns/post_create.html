@@ -1,0 +1,80 @@
+<!-- post create add caption -->
+<div class="dropdown">
+    <div id="postCreateDropdownId" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="post-edit-dropdown-content">
+            <div class="edit-post-header-left">
+                <a href="javascript:hidePopupFunc()" style="color: black; text-decoration: none;">Cancel</a>
+            </div>
+
+            <div class="edit-post-header-right">
+                <button type="button" class="post-edit-done-btn" onclick="postCreateFormFunc()"><b>Share</b></button>
+            </div>
+
+            <div class="create-post-header-center">
+                <b>Create new post</b>
+            </div>
+
+            <hr>
+            
+            <div class="edit-post-body">
+                <div class="edit-post-image">
+                    <img id="postCreateImagePreviewId" src=""/>
+                </div>
+
+                <div class="edit-post-logo-username-text">
+                    <img id="postCreateUserLogoId" src=""/><p id="postCreateUserNameId"></p>
+                    <div class="edit-text-form">
+                        <form method="POST" enctype="multipart/form-data" id="postCreateFormId">
+                            {% csrf_token %}
+                            <!-- post image -->
+                            <div id="postCreateSelectBtnId" class="hide" style="position: absolute; top: 250px; right: 500px;">
+                                <label
+                                    class="_acan _aiit _acap _aijb _acas _aj1-">Select from computer
+                                    <input
+                                        type="file"
+                                        id="postCreateAddImageId"
+                                        multiple
+                                        name="post-create-image"
+                                        style="display: none;">
+                                </label>
+                            </div>
+                            <!-- post text -->
+                            <textarea class="post-create-add-caption-textarea-class" id="postCreateTextareaId" name="post-create-text"></textarea>
+                            <!-- post image dimensions -->
+                            <select name="post-create-image-dimensions" id="imageDimensionsId">
+                                <option value="1">1:1</option>
+                                <option value="2" selected="">4:5</option>
+                                <option value="3">16:9</option>
+                            </select>
+                            Sides ratio
+                            <!-- name for recognize this form in views post requests -->
+                            <input type="hidden" name="post-create-form">
+                        </form>
+                        
+                        <!-- open post create dropdown with img preview -->
+                        <script type="text/javascript">
+                            postCreateAddImageId.onchange = evt => {
+                                document.getElementById("postCreateSelectBtnId").classList.toggle("hide");
+                                const [file] = postCreateAddImageId.files;
+                                if (file) {
+                                    postCreateImagePreviewId.src = URL.createObjectURL(file);
+                                }
+                            }
+                        </script>
+                    </div>
+                    <br><br>
+                    <div class="hashtags-window">
+                        {% for hashtag in hashtags %}
+                            <input type="button" onclick="postCreateAddHashtag('{{ hashtag }}')" id="postCreateAddCaptionAddHashtagBtn{{ hashtag }}" value="#{{ hashtag }}"/>
+                            <br>
+                            <span>{{ hashtags_dict|get_item:hashtag.name }} posts</span>
+                            <br>
+                        {% endfor %}
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

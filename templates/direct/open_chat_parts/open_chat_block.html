@@ -1,0 +1,113 @@
+<div class="_ab8j _ab8l _ab8w  _ab94 _ab99 _ab9h _ab9k _ab9o _ab9s _abcm"
+    style="height: 100%; width: 100%; max-width: 935px;">
+    <div class="_aa5c" style="border-right: 1px solid #DBDBDB; width: 350px;">
+
+        <!-- USERS I HAVE CHAT WITH BLOCK -->
+        <div class="_aa4j">
+            <div class="_aa4k">
+                <div class="_aa4m _aa4n"></div>
+
+                <!-- switch account dropdown btn -->
+                <div class="_aa4o">
+                    <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p _abcm"
+                        style="width: 100%;">
+                        <button
+                            class="_acan _acao _acas _aj1-"
+                            type="button"
+                            onclick="switchAccountDropdownFunc()">
+                            <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p _abcm"
+                                style="width: 100%;">
+                                <div
+                                    class="_abyj">
+                                    <div
+                                        class="_aacl _aacp _aacw _aacx _aada _aade">
+                                        {{ request.user }}
+                                    </div>
+                                </div>
+                                <div
+                                    class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _ab9y _aba8 _abcm">
+                                    <span
+                                        style="display: inline-block; transform: rotate(180deg);"><svg
+                                            aria-label="Down chevron icon"
+                                            class="_ab6-"
+                                            color="#262626"
+                                            fill="#262626"
+                                            height="20"
+                                            role="img"
+                                            viewBox="0 0 24 24"
+                                            width="20">
+                                            <path
+                                                d="M21 17.502a.997.997 0 0 1-.707-.293L12 8.913l-8.293 8.296a1 1 0 1 1-1.414-1.414l9-9.004a1.03 1.03 0 0 1 1.414 0l9 9.004A1 1 0 0 1 21 17.502Z">
+                                            </path>
+                                        </svg></span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- send message dropdown btn -->
+                <div class="_aa4m _aa4p">
+                    <button
+                        class="_abl- _abm2"
+                        type="button"
+                        onclick="sendMessageDropdownFunc()">
+                        <div class="_abm0"><svg
+                                aria-label="New message"
+                                class="_ab6-"
+                                color="#262626"
+                                fill="#262626"
+                                height="24"
+                                role="img"
+                                viewBox="0 0 24 24"
+                                width="24">
+                                <path
+                                    d="M12.202 3.203H5.25a3 3 0 0 0-3 3V18.75a3 3 0 0 0 3 3h12.547a3 3 0 0 0 3-3v-6.952"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2">
+                                </path>
+                                <path
+                                    d="M10.002 17.226H6.774v-3.228L18.607 2.165a1.417 1.417 0 0 1 2.004 0l1.224 1.225a1.417 1.417 0 0 1 0 2.004Z"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2">
+                                </path>
+                                <line
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    x1="16.848"
+                                    x2="20.076"
+                                    y1="3.924"
+                                    y2="7.153">
+                                </line>
+                            </svg></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p _ab9s _abcm"
+            style="height: 100%;">
+            <div class="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm"
+                style="height: 100%;">
+
+                <!-- LIST OF CHAT USERS -->
+                {% include 'direct/open_chat_parts/chat_users.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAT -->
+    <div class=" _ab8s _ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style="height: auto;">
+        {% include 'direct/open_chat_parts/messages.html' %}
+    </div>
+    
+</div>

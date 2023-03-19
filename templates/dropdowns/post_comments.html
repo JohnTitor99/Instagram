@@ -1,111 +1,104 @@
 {% load static %}
 
-<!-- POST COMMENTS DROPDOWN -->
+<!-- POST COMMENTS -->
 <div class="dropdown">
-    <div id="postCommentsDropdown{{ post.id }}" class="dropdown-content post-comments-dropdown-content">
-
-        <!-- grid columns 50% / 50% -->
-        <div class="post-comments-body">
-            <div class="post-comments-image">
-                <img src="{{ post.image.url }}"/>
-            </div>
-
-            <!-- comments grid rows -->
-            <div class="post-comments">
-                <div class="post-comments-header">
-                    <a href="{% url 'user_profile' post.user %}"><img src="{{ post.user.userprofile.logo.url }}"/><b>{{ post.user }}</b></a>
-                    {% if post.user == request.user %}
-                        <button onclick="postOptionsFunc('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
-                    {% else %}
-                        <button onclick="postOptionsFunc2('{{ post.id }}')" class="dropbtn post-comments-options-dropbtn">···</button>
-                    {% endif %}
-                    <hr>                                    
+    <div id="postCommentsDropdownId" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="post-comments-dropdown-content">
+            <div class="post-comments-body">
+                <div class="post-comments-image">
+                    <img id="postCommentsPostImageId" src=""/>
                 </div>
 
-                <div class="post-comments-display">
-                    <a href="{% url 'user_profile' post.user %}"><img src="{{ post.user.userprofile.logo.url }}"/></a><p><b>{{ post.user }}</b> {{ post.post_text }}</p>
-
-                    <!-- post text -->
-                    <div class="comments-created-likes-replies">
-                        <small>{{ post_created_dict|get_item:post.id }}</small>
+                <!-- comments grid rows -->
+                <div class="post-comments">
+                    <div class="post-comment-header">
+                        <a class="postCommentsProfileLinkClass" href="">
+                            <img class="postCommentsUserLogoClass" src=""/>
+                            <b class="postCommentsUserNameClass" style="color: black;"></b>
+                        </a>
+                        <button id="postCommentsPostOptionsId" onclick="" class="dropbtn post-comment-options-dropbtn">•••</button>
+                        <hr>                                    
                     </div>
 
-                    <!-- post comments -->
-                    {% for comment in post.comments.all %}
-                        <a href="{% url 'user_profile' comment.user %}"><img src="{{ comment.user.userprofile.logo.url }}"/></a><p><b>{{ comment.user }}</b> {{ comment.body }}</p>
-                        {% if comment.user == request.user %}
-                            <div class="comments-created-likes-replies">
-                                {% if comment_created_dict|get_item:comment.id == None %}
-                                    <small>Now Reply <input type="button" onclick="commentOptionsFunc('{{ comment.id }}')" value="···"/></small>
-                                {% else %}
-                                    <small>{{ comment_created_dict|get_item:comment.id }} Reply <input type="button" onclick="commentOptionsFunc('{{ comment.id }}')" value="···"/></small>
-                                {% endif %}
+                    <div class="post-comment-display">
+                        <!-- user who created post and post text -->
+                        <div style="padding-bottom: 1px;">
+                            <a class="postCommentsProfileLinkClass" href="">
+                                <img class="postCommentsUserLogoClass" src=""/>
+                            </a>
+                            
+                            <p class="post-comment-header-p">
+                                <b class="postCommentsUserNameClass"></b>
+                                <!-- post text -->
+                                <div style="margin-left: 60px; margin-top: -20px; padding-bottom: 10px;">
+                                    <span id="postCommentsPostTextId"></span>
+                                </div>
+                                
+                                <!-- hashtags -->
+                                <div id="postCommentsHashtagsBlockId" style="margin-left: 60px;"></div>
 
-                                {% include 'dropdowns/comment_options.html' %}
-                            </div>
-                        {% else %}
-                            <div class="comments-created-likes-replies">
-                                {% if comment_created_dict|get_item:comment.id == None %}
-                                    <small>Now Reply <input type="button" onclick="commentOptionsFunc2('{{ comment.id }}')" value="···"/></small>
-                                {% else %}
-                                    <small>{{ comment_created_dict | get_item:comment.id }} Reply <input type="button" onclick="commentOptionsFunc2('{{ comment.id }}')" value="···"/></small>
-                                {% endif %}
-
-                                {% include 'dropdowns/comment_options2.html' %}
-                            </div>
-                        {% endif %}
-                        <input type="image" src="{% static 'media/icons/like_icon.png' %}" class="comment-like"/>
-                    {% endfor %}
-                </div>
-
-                <div class="post-comments-actions-and-form">
-                    <hr>
-                    <!-- likes comments share save buttons -->
-                    <form action="{% url 'post_action' post.id %}" method="POST" class="likes-save-buttons-form">
-                        {% csrf_token %}
-                        <button type="submit" name="actionbtn" value="like" class="post-comments-action post-comments-like-dropbtn">
-                            <!-- show liked and unliked like button -->
-                            {% if request.user in post.users_likes %}
-                                <img src="{% static 'media/icons/like_icon_pressed.png' %}" class="post-comments-action-icon"/>
-                            {% else %}
-                                <img src="{% static 'media/icons/like_icon.png' %}" class="post-comments-action-icon"/>
-                            {% endif %}
-                        </button>
+                                <br>
+                                <small id="postCommentsHeaderPostCreatedId" style="margin-left: 60px;"></small>
+                            </p>
+                        </div>
                         
-                        <button type="submit" name="actionbtn" value="save" class="post-comments-action post-comments-save-dropbtn">
-                            {% if post.id in saved_posts %}
-                                <img src="{% static 'media/icons/save_icon_pressed.png' %}" class="post-comments-action-icon"/>
-                            {% else %}
-                                <img src="{% static 'media/icons/save_icon.png' %}" class="post-comments-action-icon"/>
-                            {% endif %}
-                        </button>
-                    </form>
-                    
-                    <!-- post comments -->
-                    <input type="image" onclick="" class="dropbtn post-comments-action post-comments-comments-dropbtn" src="{% static 'media/icons/comment_icon.png' %}" />
-                    
-                    <!-- post share -->
-                    <input type="image" onclick="" class="dropbtn post-comments-action post-comments-share-dropbtn" src="{% static 'media/icons/share_icon.png' %}" />
-                    
-                    <!-- total likes -->
-                    {% if post.total_likes is not 0 %}
-                        <p><a href="javascript:usersWhoLikedPostFunc('{{ post.id }}')" class="dropbtn users-who-liked-post-dropbtn"><b>{{ post.total_likes }} likes</b></a></p>
-                    {% else %}
-                        <form action="{% url 'post_action' post.id %}" method="POST">
+                        <!-- the list of post's comments -->
+                        <div id="postCommentsCommentId"></div>
+                        <!-- comments replies -->
+                        
+                    </div>
+
+                    <!-- post actions -->
+                    <div class="post-comments-actions-and-form">
+
+                        <!-- html is passing from javascript -->
+                        <div id="postCommentsPostActionsId"></div>
+                        <form action="" class="postCommentslikeFormId" method="POST" id="">
                             {% csrf_token %}
-                            <p>Be the first to <button type="submit" name="actionbtn" value="like">like this</button></p>
+                            <input type="hidden" name="actionbtn" value="like"/>
                         </form>
-                    {% endif %}
+                        <form action="" class="postCommentsUnlikeFormId" method="POST" id="">
+                            {% csrf_token %}
+                            <input type="hidden" name="actionbtn" value="unlike"/>
+                        </form>
+                        <!-- total likes -->
+                        <p>
+                            <a href="" id="postCommentsLikesDropdownId" class="dropbtn" style="text-decoration: none; color: black;">
+                                <b style="margin-top: -10px; margin-left: 10px;" id="postCommentsLikesCountId"></b>
+                            </a>
+                        </p>
 
-                    <p>{{ post.created | timesince }} ago </p>
+                        <p style="margin-left: 10px;" id="postCommentsCreatedId"></p>
 
-                    <!-- form for adding comments -->
-                    <form method="POST" class="add-comments-form" name="add-comment-form">
-                        {% csrf_token %}
-                        <input type="text" class="add-comments-input" placeholder="Add a comment..." name="comment-text"/>
-                        <input type="hidden" name="post-id" value="{{ post.id }}">
-                        <input type="submit" value="Post" name="add-comment-form"/>
-                    </form>
+                        <!-- form for adding comments -->
+                        <div class="_aaof post-comments-text-form-block">
+                            <hr>
+                            <form class="_aidk" method="POST" name="add-comment-form">
+                                {% csrf_token %}
+                                <div class="x1y1aw1k xn6708d xwib8y2 xkhd6sd">
+                                    <div>
+                                        <button class="_abl- _abm2" type="button">
+                                            <div class="_abm0">
+                                                <svg aria-label="Emoji" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                                    <path d="M15.83 10.997a1.167 1.167 0 1 0 1.167 1.167 1.167 1.167 0 0 0-1.167-1.167Zm-6.5 1.167a1.167 1.167 0 1 0-1.166 1.167 1.167 1.167 0 0 0 1.166-1.167Zm5.163 3.24a3.406 3.406 0 0 1-4.982.007 1 1 0 1 0-1.557 1.256 5.397 5.397 0 0 0 8.09 0 1 1 0 0 0-1.55-1.263ZM12 .503a11.5 11.5 0 1 0 11.5 11.5A11.513 11.513 0 0 0 12 .503Zm0 21a9.5 9.5 0 1 1 9.5-9.5 9.51 9.51 0 0 1-9.5 9.5Z">
+    
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <input type="text" id="" class="postCommentsTextFieldClass post-comment-textarea" placeholder="Add a comment..." name="comment-text"/>
+                                <input type="hidden" name="post-id" value="">
+                                <input type="hidden" id="" name="comment-id" value=""/>
+                                <div class="">
+                                    <input type="submit" class="post-add-comment-btn post-comments-add-comment-btn x1i10hfl x1qjc9v5 xdl72j9 x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j xeuugli x1hl2dhg xggy1nq x1ja2u2z x1t137rt x1q0g3np x1lku1pv x1a2a7pz xjyslct x9f619 x1ypdohk x1i0vuye xwhw2v2 x17ydfre xl56j7k x1f6kntn x2b8uid xlyipyv x87ps6o x14atkfc x1lcm9me x1yr5g0i xrt01vj x10y3i5r x1d5wrs8 x1v8p93f xogb00i x16stqrj x1ftr3km x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x972fbf xcfux6l x1qhh985 xm0m39n xt0psk2 xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 xjbqb8w xt7dq6l x173jzuc" value="Post" name="add-comment-form"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

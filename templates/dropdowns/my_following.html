@@ -1,0 +1,26 @@
+<div class="dropdown">
+    <div id="showMyFollowingDropdownId" class="dropdown-content hide">
+        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+        <div class="show-follow-dropdown-content">
+            <p><b>Following</b></p>
+            <hr>
+            <div class="follows-list">
+                {% for follower in my_following %}
+                    <div style="height: 60px;">
+                        <a href="{% url 'user_profile' follower %}">
+                            <img src="{{ follower.userprofile.logo.url }}" class="follows-logo"/>
+                            <a class="show-follow-follower" style="text-decoration: none;"><b>{{ follower }}</b></a>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="following" value="{{ follower.id }}"/>
+                                <input type="hidden" name="check-follow" value="Unfollow"/>
+                                <button type="submit" class="follow-btn" name="follow-unfollow-following-form"><b>Following</b></button>
+                            </form>
+                            <br><br>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div

@@ -1,0 +1,33 @@
+<div class="hashtah-page-header">
+    <input type="image" class="hashtag-logo" src="{{ top_post.image.url }}"/>
+    <div style="margin-top: 10px;">
+        <span>#{{ current_hashtag }}</span>
+        <p><b>{{ hashtags_dict|get_item:current_hashtag.name }}</b> posts</p>
+    </div>
+</div>
+
+<div class="hashtag-page-grid">
+    <div class="user-profile-posts">
+        <b class="hashtag-page-top-posts">Top posts</b>
+        <div class="user-profile-posts-grid">
+            {% for post in posts %}
+                <input type="image" class="dropbtn user-profile-post-comments-img" src="{{ post.image.url }}"
+                        onclick="postCommentsDropdownFunc('{{ post.id }}',
+                                                        '{{ post.image.url }}',
+                                                        '{{ post.user.username }}',
+                                                        '{{ post.user.id }}',
+                                                        '{{ post.user.userprofile.logo.url }}',
+                                                        '{{ post.post_text }}')"/>
+                <!-- save form -->
+                <div  style="position: absolute;">
+                    <form action="{% url 'post_action' post.id %}" method="POST" id="saveFormId{{ post.id }}">
+                        {% csrf_token %}
+                        <input type="hidden" name="actionbtn" value="save"/>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+

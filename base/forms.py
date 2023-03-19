@@ -7,27 +7,22 @@ from .models import Post, UserProfile, User
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['image', 'post_text']
-
-        # labels = {
-        #     'image': '',
-        # }
+        fields = ['image_dimensions']
 
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ['logo', 'gender']
-        # excludes = ['']
+# class UserProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = UserProfile
+#         fields = ['logo']
 
 
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(widget=TextInput(
-        attrs={'type': 'text', 'id': 'username', 'name': 'username', 'class': 'register-page-input', 'placeholder': 'Username'}),
+        attrs={'id': 'username', 'placeholder': 'Username', 'aria-label': 'Username', 'maxlength': '30', 'type': 'text', 'class': 'register-page-field _aa4b _add6 _ac4d'}),
         label=''
     )
     password1 = forms.CharField(widget=PasswordInput(
-        attrs={'type': 'text', 'id': 'password', 'name': 'username', 'class': 'register-page-input', 'placeholder': 'Password'}),
+        attrs={'id': 'password', 'placeholder': 'Password', 'aria-label': 'Password', 'type': 'password', 'class': 'register-page-field _aa4b _add6 _ac4d'}),
         label=''
     )
     password2 = None

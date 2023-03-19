@@ -1,0 +1,220 @@
+<div class="settings-container">
+    <div class="settings-list">
+        <b><a style="color: black;">Edit profile</a></b>
+        <br><br><br>
+        <a href="{% url 'accounts_password_change' %}" style="color: black;">Change password</a>
+        <br><br><br>
+        <a>Apps and websites</a>
+        <br><br><br>
+        <a>Email notifications</a>
+        <br><br><br>
+        <a>Push notifications</a>
+        <br><br><br>
+        <a>Manage contacts</a>
+        <br><br><br>
+        <a>Privacy and security</a>
+        <br><br><br>
+        <a>Login activity</a>
+        <br><br><br>
+        <a>Emails from instagram</a>
+        <br><br><br>
+        <a>Help</a>
+        <br><br>
+        <a>Switch to professional account</a>
+        <br><br>
+        <hr>
+
+        <h3>Meta</h3>
+        <label>Accounts Center</label>
+        <br><br>
+        <small>Control settings for connected experiences across Instagram, the Facebook app and Messenger, including story and post sharing and logging in.</small>
+    </div>
+
+    <div class="edit-profile">
+        <center>
+            
+            <!-- ACCOUNT EDIT FORM -->
+            <form method="POST" id="profileEditFormId" enctype="multipart/form-data" name="profile-edit-form">
+                {% csrf_token %}
+
+                <!-- header -->
+                <div class="edit-profile-header">
+                    <img class="change-profile-photo-dropbtn" onclick="changeLogoDropdownFunc()" src="{{ user_profile.logo.url }}"/>
+                    <h2>{{ request.user }}</h2>
+                    <a href="javascript: changeLogoDropdownFunc()" class="dropbtn change-profile-photo-link">Change profile photo</a>
+                    {% if messages %}
+                        <div class="account-edit-messages">
+                            {% for message in messages %}
+                                <small>{{ message }}</small>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+    
+                <!-- change logo dropdown -->
+                <div class="dropdown">
+                    <div id="changeLogoDropdownId" class="dropdown-content hide">
+                        <div onclick="hidePopupFunc()" style="z-index: 99;" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc"></div>
+                        <div class="change-logo-dropdown-content">
+                            <h2>Change Profile Photo</h2>
+                            <hr>
+                            <label for="files">Upload Photo</label>
+                            <input type="file" id="files" name="new-logo" onchange="profileEditForm()"/>
+                            <input type="hidden" name="profile-edit-form"/>
+                            <hr>
+                            <a style="color: #ED4956" href="{% url 'remove_logo' %}"><b>Remove Current Photo</b></a>
+                            <hr>
+                            <a href="javascript:hidePopupFunc()">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- name -->
+                <div>
+                    <label>Name</label>
+                    {% if user_profile.full_name %}
+                        <input type="text" name="fullname" value="{{ user_profile.full_name }}" class="edit-profile-fields"/>
+                    {% else %}
+                        <input type="text" name="fullname" placeholder="Name" class="edit-profile-fields"/>
+                    {% endif %}
+
+                    <div class="settings-tips">
+                        <small>Help people discover your account by using the name you're</small>
+                        <br>
+                        <small>known by: either your full name, nickname, or business name.</small>
+                        <br><br>
+                        <small>You can only change your name twice within 14 days.</small>
+                    </div>
+                </div>
+
+                <!-- username -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label>Username</label>
+                        {% if user_profile.user %}
+                            <input type="text" name="username" value="{{ user_profile.user }}" class="edit-profile-fields"/>
+                        {% else %}
+                            <input type="text" name="username" placeholder="Username" class="edit-profile-fields"/>
+                        {% endif %}
+                    </div>
+
+                    <div class="settings-tips">
+                        <small>In most cases, you'll be able to change your username back to</small>
+                        <br>
+                        <small>{{ request.user }} for another 14 days.</small>
+                    </div>
+                </div>
+
+                <!-- website -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label>Website</label>
+                        {% if user_profile.website %}
+                            <input type="text" name="website" value="{{ user_profile.website }}" class="edit-profile-fields"/>
+                        {% else %}
+                            <input type="text" name="website" placeholder="Website" class="edit-profile-fields"/>
+                        {% endif %}
+                    </div>
+
+                    <div class="settings-tips">
+                        <small>Editing your links is only available on mobile. Visit the Instagram</small>
+                        <br>
+                        <small>app and edit your profile to change the websites in your bio.</small>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- bio -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label>Bio</label>
+                        {% if user_profile.bio %}
+                            <textarea name="bio" class="edit-profile-textarea-field">{{ user_profile.bio }}</textarea>
+                        {% else %}
+                            <textarea name="bio" class="edit-profile-textarea-field"></textarea>
+                        {% endif %}
+                    </div>
+
+                    <p>Personal information</p>
+                    <small>Provide your personal information, even if the account is used for a</small>
+                    <br>
+                    <small>business, a pet or something else. This won't be a part of your</small>
+                    <br>
+                    <small>public profile.</small>
+                </div>
+
+                <!-- email -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label>Email</label>
+                        {% if user_profile.email %}
+                            <input type="text" name="email" value="{{ user_profile.email }}" class="edit-profile-fields"/>
+                        {% else %}
+                            <input type="text" name="email" placeholder="Email" class="edit-profile-fields"/>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- phone number -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label>Phone number</label>
+                        {% if user_profile.phone %}
+                            <input type="text" name="phone" value="{{ user_profile.phone }}" class="edit-profile-fields"/>
+                        {% else %}
+                            <input type="text" name="phone" placeholder="Phone number" class="edit-profile-fields"/>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- gender -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label>Gender</label>
+                        <select name="gender" class="edit-profile-fields">
+                            {% if user_profile.get_gender_display == 'Male' %}
+                                <option value="Male" selected>Male</option>
+                                <option value="Female">Female</option>
+                                <option value="">Prefer not to say</option>
+                            {% elif user_profile.get_gender_display == 'Female' %}
+                                <option value="Male">Male</option>
+                                <option value="Female" selected>Female</option>
+                                <option value="">Prefer not to say</option>
+                            {% else %}
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="" selected>Prefer not to say</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+
+                <!-- similar account suggestions (doedn's do anything) -->
+                <div>
+                    <div class="edit-accounts-forms">
+                        <label style="position: absolute; right: 350px;">Similar accounts suggestions</label>
+                        <div style="margin-left: 230px;">
+                            {% if user_profile.similar_account_suggestions %}
+                                <input type="checkbox" name="similar-account-suggestions" value="checked" checked="checked" />Include your account when <br> recommending similar account <br> people might want to follow.
+                            {% else %}
+                                <input type="checkbox" name="similar-account-suggestions" value="check" />Include your account when <br> recommending similar account <br> people might want to follow.
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- submit -->
+                <div style="padding-bottom: 30px;">
+                    <input type="submit" value="Submit" name="profile-edit-form" class="edit-submit-button"/>
+                </div>
+
+            </form>
+            
+        </center>
+    </div>
+
+    <br><br>
+</div>
