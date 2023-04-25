@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'base.apps.BaseConfig',
-    'account.apps.AccountConfig',
-    'explore.apps.ExploreConfig',
-    'direct.apps.DirectConfig',
+    'apps.base.apps.BaseConfig',
+    'apps.account.apps.AccountConfig',
+    'apps.explore.apps.ExploreConfig',
+    'apps.direct.apps.DirectConfig',
     
     'rest_framework',
-    'storages',
+    # 'storages',
 ]
 
 ASGI_APPLICATION = 'instagram.asgi.application'
@@ -93,16 +93,30 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+################################
+# POSTGRESQL DATABASE SETTINGS #
+################################
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'instagram_db',
+#         'USER': 'izole',
+#         'PASSWORD': 'postgres',
+#         'HOST': 'database-1.ceyssixvyp7i.eu-central-1.rds.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
+
+# sql database settings
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instagram_db',
-        'USER': 'izole',
-        'PASSWORD': 'postgres',
-        'HOST': 'database-1.ceyssixvyp7i.eu-central-1.rds.amazonaws.com',
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -141,14 +155,15 @@ USE_TZ = False
 
 STATIC_URL = 'static/'
 
-# comment this when i don't need s3
-MEDIA_URL = 'media/'
+# comment this if i want local static files
+# MEDIA_URL = 'media/'
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static/',
-# ]
+MEDIA_ROOT = BASE_DIR / 'static/'       # delete media/ when if i want local static files
 
-MEDIA_ROOT = BASE_DIR / 'media/static/'       # delete media/ when i don't need s3
+# uncomment this if i want local static files
+STATICFILES_DIRS = [
+    BASE_DIR / 'static/',
+]
 
 
 # Default primary key field type
@@ -157,34 +172,20 @@ MEDIA_ROOT = BASE_DIR / 'media/static/'       # delete media/ when i don't need 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# comment all buckets config when i don't need s3
+#################################################################
+# comment all buckets config below if i want local static files #
+#################################################################
+
 #S3 BUCKETS CONFIG
 
-AWS_ACCESS_KEY_ID = 'AKIA245GXT5P54LAKD6Z'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'my-instagram-bucket'
+# AWS_ACCESS_KEY_ID = 'AKIA245GXT5P54LAKD6Z'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'my-instagram-bucket'
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-# python manage.py collectstatic
-
-
-# [
-#     {
-#         "AllowedHeaders": [
-#             "*"
-#         ],
-#         "AllowedMethods": [
-#             "POST",
-#             "GET",
-#             "PUT"
-#         ],
-#         "AllowedOrigins": [
-#             "*"
-#         ]
-#     }
-# ]
+# python manage.py collectstatic # apply static files changes to s3

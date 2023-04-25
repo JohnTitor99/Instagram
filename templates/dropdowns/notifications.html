@@ -1,9 +1,9 @@
 <!-- notifications -->
 <div class="dropdown">
     <div id="notificationsDropdownId" class="dropdown-content notifications-dropdown-content hide">
-        <div onclick="hidePopupFunc()" class="x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc">
+        <div onclick="hidePopupFunc()" class="sira_hernia x1ey2m1c xds687c xixxii4 x17qophe x13vifvy x1h0vfkc">
         </div>
-        <div class="x10l6tqk x1u3tz30 x1ja2u2z" style="transform: translateX(0%);">
+        <div class="x10l6tqk x1u3tz30 x1ja2u2z">
             <div class="">
                 <div
                     class="xvbhtw8 xvb8j5 x9f619 x78zum5 xdt5ytf x1dr59a3 x1odjw0f xish69e x1y1aw1k x4uap5 xwib8y2 xkhd6sd xzmilaz x168nmei xoqspk4 x12v9rci xo71vjh x1n2onr6 x1zvrr1">
@@ -24,60 +24,60 @@
                                 <!-- notifications block -->
                                 <div>
                                     {% for follower in my_followers %}
-                                    <div class="x6s0dn4 x1q4h3jn x78zum5 x1y1aw1k xxbr6pl xwib8y2 xbbxn1n x87ps6o x1wq6e7o x1di1pr7 x1h4gsww xux34ky x1ypdohk x1l895ks"
-                                        data-pressable-container="true">
-                                        <div class="x2lah0s x14ju556 xr12ei9"><a
-                                                class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xa49m3k xqeqjp1 x2hbi6w x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk x78zum5 xdl72j9 xdt5ytf x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j xeuugli xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt xnz67gz x14yjl9h xudhj91 x18nykt9 xww2gxu x9f619 x1lliihq x2lah0s x6ikm8r x10wlt62 x1n2onr6 x1ykvv32 xougopr x159fomc xnp5s1o x194ut8o x1vzenxt xd7ygy7 xt298gk x1xrz1ek x1s928wv x162n7g1 x2q1x1w x1j6awrg x1n449xj x1m1drc7 x4gyw5p x1ypdohk _a6hd"
-                                                href="{% url 'user_profile' follower.username %}" role="link"
-                                                tabindex="0" style="width: 44px; height: 44px;"><img
-                                                    alt="jeffwhiteugsszopmyq's profile picture"
-                                                    class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu x5yr21d xpdipgo xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf xh8yej3"
-                                                    crossorigin="anonymous" draggable="false"
-                                                    src="{{ follower.userprofile.logo.url }}"></a>
-                                        </div>
-                                        <div class="x1iyjqo2"><span
-                                                class="x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye xvs91rp xo1l8bm x5n08af x1tu3fi x3x7a5m x10wh9bi x1wdrske x8viiok x18hxmgj"
-                                                style="line-height: var(--base-line-clamp-line-height); --base-line-clamp-line-height:18px;"><a
-                                                    class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _a6hd"
-                                                    href="/jeffwhiteugsszopmyq/" role="link" tabindex="0"><span
-                                                        class="x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs xt0psk2 x1i0vuye xvs91rp x1xlr1w8 x5n08af x10wh9bi x1wdrske x8viiok x18hxmgj"
-                                                        style="line-height: 18px;">{{ follower }}</span></a>
-                                                started following you. <br><span
-                                                    class="x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs xt0psk2 x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj"
-                                                    style="line-height: 18px;">{{ notifications_followers_created_dict|get_item:follower }}</span></span></div>
-                                        <!-- follow button -->
-                                        <div class="x2lah0s x14ju556 x16n37ib">
-                                            {% if follower in my_following %}
-                                                <form method="POST">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="following" value="{{ follower.id }}" />
-                                                    <input type="hidden" name="check-follow" value="Unfollow" />
+                                        <div class="x6s0dn4 x1q4h3jn x78zum5 x1y1aw1k xxbr6pl xwib8y2 xbbxn1n x87ps6o x1wq6e7o x1di1pr7 x1h4gsww xux34ky x1ypdohk x1l895ks"
+                                            data-pressable-container="true">
+                                            <div class="x2lah0s x14ju556 xr12ei9"><a
+                                                    class="x1i10hfl x1qjc9v5 xjbqb8w xjqpnuy xa49m3k xqeqjp1 x2hbi6w x13fuv20 xu3j5b3 x1q0q8m5 x26u7qi x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk x78zum5 xdl72j9 xdt5ytf x2lah0s xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x2lwn1j xeuugli xexx8yu x4uap5 x18d9i69 xkhd6sd x1n2onr6 x16tdsg8 x1hl2dhg xggy1nq x1ja2u2z x1t137rt xnz67gz x14yjl9h xudhj91 x18nykt9 xww2gxu x9f619 x1lliihq x2lah0s x6ikm8r x10wlt62 x1n2onr6 x1ykvv32 xougopr x159fomc xnp5s1o x194ut8o x1vzenxt xd7ygy7 xt298gk x1xrz1ek x1s928wv x162n7g1 x2q1x1w x1j6awrg x1n449xj x1m1drc7 x4gyw5p x1ypdohk _a6hd"
+                                                    href="{% url 'user_profile' follower.username %}" role="link"
+                                                    tabindex="0" style="width: 44px; height: 44px;"><img
+                                                        alt="jeffwhiteugsszopmyq's profile picture"
+                                                        class="x6umtig x1b1mbwd xaqea5y xav7gou xk390pu x5yr21d xpdipgo xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x11njtxf xh8yej3"
+                                                        crossorigin="anonymous" draggable="false"
+                                                        src="{{ follower.userprofile.logo.url }}"></a>
+                                            </div>
+                                            <div class="x1iyjqo2"><span
+                                                    class="x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye xvs91rp xo1l8bm x5n08af x1tu3fi x3x7a5m x10wh9bi x1wdrske x8viiok x18hxmgj"
+                                                    style="line-height: var(--base-line-clamp-line-height); --base-line-clamp-line-height:18px;"><a
+                                                        class="x1i10hfl xjbqb8w x6umtig x1b1mbwd xaqea5y xav7gou x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _a6hd"
+                                                        href="/jeffwhiteugsszopmyq/" role="link" tabindex="0"><span
+                                                            class="x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs xt0psk2 x1i0vuye xvs91rp x1xlr1w8 x5n08af x10wh9bi x1wdrske x8viiok x18hxmgj"
+                                                            style="line-height: 18px;">{{ follower }}</span></a>
+                                                    started following you. <br><span
+                                                        class="x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs xt0psk2 x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj"
+                                                        style="line-height: 18px;">{{ notifications_followers_created_dict|get_item:follower }}</span></span></div>
+                                            <!-- follow button -->
+                                            <div class="x2lah0s x14ju556 x16n37ib">
+                                                {% if follower in my_following %}
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="following" value="{{ follower.id }}" />
+                                                        <input type="hidden" name="check-follow" value="Unfollow" />
 
-                                                    <button name="follow-unfollow-following-form"
-                                                        class="_acan _aiit _acap _aijb _acat _aj1-" type="submit">
-                                                        <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p _ab9x _abcm"
-                                                            style="height: 100%;">
-                                                            <div class="_aacl _aaco _aacw _aad6 _aade">Following</div>
-                                                        </div>
-                                                    </button>
-                                                </form>
-                                            {% else %}
-                                                <form method="POST">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="following" value="{{ follower.id }}" />
-                                                    <input type="hidden" name="check-follow" value="Follow" />
+                                                        <button name="follow-unfollow-following-form"
+                                                            class="_acan _aiit _acap _aijb _acat _aj1-" type="submit">
+                                                            <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p _ab9x _abcm"
+                                                                style="height: 100%;">
+                                                                <div class="_aacl _aaco _aacw _aad6 _aade">Following</div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                {% else %}
+                                                    <form method="POST">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="following" value="{{ follower.id }}" />
+                                                        <input type="hidden" name="check-follow" value="Follow" />
 
-                                                    <button name="follow-unfollow-following-form"
-                                                        class="_acan _aiit _acap _aijb _acas _aj1-" type="submit">
-                                                        <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p _ab9x _abcm"
-                                                            style="height: 100%;">
-                                                            <div class="_aacl _aaco _aacw _aad6 _aade">Follow</div>
-                                                        </div>
-                                                    </button>
-                                                </form>
-                                            {% endif %}
+                                                        <button name="follow-unfollow-following-form"
+                                                            class="_acan _aiit _acap _aijb _acas _aj1-" type="submit">
+                                                            <div class="_ab8w  _ab94 _ab97 _ab9h _ab9k _ab9p _ab9x _abcm"
+                                                                style="height: 100%;">
+                                                                <div class="_aacl _aaco _aacw _aad6 _aade">Follow</div>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                {% endif %}
+                                            </div>
                                         </div>
-                                    </div>
                                     {% endfor %}
                                 </div>
                             </div>

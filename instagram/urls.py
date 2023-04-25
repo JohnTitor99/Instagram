@@ -7,10 +7,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', include('base.urls')),
-    path('profile/', include('account.urls')),
-    path('explore/', include('explore.urls')),
-    path('direct/', include('direct.urls')),
+    path('', include('apps.base.urls')),
+    path('profile/', include('apps.account.urls')),
+    path('explore/', include('apps.explore.urls')),
+    path('direct/', include('apps.direct.urls')),
 
     path('api-auth/', include('api.urls')),
 

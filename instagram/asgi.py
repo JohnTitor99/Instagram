@@ -12,7 +12,7 @@ import os
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
-import direct.routing
+import apps.direct.routing
 
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'instagram.settings')
@@ -21,7 +21,7 @@ application = ProtocolTypeRouter({
     'http':get_asgi_application(),
     'websocket': AuthMiddlewareStack( # list of protocols and use AuthMiddlewareStack to wrap the url router
         URLRouter(
-            direct.routing.websocket_urlpatterns # url patterns list from routing.py
+            apps.direct.routing.websocket_urlpatterns # url patterns list from routing.py
         )
     )
 })
