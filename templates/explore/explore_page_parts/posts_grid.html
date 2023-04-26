@@ -16,8 +16,8 @@
                         {% for search_user in search_users %}
                             <a href="{% url 'user_profile' search_user %}">
                                 <img src="{{ search_user.userprofile.logo.url }}"/>
-                                <b>{{ search_user.username }}</b>
-                                <p style="width: 100px;">{{ search_user.userprofile.bio|slice:":15" }}</p>
+                                <b style="color: black;">{{ search_user.username }}</b>
+                                <p style="width: 100px; color: black;">{{ search_user.userprofile.bio|slice:":15" }}</p>
                             </a>
                             <br>
                         {% endfor %}
