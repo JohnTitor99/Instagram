@@ -18,11 +18,11 @@ class PostForm(forms.ModelForm):
 
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(widget=TextInput(
-        attrs={'id': 'username', 'placeholder': 'Username', 'aria-label': 'Username', 'maxlength': '30', 'type': 'text', 'class': 'register-page-field _aa4b _add6 _ac4d'}),
+        attrs={'id': 'username', 'placeholder': 'Username', 'maxlength': '30', 'type': 'text', 'class': 'login-input-fields'}),
         label=''
     )
     password1 = forms.CharField(widget=PasswordInput(
-        attrs={'id': 'password', 'placeholder': 'Password', 'aria-label': 'Password', 'type': 'password', 'class': 'register-page-field _aa4b _add6 _ac4d'}),
+        attrs={'id': 'password', 'placeholder': 'Password', 'type': 'password', 'class': 'login-input-fields'}),
         label=''
     )
     password2 = None

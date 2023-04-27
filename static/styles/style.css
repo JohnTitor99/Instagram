@@ -80355,3 +80355,84 @@ body {
     font-size: 13px;
     opacity: .8;
 }
+
+
+/* LOGIN PAGE */
+.login-page-main-block{
+    padding-top: 100px;
+}
+
+.login-input-fields {
+    height: 30px;
+    width: 250px;
+    margin-bottom: 5px;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+}
+
+.login-input-fields::placeholder {
+    font-size: 12px;
+}
+
+.login-button {
+    height: 32px;
+    width: 258px;
+    border: none;
+    border-radius: 7px;
+    background-color: #0085F7;
+    color: white;
+    margin-top: 12px;
+}
+
+.login-page-block1 {
+    width: 330px;
+    height: 305px;
+    border: 1px solid #DBDBDB;
+}
+
+.login-page-block2 {
+    margin-top: 10px;
+    width: 330px;
+    height: 45px;
+    border: 1px solid #DBDBDB;
+}
+
+
+/* REGISTER PAGE */
+
+.register-page-main-block{
+    padding-top: 30px;
+}
+
+.register-page-block1 {
+    width: 330px;
+    height: 500px;
+    border: 1px solid #DBDBDB;
+}
+
+.register-page-block2 {
+    margin-top: 10px;
+    width: 330px;
+    height: 45px;
+    border: 1px solid #DBDBDB;
+}
+
+.register-button {
+    height: 32px;
+    width: 258px;
+    border: none;
+    border-radius: 7px;
+    background-color: #0085F7;
+    color: white;
+    margin-top: 12px;
+}
+
+.register-button:disabled {
+    height: 32px;
+    width: 258px;
+    border: none;
+    border-radius: 7px;
+    background-color: #4CB5F9;
+    color: white;
+    margin-top: 12px;
+}
