@@ -9,7 +9,7 @@
                     <div style="height: 60px;">
                         <a href="{% url 'user_profile' follower %}">
                             <img src="{{ follower.userprofile.logo.url }}" class="follows-logo"/>
-                            <a class="show-follow-follower" style="text-decoration: none;"><b>{{ follower }}</b></a>
+                            <a class="show-follow-follower" style="text-decoration: none; color: black;"><b>{{ follower }}</b></a>
                             <form method="POST">
                                 {% csrf_token %}
                                 <input type="hidden" name="follower" value="{{ follower.id }}"/>

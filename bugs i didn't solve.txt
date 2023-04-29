@@ -1,0 +1,3 @@
+can't write ' in comments - it brokes all comments section
+not perfect image resize system
+i didn't add ajax for comments

@@ -8,7 +8,7 @@
                 {% for follower in other_user_followers %}
                     <a href="">
                         <img src="{{ follower.userprofile.logo.url }}" class="follows-logo"/>
-                        <a href="" class="show-follow-follower"><b>{{ follower }}</b></a>
+                        <a href="{% url 'user_profile' follower %}" class="show-follow-follower" style="text-decoration: none; color: black;"><b>{{ follower }}</b></a>
                         {% if follower in my_following %}
                             <form method="POST">
                                 {% csrf_token %}

@@ -161,12 +161,14 @@ function postCommentsDropdownFunc(postId, postImage, postUser, postUserId, postU
             // insert comment block
             if (String(obj['fields']['post']) == postId) {
                 let commentBlock = `
-                <div style="height: 100%; width: 100%;">
-                    <a href="/${ obj['adj_dict']['username'] }/">
-                        <img src="/${ obj['adj_dict']['logo'] }"/>
-                    </a>
-                    <p class="post-comment-body-p"><b>${ obj['adj_dict']['username'] }</b> ${ obj['fields']['body'] }</p>
-
+                <div>
+                    <div>
+                        <a href="/profile/${ obj['adj_dict']['username'] }/">
+                            <img src="/${ obj['adj_dict']['logo'] }"/>
+                        </a>
+                        <div class="post-comment-body-p" style="width: 400px;"><b>${ obj['adj_dict']['username'] }</b> ${ obj['fields']['body'] }</div>
+                    </div>
+                    
                     <!-- comment created date, reply and options buttons -->
                     <div class="comment-created-replies">
                         <small>${ obj['adj_dict']['created'] }
@@ -174,6 +176,7 @@ function postCommentsDropdownFunc(postId, postImage, postUser, postUserId, postU
                             <input type="button" onclick="commentOptionsFunc('${ obj['pk'] }')" value="•••"/>
                         </small>
                     </div>
+
 
                     <!-- comments options dropdown-->
                     <div class="dropdown">

@@ -3,3 +3,4 @@ Username - Password
 admin - admin (superuser)
 real_nature - real_nature123
 programmer_memes - programmer_memes123
+usa_explores - usa_explores123
