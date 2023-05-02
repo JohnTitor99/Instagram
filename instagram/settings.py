@@ -101,15 +101,19 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'instagram_db',
-#         'USER': 'izole',
-#         'PASSWORD': 'postgres',
-#         'HOST': 'database-1.ceyssixvyp7i.eu-central-1.rds.amazonaws.com',
+#         'NAME': '',
+#         'USER': '',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
 #         'PORT': '5432'
 #     }
 # }
 
-# sql database settings
+
+############################
+# SQLITE DATABASE SETTINGS #
+############################
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -172,11 +176,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#################################################################
-# comment all buckets config below if i want local static files #
-#################################################################
-
-#S3 BUCKETS CONFIG
+####################
+# S3 BUCKET CONFIG #
+####################
 
 # AWS_ACCESS_KEY_ID = 'AKIA245GXT5P54LAKD6Z'
 # AWS_SECRET_ACCESS_KEY = '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'
