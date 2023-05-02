@@ -26,9 +26,10 @@ This site have all functionality that original instagram have, except of recomme
 ## Technologies
 
 - Python 3.10.6
-- NumPy 1.24.2
-- pandas 2.0.0
-- psutil 5.9.4
+- Django 4.1.3
+- djangorestframework 3.14.0
+- channels 4.0.0
+- Pillow 9.5.0
 - psycopg2 2.9.6
 ## Running the project
 
@@ -82,7 +83,7 @@ Go to main_directory > instagram > settings.py. Open this file and find postgres
 'HOST': 'localhost';
 'PORT': 5432.
 
-Now run the following commands:
+Now run following commands:
 ```shell
 python manage.py makemigrations
 python manage.py migrate
@@ -96,3 +97,13 @@ Click 'Sign in to the Console', find 'RDS' in serch and click on it.
 ![Screenshot](screenshot4.png)
 
 There will be 'Create database' button. Then setup settings and create your database (you can visit [website](https://django.how/resources/aws-rds-postgresql-instance-for-django-project/) for more detailed guide).
+
+Click on your new database, go to connection and security and copy the 'endpoint'.
+
+Create a new server like before, but in field 'Host name' put the copied endpoint. You should also put this in your postgresql settings in 'settings.py' in 'HOST' instead of localhost. Make sure that other fields match.
+
+Now you can run following commands to apply your tables on AWS database:
+```shell
+python manage.py makemigrations
+python manage.py migrate
+```
