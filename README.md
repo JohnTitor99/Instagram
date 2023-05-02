@@ -12,6 +12,7 @@ A simple, fun and creative way to share photos and messages with friends and fam
 * [Running the Project](#running-the-project)
 * [Connect PostgreSQL database](#connect-postgresql-database)
 * [Set up AWS RDS](set-up-aws-rds)
+* [Amazon S3](amazon-s3)
 ## General Info
 
 Doing this project i learned a lot about Django. I think the best way to learn something, whether it's a new programming language, framework or anything else is practice. Of course you need knowledge as well, but you can't become a developer just after reading a couple of books or watching tutorials on youtube. You need to make something with your own hands, facing a bunch of problems and learn how to solve them. While i was working on this i constanly learned something new and had to rewrite many parts of my code several times. Despite this it still needs some adjustments that i didn't make yet.
@@ -107,3 +108,5 @@ Now you can run following commands to apply your tables on AWS database:
 python manage.py makemigrations
 python manage.py migrate
 ```
+## Amazon S3
+If you want to save your static files on AWS as well, you can read [documentation](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html).

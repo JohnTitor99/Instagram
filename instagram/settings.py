@@ -180,14 +180,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # S3 BUCKET CONFIG #
 ####################
 
-# AWS_ACCESS_KEY_ID = 'AKIA245GXT5P54LAKD6Z'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'my-instagram-bucket'
+# AWS_ACCESS_KEY_ID = ''
+# AWS_SECRET_ACCESS_KEY = ''
+# AWS_STORAGE_BUCKET_NAME = ''
 
 # AWS_S3_FILE_OVERWRITE = False
 # AWS_DEFAULT_ACL = None
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-# python manage.py collectstatic # apply static files changes to s3
