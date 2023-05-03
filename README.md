@@ -32,6 +32,9 @@ This site have all functionality that original instagram have, except of recomme
 - channels 4.0.0
 - Pillow 9.5.0
 - psycopg2 2.9.6
+- Javascript 1.5
+- HTML5
+- CSS3
 ## Running the project
 
 **There are 3 accounts with posts, comments, follows and messages if you want to take a quick look of what it all looks like. Usernames and passwords are in 'users.txt' file in the main directory.**
