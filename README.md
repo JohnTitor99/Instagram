@@ -10,6 +10,7 @@ A simple, fun and creative way to share photos and messages with friends and fam
 * [Feautures](#feautures)
 * [Technologies](#technologies)
 * [Running the Project](#running-the-project)
+* [Running Tests](#running-tests)
 * [Connect PostgreSQL database](#connect-postgresql-database)
 * [Set up AWS RDS](set-up-aws-rds)
 * [Amazon S3](amazon-s3)
@@ -40,33 +41,54 @@ This site have all functionality that original instagram have, except of recomme
 **There are 3 accounts with posts, comments, follows and messages if you want to take a quick look of what it all looks like. Usernames and passwords are in 'users.txt' file in the main directory.**
 
 At first, you should have installed Python on your computer. Not necessary, but advised to create a virtual environment, so you store your projects dependecies apart for avoiding conflicts beetwen packages.
-```shell
+```bash
 pip install virtualenv
 ```
 Clone this repository and open it in any text editor. To create virtualenv, run the command below in a Windows terminal:
-```shell
+```bash
 python -m venv venv
 ```
 or if you're on Linux or Mac:
-```shell
+```bash
 virtualenv env
 ```
 To activate virtualenv, run
-```shell
+```bash
 venv\Scripts\activate.bat
 ```
 Linux or Mac
-```shell
+```bash
 source env/bin/active
 ```
 Than install project dependencies
-```shell
+```shelbashl
 pip install -r requirements.txt
 ```
 Now you can run the project (it will run on [localhost](http://127.0.0.1:8000/)):
-```shell
+```bash
 python manage.py runserver
 ```
+## Running Tests
+
+To run tests, run the following commands:
+
+run all tests
+```bash
+  manage.py test
+```
+run tests in specific app
+```bash
+  manage.py test base
+```
+run just one test case
+```bash
+  manage.py test base.tests.TestViews
+```
+run just one test method
+```bash
+  manage.py test base.tests.TestViews.test_main_page_GET
+```
+
 ## Connect PostgreSQL database
 
 At firts, download postgresql from the oficcial [website](https://www.postgresql.org/) and install it. Then go to [pgadmin](https://www.pgadmin.org/), download and install it too.
@@ -88,7 +110,7 @@ Go to main_directory > instagram > settings.py. Open this file and find postgres
 'PORT': 5432.
 
 Now run following commands:
-```shell
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
@@ -107,7 +129,7 @@ Click on your new database, go to connection and security and copy the 'endpoint
 Create a new server like before, but in field 'Host name' put the copied endpoint. You should also put this in your postgresql settings in 'settings.py' in 'HOST' instead of localhost. Make sure that other fields match.
 
 Now you can run following commands to apply your tables on AWS database:
-```shell
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
